@@ -1,2 +1,5 @@
 # WordleProject
-Project1 AWS2 
+Made by:
+- Raúl García
+- Brahian Monsalve
+- Andrés Villca
