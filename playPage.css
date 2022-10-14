@@ -1,11 +1,38 @@
+body{
+    background-color: #A0DBF2;
+}
+
+table{
+    margin-top: 30px;
+    border-spacing: 10px;
+}
+td{ 
+    padding: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: white;
+
+}
+.containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.class-header{
+    text-align: center;
+}
+
 #divKeyboard{
     margin: auto;
-    width: 700px;
-    display: block;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
 }
 
 .class-keyboard{
-    width: 43px;
+    width: auto;
     background-color: #D9B504;
     font-weight: bold;
     height: 58px;
@@ -13,22 +40,13 @@
     cursor: pointer;
     display: inline;
     border: 0px;
-    padding: 0px;
-    margin-right: 2px;
-    margin-top: 2px;
+    margin-right: 4px;
+    margin-top: 4px;
+    flex-grow: 1;
 }
 
 .rowKeyboard{
-    width: 700px;
-    display: block;
+    width: auto;
+    display: flex;
 }
 
-.class-specialKeyboard{
-    width: 90px;
-    background-color: #D9B504;
-    font-weight: bold;
-    height: 58px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline;
-}

@@ -9,9 +9,24 @@
 </head>
 <body>
     <header>
-        <h1>LA PARAULA OCULTA</h1>
-        <h3>Serà capaç {nomUsuari} d'endivinar la paraula?</h3>
+        <h1 class="class-header">LA PARAULA OCULTA</h1>
+        <h3 class="class-header">Serà capaç {nomUsuari} d'endivinar la paraula?</h3>
     </header>
+
+    <div class ="containerMainContent">
+        <table>
+            <?php
+                for ($i=1; $i <= 6 ; $i++) {            //Filas (6)
+                    echo "<tr>";
+                    for ($j=1; $j <= 5 ; $j++) {        //Columnas (5)
+                        echo "<td id=\"row".$i.$j."\"></td>";
+                    }
+                    echo "</tr>\n";
+                }
+                echo "\n"
+            ?>
+        </table>
+    </div>
 
     <?php
     $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
@@ -30,15 +45,11 @@
             echo "<button class='class-keyboard'>$secondRowKeyboard[$j]</button>\n";
         }
         echo "</div>";
+        echo "<div class='rowKeyboard'>";
         for ($k = 0; $k <count( $thirdRowKeyboard); $k++){
-            if($k == 0 || $k == count($thirdRowKeyboard)-1){
-                echo "<button class='class-specialKeyboard'>$thirdRowKeyboard[$k]</button>\n";
-            }
-            else{
-                echo "<button class='class-keyboard'>$thirdRowKeyboard[$k]</button>\n";
-            }
-            
+            echo "<button class='class-keyboard'>$thirdRowKeyboard[$k]</button>\n";
         }
+        echo "</div>";
         ?>
     </div>
     
