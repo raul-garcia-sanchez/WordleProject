@@ -22,7 +22,7 @@ Landing Page:
 
 
 Play Page:
--Títol: Text principal situat a l’inici de la pàgina i centrat en l’eix horitzontal, el seu contingut es ‘LA PARAULA OCULTA.\n
+-Títol: Text principal situat a l’inici de la pàgina i centrat en l’eix horitzontal, el seu contingut es ‘LA PARAULA OCULTA.
 -Subtítol: Text secundari situat sota el títol principal on es veurà el nom de l’usuari dins un text, el contingut es ‘Serà capaç {nomUsuari} d’endevinar la paraula?’.
 -Quadrícula: Quadrícula de 5x6 on hi hauran les paraules introduïdes per l’usuari, aquestes canvien de color segons si has encertat la posició i la lletra (verd), si has encertat només la lletra (groc) o si no has encertat ni la posició ni la lletra (marró). Aquesta quadrícula es troba sota el subtítol, centrat.
 -Teclat virtual: Aquest teclat interactiu constarà de diferents botons rectangulars amb vores arrodonides que tenen com a contingut una lletra de l’abecedari català, exceptuant 2 que tenen com a contingut enviar i esborrar. Aquest teclat es troba situat sota la quadrícula.
