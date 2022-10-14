@@ -1,0 +1,39 @@
+body{
+    background-color: #A0DBF2;
+}
+.titleWordle{
+    text-align: center;
+}
+table{
+    border-spacing: 10px;
+}
+td{ 
+    padding: 10px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: white;
+
+}
+.containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.formName{
+    display: flex;
+    flex-direction: column;
+}
+.inputName{
+    margin: auto;
+    width: 20%;
+    border-radius: 5px;
+
+}
+.btnSubmit{
+    margin: auto;
+    width: 15%;
+    border-radius: 5px;
+}
+[id^="row6"]{
+    background-color: #98ff96;
+}
