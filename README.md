@@ -15,9 +15,13 @@ La paleta de colors escollida es la següent:
 
 Landing Page: 
 -Títol: Text principal on hi ha un títol (‘WORDLE’) situat a l’inici de la pàgina i centrat en l’eix horitzontal.
+
 -Imatge Principal: Imatge amb el disseny del joc com a introducció del joc situat al l’esquerra i centrat en l’eix vertical.
+
 -Instruccions: Text que descriu les instruccions i la funcionalitat del joc situat al centre en l’eix vertical i a la dreta en l’eix horitzontal.
+
 -Input del nom d’usuari: Text box rectangular amb vores arrodonides situat sota les instruccions
+
 -Botó de Jugar: Botó amb text (‘Jugar’) rectangular amb vores arrodonides situat sota l’input de l’usuari.
 
 Play Page:
