@@ -1,18 +1,24 @@
 body{
     background-color: #A0DBF2;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 table{
     margin-top: 30px;
     border-spacing: 10px;
 }
+
 td{ 
-    padding: 20px;
+    height: 40px;
+    width: 40px;
     border-style: solid;
     border-radius: 5px;
     background-color: white;
-
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 .containerMainContent{
     display: flex;
     flex-direction: row;
@@ -43,6 +49,8 @@ td{
     margin-right: 4px;
     margin-top: 4px;
     flex-grow: 1;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .rowKeyboard{

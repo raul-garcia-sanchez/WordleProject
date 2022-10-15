@@ -16,10 +16,10 @@
     <div class ="containerMainContent">
         <table>
             <?php
-                for ($i=1; $i <= 6 ; $i++) {            //Filas (6)
+                for ($i=1; $i <= 6 ; $i++) {            
                     echo "<tr>";
-                    for ($j=1; $j <= 5 ; $j++) {        //Columnas (5)
-                        echo "<td id=\"row".$i.$j."\"></td>";
+                    for ($j=1; $j <= 5 ; $j++) {        
+                        echo "<td id='$i$j'></td>\n";
                     }
                     echo "</tr>\n";
                 }
@@ -35,26 +35,26 @@
     ?>
     <div id="divKeyboard">
         <?php
-        echo "<div class='rowKeyboard'>";
+        echo "<div class='rowKeyboard'>\n";
         for ($i = 0; $i <count( $firstRowKeyboard); $i++){
-            echo "<button class='class-keyboard'>$firstRowKeyboard[$i]</button>\n";
+            echo "<button id='$firstRowKeyboard[$i]' class='class-keyboard'>$firstRowKeyboard[$i]</button>\n";
         }
-        echo "</div>";
-        echo "<div class='rowKeyboard'>";
+        echo "</div>\n";
+        echo "<div class='rowKeyboard'>\n";
         for ($j = 0; $j <count( $secondRowKeyboard); $j++){
-            echo "<button class='class-keyboard'>$secondRowKeyboard[$j]</button>\n";
+            echo "<button id='$secondRowKeyboard[$j]' class='class-keyboard'>$secondRowKeyboard[$j]</button>\n";
         }
-        echo "</div>";
-        echo "<div class='rowKeyboard'>";
+        echo "</div>\n";
+        echo "<div class='rowKeyboard'>\n";
         for ($k = 0; $k <count( $thirdRowKeyboard); $k++){
-            echo "<button class='class-keyboard'>$thirdRowKeyboard[$k]</button>\n";
+            echo "<button id='$thirdRowKeyboard[$k]' class='class-keyboard'>$thirdRowKeyboard[$k]</button>\n";
         }
-        echo "</div>";
+        echo "</div>\n";
         ?>
     </div>
     
 
-    
+    <script src="./playPage.js"></script>
     
 </body>
 </html>
