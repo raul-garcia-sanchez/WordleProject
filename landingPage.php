@@ -45,13 +45,36 @@
     <br>
 
     <form class="formName" method="POST">
-        <input class="inputName" type="text" name="" id="" placeholder="Escrigui el seu nom">
+        <input class="inputName" type="text" name="" id="inputName" placeholder="Escrigui el seu nom">
         <br>
-        <button class="btnSubmit" type="submit">Jugar</button>
+        <button class="btnSubmit" type="submit" id="btnSubmit" onclick="enviarPlayPage(event)" >Jugar</button>
     </form>
+    <br>
+    <div class="alert" id="alert">
+        <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
+        Siusplau, introduiu un nom d'usuari per poder començar a jugar
+    </div>
     
     <script>
-        //Script per introduir paraules als recuadres
+        function enviarPlayPage(event) {
+            event.preventDefault();
+            const playerName = document.getElementById("inputName").value;
+            if (playerName.length == 0) {
+
+                if (document.getElementById("alert").style.visibility === 'hidden' || document.getElementById("alert").style.visibility.length==0){
+                    
+                    document.getElementById("alert").style.visibility = 'visible';
+                }
+                else{
+                    document.getElementById("alert").style.visibility = 'visible';
+                }
+            }
+            else{
+                window.location.href = "./playPage.php";
+            }
+        }
+        
+        //Script per introduir paraules als recuadres de exemple
         document.getElementById("row11").innerHTML = "F";
         document.getElementById("row12").innerHTML = "E";
         document.getElementById("row13").innerHTML = "I";
