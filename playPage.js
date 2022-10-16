@@ -34,15 +34,34 @@ function updateUserWord(letter){
     }
 }
 
+
+
 function sendWord(){
     const wordArr = getArrayWord();
     const ocultWordArr = ocultWord.split("");
+    const spaceLetter = document.getElementById(String(positionStartWord));
     if(wordArr.length !== 5){
         window.alert("The word must be 5 letters");
     }
 
     const userWord = wordArr.join("");
 
+    
+    for (let i = 0; i < wordArr.length; i++){
+        let color = "grey";
+        if (ocultWord.charAt(i) == userWord.charAt(i)){
+            color = "green";
+        }
+        else if(ocultWordArr.includes(wordArr[i])){
+            color = "yellow";
+        }
+        
+        let letterToCompare = positionStartWord - 5 + i;
+        const spaceLetter = document.getElementById(String(letterToCompare));
+        spaceLetter.style.backgroundColor = color;
+
+    }
+    
     if (userWord === ocultWord){
         wordCorrect == true
         window.alert("Congratulations, you win!!")
@@ -55,8 +74,10 @@ function sendWord(){
     }
 
     if (countSends === 6 && wordCorrect == false){
-        window.alert("Sorry, you lose!!")
+        window.alert("Sorry, you lose!!");
     }
 
 }
+
+
 
