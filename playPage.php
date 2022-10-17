@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç {nomUsuari} d'endivinar la paraula?</h3>
+        <h3 class="class-header">Serà capaç <?php echo $_POST["inputName"]?> d'endivinar la paraula?</h3>
     </header>
 
     <div class ="containerMainContent">
