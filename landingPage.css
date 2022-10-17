@@ -41,7 +41,15 @@ td{
     width: 15%;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #04D939;
+    transition: all .2s ease-in-out;
 }
+
+#btnSubmit:hover{
+    background-color: #027333;
+    transform: scale(1.20);
+}
+
 .alert {
     margin: auto;
     width: 30%;
@@ -51,7 +59,7 @@ td{
     color: white;
   }
   
-  .closebtn {
+.closebtn {
     margin-left: 15px;
     color: white;
     font-weight: bold;
@@ -62,7 +70,7 @@ td{
     transition: 0.3s;
   }
   
-  .closebtn:hover {
+.closebtn:hover {
     color: black;
   }
 
