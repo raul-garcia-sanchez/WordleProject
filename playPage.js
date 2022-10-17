@@ -102,7 +102,6 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     }
     
     if (userWord === ocultWord){
-        wordCorrect == true
         window.alert("Congratulations, you win!!")
     }
 
@@ -112,7 +111,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
         countSends = countSends + 1;
     }
 
-    if (countSends === 6 && wordCorrect == false){
+    if (countSends == 6 && userWord !== ocultWord){
         window.alert("Sorry, you lose!!");
     }
 
