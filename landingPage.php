@@ -29,7 +29,7 @@
             ?>
         </table>
 
-        <p>Endevina la <strong>WORDLE</strong> en 6 intents. <br>
+        <p class="instructions">Endevina la <strong>WORDLE</strong> en 6 intents. <br>
         Cada fila ha de ser una paraula vàlida de 5 lletres. <br>
         Premi el botó intro per enviar. <br>
         Després de cada suposició, el color de les fitxes canviarà <br>
@@ -44,10 +44,10 @@
 
     <br>
 
-    <form action = "./playPage.php" class="formName" method="POST">
+    <form id="formName" action="playPage.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="Escrigui el seu nom">
         <br>
-        <button class="btnSubmit" type="submit" id="btnSubmit" onclick="enviarPlayPage(event)" >Jugar</button>
+        <input class="btnSubmit" id="btnSubmit" onclick="enviarPlayPage(event)" value="Jugar"  type="submit">
     </form>
     <br>
     <div class="alert" id="alert">
@@ -57,15 +57,15 @@
 
     <script>
         function enviarPlayPage(event) {
-            event.preventDefault();
             const playerName = document.getElementById("inputName").value;
             if (playerName.length == 0) {
 
                 if (document.getElementById("alert").style.visibility === 'hidden' || document.getElementById("alert").style.visibility.length==0){
-                    
+                    event.preventDefault();
                     document.getElementById("alert").style.visibility = 'visible';
                 }
                 else{
+                    event.preventDefault();
                     document.getElementById("alert").style.visibility = 'visible';
                 }
             }

@@ -3,17 +3,21 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 .titleWordle{
+    font-size: 5em;
     text-align: center;
 }
 table{
     border-spacing: 10px;
 }
 td{ 
-    padding: 10px;
+    padding: 20px;
     border-style: solid;
     border-radius: 5px;
     background-color: white;
 
+}
+.instructions{
+    font-size: 25px;
 }
 .containerMainContent{
     display: flex;
@@ -28,9 +32,11 @@ td{
     margin: auto;
     width: 20%;
     border-radius: 5px;
-
+    height: 30px;
+    text-align: center;
 }
 .btnSubmit{
+    height: 40px;
     margin: auto;
     width: 15%;
     border-radius: 5px;

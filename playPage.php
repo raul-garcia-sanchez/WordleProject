@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Page</title>
     <link rel="stylesheet" href="./playPage.css">
+
+    <?php
+        $nameUser = (isset($_POST["inputName"])) 
+        ? $_POST["inputName"]
+        : "Unknown Player"
+    ?>
+
 </head>
 <body>
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç {nomUsuari} d'endivinar la paraula?</h3>
+        <h3 class="class-header">Serà capaç <?php echo $nameUser ?> d'endivinar la paraula?</h3>
     </header>
 
     <div class ="containerMainContent">
