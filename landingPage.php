@@ -44,8 +44,8 @@
 
     <br>
 
-    <form class="formName" method="POST">
-        <input class="inputName" type="text" name="" id="inputName" placeholder="Escrigui el seu nom">
+    <form action = "./playPage.php" class="formName" method="POST">
+        <input class="inputName" type="text" name="inputName" id="inputName" placeholder="Escrigui el seu nom">
         <br>
         <button class="btnSubmit" type="submit" id="btnSubmit" onclick="enviarPlayPage(event)" >Jugar</button>
     </form>
@@ -54,7 +54,7 @@
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
         Siusplau, introduiu un nom d'usuari per poder començar a jugar
     </div>
-    
+
     <script>
         function enviarPlayPage(event) {
             event.preventDefault();

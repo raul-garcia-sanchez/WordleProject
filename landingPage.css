@@ -1,5 +1,6 @@
 body{
     background-color: #A0DBF2;
+    font-family: 'Courier New', Courier, monospace;
 }
 .titleWordle{
     text-align: center;
@@ -33,6 +34,7 @@ td{
     margin: auto;
     width: 15%;
     border-radius: 5px;
+    cursor: pointer;
 }
 .alert {
     margin: auto;
@@ -57,11 +59,7 @@ td{
   .closebtn:hover {
     color: black;
   }
-/*
-Amarillo: #F2E205
-Marron: #8C661F
-Verde: #98ff96
-*/
+
 #row11{
     background-color: #8C661F;
 }
