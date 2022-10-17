@@ -10,6 +10,7 @@
         $randomNumber= rand(0,$arrayLen);
         $randomWord= $arrayWords[$randomNumber];
         fclose($fileOpen);
-        return $randomWord;
+
+        return strtoupper(substr($randomWord,0,-2));
     }
 ?>

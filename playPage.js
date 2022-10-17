@@ -2,11 +2,11 @@ const keys = document.querySelectorAll('.class-keyboard');
 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
-let ocultWord = "CASAS"; //Palabra a adivinar
+let ocultWord = document.getElementById("secretWord").innerHTML; //Palabra a adivinar
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 let wordCorrect = false;//Booleano para comprobar si la palabra es correcta
-
+console.log(ocultWord);
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
     keys[i].onclick = ({ target }) => {
         const letter = target.getAttribute("id");
@@ -106,7 +106,9 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     }
     
     if (userWord === ocultWord){
-        window.alert("Congratulations, you win!!")
+        setTimeout(() => {
+            window.location.replace("winPage.php");
+        }, 2000);
     }
 
     if(wordArr.length === 5){
@@ -116,7 +118,9 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     }
 
     if (countSends == 6 && userWord !== ocultWord){
-        window.alert("Sorry, you lose!!");
+        setTimeout(() => {
+            window.location.replace("losePage.php");
+        }, 2000);
     }
 
 }

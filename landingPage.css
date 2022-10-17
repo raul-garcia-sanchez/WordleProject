@@ -29,6 +29,7 @@ td{
     flex-direction: column;
 }
 .inputName{
+    font-family: 'Courier New', Courier, monospace;
     margin: auto;
     width: 20%;
     border-radius: 5px;
@@ -36,6 +37,7 @@ td{
     text-align: center;
 }
 .btnSubmit{
+    font-family: 'Courier New', Courier, monospace;
     height: 40px;
     margin: auto;
     width: 15%;
@@ -43,6 +45,8 @@ td{
     cursor: pointer;
     background-color: #04D939;
     transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 #btnSubmit:hover{
@@ -73,87 +77,3 @@ td{
 .closebtn:hover {
     color: black;
   }
-
-#row11{
-    background-color: #8C661F;
-}
-#row12{
-    background-color: #8C661F;
-}
-#row13{
-    background-color: #8C661F;
-}
-#row14{
-    background-color:  #F2E205;
-} 
-#row15{
-    background-color:  #F2E205;
-}
-/*Fila 2*/
-#row21{
-    background-color:  #98ff96;
-}
-#row22{
-    background-color: #8C661F;
-}
-#row23{
-    background-color: #8C661F;
-}
-#row24{
-    background-color: #8C661F;
-}
-#row25{
-    background-color: #8C661F;
-}
-/*Fila 3*/
-#row31{
-    background-color:  #98ff96;
-}
-#row32{
-    background-color: #8C661F;
-}
-#row33{
-    background-color: #8C661F;
-}
-#row34{
-    background-color: #8C661F;
-}
-#row35{
-    background-color: #8C661F;
-}
-/*Fila 4*/
-#row41{
-    background-color:  #98ff96;
-}
-#row42{
-    background-color: #98ff96;
-}
-#row43{
-    background-color: #8C661F;
-}
-#row44{
-    background-color: #8C661F;
-}
-#row45{
-    background-color: #8C661F;
-}
-/*Fila 5*/
-#row51{
-    background-color:   #98ff96;
-}
-#row52{
-    background-color:  #F2E205;
-}
-#row53{
-    background-color: #8C661F;
-}
-#row54{
-    background-color: #8C661F;
-}
-#row55{
-    background-color: #8C661F;
-}
-/*Fila 6*/
-[id^="row6"]{
-    background-color: #98ff96;
-}

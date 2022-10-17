@@ -29,9 +29,25 @@
     </div>
 
     <?php
-    $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
-    $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
-    $thirdRowKeyboard = array("ENVIAR","Z","X","C","V","B","N","M","ESBORRAR");
+        function randomWordCatala(){
+            $fileWords= file("./wordsCatala.txt");
+            $fileOpen= fopen("./wordsCatala.txt", "r");
+            $arrayWords= [];
+            foreach ($fileWords as $lineWord => $word){
+                array_push($arrayWords, $word);
+            };
+            $arrayLen= count($arrayWords);
+            $randomNumber= rand(0,$arrayLen);
+            $randomWord= $arrayWords[$randomNumber];
+            fclose($fileOpen);
+            return strtoupper(substr($randomWord,0,-2));
+        }
+        $randomWord = randomWordCatala();
+        echo "<p style='display:none' id='secretWord'>".$randomWord."</p>";
+        $_POST["secretWord"] = $randomWord;
+        $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
+        $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
+        $thirdRowKeyboard = array("ENVIAR","Z","X","C","V","B","N","M","ESBORRAR");
     ?>
     <div id="divKeyboard">
         <?php
