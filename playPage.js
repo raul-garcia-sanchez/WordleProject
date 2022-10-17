@@ -3,6 +3,19 @@ const keys = document.querySelectorAll('.class-keyboard');
 let userWordArr = [[]];
 let positionStartWord = 11;
 let ocultWord = "FEINA";
+const dictOcultWord = new Map();
+var sameLetters = 0;
+for(let i = 0; i < ocultWord.length; i++){
+    if(dictOcultWord.has(ocultWord[i])){
+        let sameLettersLetter = dictOcultWord.get(ocultWord[i]);
+        dictOcultWord.delete(ocultWord[i]);
+        dictOcultWord.set(ocultWord[i],sameLettersLetter+1);
+    }
+    else{
+        dictOcultWord.set(ocultWord[i],sameLetters+1);
+    }
+}
+console.log(dictOcultWord);
 let countSends = 0;
 let wordCorrect = false;
 
@@ -48,12 +61,33 @@ function sendWord(){
 
     
     for (let i = 0; i < wordArr.length; i++){
-        let color = "grey";
+        let color = "#8C661F";
         if (ocultWord.charAt(i) == userWord.charAt(i)){
-            color = "green";
+            if(dictOcultWord.has(userWord.charAt(i))){
+                var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
+                console.log(lettersRepeats);
+                if (lettersRepeats > 0){
+                    dictOcultWord.delete(userWord.charAt(i));
+                    dictOcultWord.set(userWord.charAt(i),lettersRepeats-=1);
+                }
+                console.log(lettersRepeats);
+            }
+            color = "#98ff96";
+            console.log(dictOcultWord);
         }
         else if(ocultWordArr.includes(wordArr[i])){
-            color = "yellow";
+            if(dictOcultWord.has(userWord.charAt(i))){
+                var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
+                console.log(userWord.charAt(i));
+                console.log(dictOcultWord);
+                console.log(lettersRepeats);
+                if (lettersRepeats > 0){
+                    dictOcultWord.delete(userWord.charAt(i));
+                    dictOcultWord.set(userWord.charAt(i),lettersRepeats-=1);
+                    color = "#F2E205";
+                }
+            }
+            
         }
         
         let letterToCompare = positionStartWord - 5 + i;
@@ -61,6 +95,7 @@ function sendWord(){
         spaceLetter.style.backgroundColor = color;
 
     }
+    console.log(dictOcultWord);
     
     if (userWord === ocultWord){
         wordCorrect == true
