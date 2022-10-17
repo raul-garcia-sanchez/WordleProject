@@ -5,9 +5,9 @@ Fet per estudiants de AWS2:
 - Andrés Villca
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 La font de text utilitzada es:
--Courier
--En cas de no existir el Courier en el navegador, utilitzem el New Courier
--I en cas de no existir cap dels 2, utilitzem el monospace;
+- Courier
+- En cas de no existir el Courier en el navegador, utilitzem el New Courier
+- I en cas de no existir cap dels 2, utilitzem el monospace;
 
 La paleta de colors escollida es la següent:
 -	Groc (#F2E205): Per a marcar les lletres que ha encertat però que no es troben en la posició correcta.
