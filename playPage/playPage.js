@@ -1,24 +1,22 @@
-const keys = document.querySelectorAll('.class-keyboard');
+const keys = document.querySelectorAll('.class-keyboard');//Array con todos los elementos que contienen la clase class-keyboard
 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
-let wordCorrect = false;//Booleano para comprobar si la palabra es correcta
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
-    keys[i].onclick = ({ target }) => {
+    keys[i].onclick = ({ target }) => {//Cada vez que hacemos click a un boton, cogemos valor id del boton y lo escribimos
         const letter = target.getAttribute("id");
         if (letter === "ENVIAR"){
-            sendWord();
+            sendWord();//Llamamos funcion enviar
             return;
         }
         if (letter === "ESBORRAR"){
-            deleteLetter();
+            deleteLetter();//Llamamos funcion borrar
             return;
         }
-        //Meter if letter es igual a ESBORRAR y llamas a una funcion q haras de deleteLetter o lo q sea
         
-        updateUserWord(letter);
+        updateUserWord(letter);//Escribimos letra en posicion 
     };
 }
 
@@ -45,7 +43,7 @@ function getArrayWord(){//Funcion para obtener el array de letras que vamos escr
 
 function updateUserWord(letter){//Funcion para escribir la letra en su espacio
     const wordArr = getArrayWord();
-    if (wordArr && wordArr.length < 5){
+    if (wordArr && wordArr.length < 5){//Si longitud array es mas pequeño que 5 vamos añadiendo letras al array
         wordArr.push(letter);
         const spaceLetter = document.getElementById(String(positionStartWord));
         positionStartWord = positionStartWord +1;
@@ -54,21 +52,20 @@ function updateUserWord(letter){//Funcion para escribir la letra en su espacio
 }
 
 
-function sendWord(){//Funcion de boton enviar, comprobamos todo
+function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si pierde, letras acertadas...
     const wordArr = getArrayWord();
     let dictOcultWord = generateDictionary();
     const ocultWordArr = ocultWord.split("");
 
-    if(wordArr.length !== 5){
+    if(wordArr.length !== 5){//Si la longitud del array es diferente de 5 no hacemos nada
         return;
     }
 
-    const userWord = wordArr.join("");
+    const userWord = wordArr.join("");//Pasamos el array a un string
 
-    for (let i = 0; i < wordArr.length ; i++){
-        let color = "#98ff96"; //Color Verde
-        if (ocultWord.charAt(i) == userWord.charAt(i)){ //Está en la posición correcta
-
+    for (let i = 0; i < wordArr.length ; i++){//Bucle para marcar las palabras que están en su posición correcta
+        let color = "#98ff96"; //Color verde
+        if (ocultWord.charAt(i) == userWord.charAt(i)){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
             if (lettersRepeats > 0){
                 dictOcultWord.delete(userWord.charAt(i));
@@ -76,7 +73,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
             }  
         }
         else{
-            color = "#8C661F";
+            color = "#8C661F";//Color gris
         }
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
@@ -84,7 +81,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     }
 
     
-    for (let i = 0; i < wordArr.length ; i++){
+    for (let i = 0; i < wordArr.length ; i++){//Bucle para marcar las letras que estan en la palabra pero no en la posicion correcta
         let color = "#8C661F"; //Color gris
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
@@ -93,7 +90,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
             if(dictOcultWord.get(userWord.charAt(i)) > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i), dictOcultWord.get(userWord.charAt(i))-1);
-                color = "#F2E205"; //Color Amarillo
+                color = "#F2E205"; //Color amarillo
             }
             else{
                 continue;
@@ -104,19 +101,19 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
 
     }
     
-    if (userWord === ocultWord){
+    if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
         setTimeout(() => {
             window.location.replace("../winPage/winPage.php");
         }, 2000);
     }
 
-    if(wordArr.length === 5){
+    if(wordArr.length === 5){//Cuando el array es de 5 posiciones, reseteamos array y añadimos 1 al contador de enviado
         positionStartWord = positionStartWord + 5;
         userWordArr = [[]];
         countSends = countSends + 1;
     }
 
-    if (countSends == 6 && userWord !== ocultWord){
+    if (countSends == 6 && userWord !== ocultWord){//Comprobamos que ha enviado la palabra 6 veces y la palabra no es correcta
         setTimeout(() => {
             window.location.replace("../losePage/losePage.php");
         }, 2000);
@@ -126,7 +123,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
 
 
 
-function deleteLetter(){
+function deleteLetter(){//Funcion para borrar letras de una misma fila
     const wordArr = getArrayWord();
     wordArr.pop()
     if(positionStartWord>61){

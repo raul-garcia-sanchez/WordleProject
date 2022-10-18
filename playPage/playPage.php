@@ -64,22 +64,22 @@
             if(str_contains($word,"à")){
                 return str_replace("à","a",$word);
             }
-            elseif(str_contains($word,"è")){
+            else if(str_contains($word,"è")){
                 return str_replace("è","e",$word);
             }
-            elseif(str_contains($word,"é")){
+            else if(str_contains($word,"é")){
                 return str_replace("é","e",$word);
             }
-            elseif(str_contains($word,"í")){
+            else if(str_contains($word,"í")){
                 return str_replace("í","i",$word);
             }
-            elseif(str_contains($word,"ò")){
+            else if(str_contains($word,"ò")){
                 return str_replace("ò","o",$word);
             }
-            elseif(str_contains($word,"ó")){
+            else if(str_contains($word,"ó")){
                 return str_replace("ó","o",$word);
             }
-            elseif(str_contains($word,"ú")){
+            else if(str_contains($word,"ú")){
                 return str_replace("ú","u",$word);
             }
             else{

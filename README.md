@@ -13,7 +13,7 @@ La paleta de colors escollida es la següent:
 -	Groc (#F2E205): Per a marcar les lletres que ha encertat però que no es troben en la posició correcta.
 -	Marró (#8C661F): Per a marcar les lletres que no ha encertat ni la lletra ni la posició correcta.
 -	Marró-Groc (#D9B504): Per a afegir estils a la pàgina.
--	Blau Cel (#A0DBF2): Afegir estils a la pàgina
+-	Blau Cel (#A0DBF2): Afegir estils a la pàgina.
 -	Blau Marí (#3F8EBF): Afegir estils a la pàgina.
 -	Verd (#98ff96): Per a marcar les lletres que ha encertat la lletra i la seva posició.
 

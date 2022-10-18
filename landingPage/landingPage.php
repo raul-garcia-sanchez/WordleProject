@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <title>Wordle</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="./landingPage.css">
-
 </head>
 <body>
     <header>
@@ -16,7 +13,6 @@
 
     <div class ="containerMainContent">
         <img src="../resources/imgLandingPage.png" alt="Quadrícula joc">
-
         <p class="instructions">Endevina la <strong>WORDLE</strong> en 6 intents. <br>
         Cada fila ha de ser una paraula vàlida de 5 lletres. <br>
         Premi el botó intro per enviar. <br>
@@ -29,13 +25,12 @@
         La lletra E no està en la paraula i enlloc -> MARRÓ
         </p>
     </div>
-
     <br>
 
     <form id="formName" action="../playPage/playPage.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="Escrigui el seu nom">
         <br>
-        <input class="btnSubmit" id="btnSubmit" onclick="enviarPlayPage(event)" value="JUGAR"  type="submit">
+        <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="JUGAR"  type="submit">
     </form>
     <br>
     <div class="alert" id="alert">
@@ -44,7 +39,7 @@
     </div>
 
     <script>
-        function enviarPlayPage(event) {
+        function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
             if (playerName.length == 0) {
 

@@ -2,13 +2,16 @@ body{
     background-color: #A0DBF2;
     font-family: 'Courier New', Courier, monospace;
 }
+
 .titleWordle{
     font-size: 5em;
     text-align: center;
 }
+
 table{
     border-spacing: 10px;
 }
+
 td{ 
     padding: 20px;
     border-style: solid;
@@ -16,18 +19,22 @@ td{
     background-color: white;
 
 }
+
 .instructions{
     font-size: 25px;
 }
+
 .containerMainContent{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .formName{
     display: flex;
     flex-direction: column;
 }
+
 .inputName{
     font-family: 'Courier New', Courier, monospace;
     margin: auto;
@@ -36,10 +43,12 @@ td{
     height: 30px;
     text-align: center;
 }
+
 img{
     width: 350px;
     height: auto;
 }
+
 .btnSubmit{
     font-family: 'Courier New', Courier, monospace;
     height: 40px;
