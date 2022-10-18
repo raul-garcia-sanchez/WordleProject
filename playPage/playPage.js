@@ -2,11 +2,9 @@ const keys = document.querySelectorAll('.class-keyboard');
 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
-let ocultWord = document.getElementById("secretWord").innerHTML; //Palabra a adivinar
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 let wordCorrect = false;//Booleano para comprobar si la palabra es correcta
-console.log(ocultWord);
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
     keys[i].onclick = ({ target }) => {
         const letter = target.getAttribute("id");
@@ -60,8 +58,9 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     const wordArr = getArrayWord();
     let dictOcultWord = generateDictionary();
     const ocultWordArr = ocultWord.split("");
+
     if(wordArr.length !== 5){
-        window.alert("The word must be 5 letters");
+        return;
     }
 
     const userWord = wordArr.join("");
@@ -107,7 +106,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
     
     if (userWord === ocultWord){
         setTimeout(() => {
-            window.location.replace("winPage.php");
+            window.location.replace("../winPage/winPage.php");
         }, 2000);
     }
 
@@ -119,7 +118,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos todo
 
     if (countSends == 6 && userWord !== ocultWord){
         setTimeout(() => {
-            window.location.replace("losePage.php");
+            window.location.replace("../losePage/losePage.php");
         }, 2000);
     }
 

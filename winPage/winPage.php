@@ -14,7 +14,7 @@
             <h1>VICTORIA!!!</h1>
         </div>
         <div id="idVictoryGif">
-            <img src="./gifVictory.gif" alt="GIF VICTORIA" width="600">
+            <img src="../resources/gifVictory.gif" alt="GIF VICTORIA" width="600">
         </div>
     </main>
 </body>

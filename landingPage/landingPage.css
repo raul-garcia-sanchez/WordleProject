@@ -36,6 +36,10 @@ td{
     height: 30px;
     text-align: center;
 }
+img{
+    width: 350px;
+    height: auto;
+}
 .btnSubmit{
     font-family: 'Courier New', Courier, monospace;
     height: 40px;

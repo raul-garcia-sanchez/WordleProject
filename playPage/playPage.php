@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -8,9 +9,15 @@
     <link rel="stylesheet" href="./playPage.css">
 </head>
 <body>
+    <?php
+        $nameUser = (isset($_POST["inputName"]))
+            ? $_POST["inputName"]
+            : "Unwknown Player";
+    ?>
+
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç <?php echo $_POST["inputName"]?> d'endivinar la paraula?</h3>
+        <h3 class="class-header">Serà capaç <?php echo $nameUser?> d'endivinar la paraula?</h3>
     </header>
 
     <div class ="containerMainContent">
@@ -29,24 +36,9 @@
     </div>
 
     <?php
-        function randomWordCatala(){
-            $fileWords= file("./wordsCatala.txt");
-            $fileOpen= fopen("./wordsCatala.txt", "r");
-            $arrayWords= [];
-            foreach ($fileWords as $lineWord => $word){
-                array_push($arrayWords, $word);
-            };
-            $arrayLen= count($arrayWords);
-            $randomNumber= rand(0,$arrayLen-1);
-            $randomWord= $arrayWords[$randomNumber];
-            $randomWord= filterAccents($randomWord);
-            $randomWord= cTrencada($randomWord);
-            fclose($fileOpen);
-            return strtoupper(substr($randomWord,0,-2));
-        }
+        
         $randomWord = randomWordCatala();
-        echo "<p style='display:none' id='secretWord'>".$randomWord."</p>";
-        $_POST["secretWord"] = $randomWord;
+        $_SESSION['ocultWord'] = $randomWord;
         $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
         $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
         $thirdRowKeyboard = array("ENVIAR","Z","X","C","V","B","N","M","ESBORRAR");
@@ -103,11 +95,32 @@
                 return $word;
             }
         }
+        function randomWordCatala(){
+            $fileWords= file("../resources/wordsCatala.txt");
+            $fileOpen= fopen("../resources/wordsCatala.txt", "r");
+            $arrayWords= [];
+            foreach ($fileWords as $lineWord => $word){
+                array_push($arrayWords, $word);
+            };
+            $arrayLen= count($arrayWords);
+            $randomNumber= rand(0,$arrayLen-1);
+            $randomWord= $arrayWords[$randomNumber];
+            $randomWord= filterAccents($randomWord);
+            $randomWord= exceptionLetter($randomWord);
+            fclose($fileOpen);
+            return strtoupper(substr($randomWord,0,-2));
+        }
+
         ?>
     </div>
     
-
+    <script>
+        <?php
+            echo "var ocultWord = '$randomWord';";
+        ?>
+    </script>
     <script src="./playPage.js"></script>
+    
     
 </body>
 </html>

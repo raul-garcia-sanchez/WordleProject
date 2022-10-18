@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +13,13 @@
         <div id="idTextLose">
             <h1>NO HAS ENCERTAT LA PARAULA OCULTA!</h1>
             <h1>DERROTA!!</h1>
-            <p>La paraula a endevinar era <b id="bWordResult"></b></h2>
+            <p>La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
         </div>
         <div id="idLoseGif">
-            <img src="./gifLose.gif" alt="GIF DERROTA" height="225" width="300">
+            <img src="../resources/gifLose.gif" alt="GIF DERROTA" height="225" width="300">
         </div>
     </main>
-    
+
+
 </body>
 </html>
