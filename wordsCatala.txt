@@ -27,7 +27,3 @@ tarda
 gener
 vapor
 barça
-virus
-color
-camps
-canvi
