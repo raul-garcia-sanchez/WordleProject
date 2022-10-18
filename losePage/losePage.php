@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOSE PAGE</title>
+    <title>Lose Page</title>
     <link rel="stylesheet" href="losePage.css">
 </head>
 <body>
