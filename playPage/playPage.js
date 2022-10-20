@@ -87,9 +87,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         const spaceLetter = document.getElementById(String(letterToCompare));
 
         if(ocultWordArr.includes(wordArr[i])){
-            if(dictOcultWord.get(userWord.charAt(i)) > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){
+            var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
+            if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){
+                
                 dictOcultWord.delete(userWord.charAt(i));
-                dictOcultWord.set(userWord.charAt(i), dictOcultWord.get(userWord.charAt(i))-1);
+                dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
+
                 color = "#F2E205"; //Color amarillo
             }
             else{
