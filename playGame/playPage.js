@@ -3,6 +3,11 @@ const keys = document.querySelectorAll('.class-keyboard');//Array con todos los 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
+//let arrayGames = [];
+let countYellows = 0;
+let countBrowns = 0;
+let winGame = false;
+
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
     keys[i].onclick = ({ target }) => {//Cada vez que hacemos click a un boton, cogemos valor id del boton y lo escribimos
@@ -19,6 +24,13 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
         updateUserWord(letter);//Escribimos letra en posicion 
     };
 }
+
+
+function getPoints(){
+    let pointsUser = 100;
+    return pointsUser;
+}
+
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
     let dictOcultWord = new Map();
@@ -73,7 +85,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
             }  
         }
         else{
-            color = "#8C661F";//Color gris
+            color = "#8C661F";//Color marron
         }
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
@@ -82,14 +94,13 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
     
     for (let i = 0; i < wordArr.length ; i++){//Bucle para marcar las letras que estan en la palabra pero no en la posicion correcta
-        let color = "#8C661F"; //Color gris
+        let color = "#8C661F"; //Color marron
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
 
         if(ocultWordArr.includes(wordArr[i])){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
             if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){
-                
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
 
@@ -103,8 +114,24 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         spaceLetter.style.backgroundColor = color;
 
     }
+
+    for(let i = 0; i<wordArr.length; i++){
+        let letterToCompare = positionStartWord - 5 + i;
+        const spaceLetter = document.getElementById(String(letterToCompare));
+        if(spaceLetter.style.backgroundColor == "rgb(242, 226, 5)"){
+            console.log("amarillo");
+            countYellows = countYellows +1;
+        }
+        else if(spaceLetter.style.backgroundColor == "rgb(140, 102, 31)"){
+            console.log("marron");
+            countBrowns = countBrowns + 1;
+        }
+    }
+    
     
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
+        winGame = true;
+        finishGame = true;
         setTimeout(() => {
             window.location.replace("../winPage/win.php");
         }, 2000);
@@ -117,11 +144,19 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     }
 
     if (countSends == 6 && userWord !== ocultWord){//Comprobamos que ha enviado la palabra 6 veces y la palabra no es correcta
+        finishGame = true;
         setTimeout(() => {
             window.location.replace("../losePage/lose.php");
-        }, 2000);
+        }, 1111000);
     }
 
+    
+    document.getElementById("numYellows").value = countYellows;
+    document.getElementById("numBrowns").value = countBrowns;
+    document.getElementById("numAttempts").value = countSends;
+    document.getElementById("winGame").value = winGame;
+
+    document.getElementById("formDataGames").submit();
 }
 
 

@@ -13,6 +13,11 @@
         $nameUser = (isset($_POST["inputName"]))
             ? $_POST["inputName"]
             : "Unwknown Player";
+
+        $_SESSION[$nameUser] = (isset($_SESSION[$nameUser]))
+            ? $_SESSION[$nameUser]
+            : [];
+
     ?>
 
     <header>
@@ -108,19 +113,34 @@
             $randomWord= filterAccents($randomWord);
             $randomWord= exceptionLetter($randomWord);
             fclose($fileOpen);
+            
             return strtoupper(substr($randomWord,0,-2));
         }
 
         ?>
     </div>
     
-    <script>
-        <?php
-            echo "var ocultWord = '$randomWord';";
-        ?>
-    </script>
+        <form id="formDataGames" method="POST">
+            <input hidden type="number" id="numYellows" name="numYellows">
+            <input hidden type="number" id="numBrowns" name="numBrowns">
+            <input hidden type="number" id="numAttempts" name="numAttempts">
+            <input hidden type="text" id="winGame" name="winGame">
+        </form>
+
     <script src="./playPage.js"></script>
     
+    <?php
+        $dict = array();
+        array_push($dict,$_POST['numYellows']);
+        $_SESSION[$nameUser] = array_push($_SESSION[$nameUser],$dict);
+    ?>
+    <script><?php
+            echo "var ocultWord = '$randomWord';"; 
+            echo "var arrayGames = '{$_SESSION[$nameUser]}';";
+        ?>
+        console.log(arrayGames);</script>
+    
+
     
 </body>
 </html>
