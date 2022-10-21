@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <a href="../landingPage/index.php">ENLACE</a>
+
     <?php
         $nameUser = (isset($_POST["inputName"]))
             ? $_POST["inputName"]
             : "Unwknown Player";
+
+        $_SESSION['userName'] = $_POST["inputName"];
     ?>
 
     <header>
