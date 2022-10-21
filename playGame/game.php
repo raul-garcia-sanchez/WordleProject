@@ -10,19 +10,19 @@
 </head>
 <body>
     <?php
-        $nameUser = (isset($_POST["inputName"]))
-            ? $_POST["inputName"]
-            : "Unwknown Player";
+        $_SESSION['user'] = (isset($_POST['inputName']))
+            ? $_POST['inputName']
+            : $_SESSION['user'];
 
-        $_SESSION[$nameUser] = (isset($_SESSION[$nameUser]))
-            ? $_SESSION[$nameUser]
-            : [];
-
+        $_SESSION[$_SESSION['user']] = (isset($_SESSION[$_SESSION['user']]))
+            ? $_SESSION[$_SESSION['user']]
+            : array();
+        
     ?>
 
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç <?php echo $nameUser?> d'endivinar la paraula?</h3>
+        <h3 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h3>
     </header>
 
     <div class ="containerMainContent">
@@ -130,15 +130,17 @@
     <script src="./playPage.js"></script>
     
     <?php
+    //ARREGLAR Q AL PRINCIPIO SE HACE ARRAY VACIO
         $dict = array();
-        array_push($dict,$_POST['numYellows']);
-        $_SESSION[$nameUser] = array_push($_SESSION[$nameUser],$dict);
+        array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
+        array_push($_SESSION[$_SESSION['user']],$dict);
+        print_r($_SESSION[$_SESSION['user']]);
     ?>
-    <script><?php
+    <script>
+        <?php
             echo "var ocultWord = '$randomWord';"; 
-            echo "var arrayGames = '{$_SESSION[$nameUser]}';";
         ?>
-        console.log(arrayGames);</script>
+    </script>
     
 
     

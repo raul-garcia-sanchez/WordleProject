@@ -7,6 +7,7 @@ let positionStartWord = 11;//Posicion en la que empezamos a escribir
 let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
+let finishGame = false;
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
@@ -151,13 +152,15 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     }
 
     
-    document.getElementById("numYellows").value = countYellows;
-    document.getElementById("numBrowns").value = countBrowns;
-    document.getElementById("numAttempts").value = countSends;
-    document.getElementById("winGame").value = winGame;
-
-    document.getElementById("formDataGames").submit();
-}
+    if(finishGame == true){
+        document.getElementById("numYellows").value = countYellows;
+        document.getElementById("numBrowns").value = countBrowns;
+        document.getElementById("numAttempts").value = countSends;
+        document.getElementById("winGame").value = winGame;
+        document.getElementById("formDataGames").submit();
+    }
+    }
+   
 
 
 
