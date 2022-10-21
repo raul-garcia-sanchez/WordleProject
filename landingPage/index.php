@@ -4,7 +4,7 @@
     <title>Wordle</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
@@ -12,7 +12,7 @@
     </header>
 
     <div class ="containerMainContent">
-        <img src="../resources/imgLandingPage.png" alt="Quadrícula joc">
+        <img class="imgLanding" src="../resources/imgLandingPage.png" alt="Quadrícula joc">
         <p class="instructions">Endevina la <strong>WORDLE</strong> en 6 intents. <br>
         Cada fila ha de ser una paraula vàlida de 5 lletres. <br>
         Premi el botó intro per enviar. <br>
@@ -27,7 +27,7 @@
     </div>
     <br>
 
-    <form id="formName" action="../playPage/playPage.php" class="formName" method="POST">
+    <form id="formName" action="../playGame/game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="Escrigui el seu nom">
         <br>
         <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="JUGAR"  type="submit">
@@ -53,7 +53,7 @@
                 }
             }
             else{
-                window.location.href = "../playPage/playPage.php";
+                window.location.href = "../playGame/game.php";
             }
         }
 

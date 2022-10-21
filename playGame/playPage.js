@@ -106,7 +106,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
         setTimeout(() => {
-            window.location.replace("../winPage/winPage.php");
+            window.location.replace("../winPage/win.php");
         }, 2000);
     }
 
@@ -118,7 +118,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
     if (countSends == 6 && userWord !== ocultWord){//Comprobamos que ha enviado la palabra 6 veces y la palabra no es correcta
         setTimeout(() => {
-            window.location.replace("../losePage/losePage.php");
+            window.location.replace("../losePage/lose.php");
         }, 2000);
     }
 
