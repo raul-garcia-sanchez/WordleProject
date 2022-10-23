@@ -158,7 +158,51 @@ td{
     text-align: center;
     }
 
-#idVictoryGif{
+#finalMessage{
     padding: 50px;
     text-align: center;
+    position: relative;
+    font-size: 90px;
+}
+
+#statistics{
+    width: 800px;
+    margin: auto;
+    font-weight: bold;
+}
+
+#statisticsLose{
+    float: left;
+    margin-left: 140px;
+    font-size: 20px;
+    margin-top: -20px;
+}
+
+#statisticsWin{
+    margin-left: 400px;
+    margin-right: 140px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#finalMessage span {
+    font-family: 'Alfa Slab One', cursive;
+    position: relative;
+    display: inline-block;
+    animation: waviy 1s infinite;
+    animation-delay: calc(.1s * var(--i));
+    
+  }
+
+@keyframes waviy {
+    0%,40%,100% {
+      transform: translateY(0)
+    }
+    20% {
+      transform: translateY(-20px)
+    }
+  }
+
+iframe{
+    display: none;
 }

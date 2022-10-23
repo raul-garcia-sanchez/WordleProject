@@ -3,11 +3,11 @@ const keys = document.querySelectorAll('.class-keyboard');//Array con todos los 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
-//let arrayGames = [];
 let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
+
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
@@ -31,6 +31,7 @@ function getPoints(){
     let pointsUser = 100;
     return pointsUser;
 }
+let userPoints = getPoints();
 
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
@@ -120,22 +121,22 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
         if(spaceLetter.style.backgroundColor == "rgb(242, 226, 5)"){
-            console.log("amarillo");
             countYellows = countYellows +1;
+            userPoints = userPoints - 2;
+
         }
         else if(spaceLetter.style.backgroundColor == "rgb(140, 102, 31)"){
-            console.log("marron");
             countBrowns = countBrowns + 1;
+            userPoints = userPoints - 4;
         }
     }
-    
-    
+
+    //console.log(ocultWord);
+
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
         winGame = true;
         finishGame = true;
-        setTimeout(() => {
-            window.location.replace("../winPage/win.php");
-        }, 2000);
+        
     }
 
     if(wordArr.length === 5){//Cuando el array es de 5 posiciones, reseteamos array y añadimos 1 al contador de enviado
@@ -146,9 +147,10 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
     if (countSends == 6 && userWord !== ocultWord){//Comprobamos que ha enviado la palabra 6 veces y la palabra no es correcta
         finishGame = true;
-        setTimeout(() => {
-            window.location.replace("../losePage/lose.php");
-        }, 1111000);
+    }
+
+    if(userPoints < 0){
+        userPoints = 0;
     }
 
     
@@ -157,8 +159,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
+        document.getElementById("gamePoints").value = userPoints;
         document.getElementById("formDataGames").submit();
     }
+
+    document.getElementById("puntuation").innerHTML = "Puntuació: "+userPoints;
+
     }
    
 

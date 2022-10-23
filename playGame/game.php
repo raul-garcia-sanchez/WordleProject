@@ -22,7 +22,8 @@
 
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h3>
+        <h2 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h2>
+        <h3 id="puntuation" class="class-header">Puntuació: 100</h3>
     </header>
 
     <div class ="containerMainContent">
@@ -39,6 +40,7 @@
             ?>
         </table>
     </div>
+
 
     <?php
         
@@ -125,16 +127,52 @@
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
             <input hidden type="text" id="winGame" name="winGame">
+            <input hidden type="number" id="gamePoints" name="gamePoints">
         </form>
 
     <script src="./playPage.js"></script>
     
     <?php
-    //ARREGLAR Q AL PRINCIPIO SE HACE ARRAY VACIO
-        $dict = array();
-        array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
-        array_push($_SESSION[$_SESSION['user']],$dict);
-        print_r($_SESSION[$_SESSION['user']]);
+        $loseGames = 0;
+        $winGames = 0;
+        if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame']) && isset($_POST['gamePoints'])){
+            $dict = array();
+            array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
+            array_push($_SESSION[$_SESSION['user']],$dict);
+            foreach($_SESSION[$_SESSION['user']] as $array){
+                if($array[3] == "false"){
+                    $loseGames = $loseGames + 1;
+                }
+                else{
+                    $winGames = $winGames + 1;
+                }
+            }
+            $_SESSION['pointsUser'] =  $_POST['gamePoints'];
+            $_SESSION['loseGames'] = $loseGames;
+            $_SESSION['winGames'] = $winGames;
+        }
+
+        
+        if(isset($_POST['winGame'])){//COMENTAR QUITAR TIMEOUT YA QUE AL ENVIAR FORMULARIO SE RECARGA LA PAGINA
+            if($_POST['winGame'] == "false"){
+                echo "
+                <script> 
+                setTimeout(() => {
+                    window.location.replace('../losePage/lose.php');
+                }, 2000);
+                </script>";
+            }
+            else{
+                echo "
+                <script>
+                setTimeout(() => {
+                    window.location.replace('../winPage/win.php');
+                }, 2000);
+                </script>";
+            }
+        }
+        
+        
     ?>
     <script>
         <?php
