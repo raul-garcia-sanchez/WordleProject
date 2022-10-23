@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
     <title>Wordle</title>
     <meta charset="UTF-8">
@@ -7,22 +7,41 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <?php
+        if(isset($_POST["selectLenguage"])){
+            $lenguage=$_POST["selectLenguage"];
+            $arrayTranslate = changeLenguage($lenguage);
+
+        }
+        else{
+            $arrayTranslate = changeLenguage("ES");
+        }
+
+        function changeLenguage($lenguage){
+            echo $lenguage;
+            $fileWords= file("../resources/wordleText".$lenguage.".txt");
+            $fileOpen= fopen("../resources/wordleText".$lenguage.".txt", "r");
+            $signDictionary= ":";
+            $keysValues= [];
+            foreach ($fileWords as $numberLine => $wordsLine){
+                $signDictionaryPosition= strpos($wordsLine, $signDictionary);
+                $key= substr($wordsLine,0,$signDictionaryPosition);
+                $value= substr($wordsLine, $signDictionaryPosition+1, strlen($wordsLine));
+                $keysValues[$key] = $value;
+            };
+            return $keysValues;
+        };
+    ?>
     <header>
         <h1 class="titleWordle">WORDLE</h1>
     </header>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="../resources/imgLandingPage.png" alt="Quadrícula joc">
-        <p class="instructions">Endevina la <strong>WORDLE</strong> en 6 intents. <br>
-        Cada fila ha de ser una paraula vàlida de 5 lletres. <br>
-        Premi el botó intro per enviar. <br>
-        Després de cada suposició, el color de les fitxes canviarà <br>
-        per mostrar què tan a prop ets de la paraula. <br>
-        <br>
-        <strong>Exemples:</strong> <br>
-        La lletra C està en la paraula i en el lloc correcte -> VERD <br>
-        La lletra P està en la paraula i en el lloc equivocar -> GROC <br>
-        La lletra E no està en la paraula i enlloc -> MARRÓ
+        <p class="instructions">
+            <?php
+                echo $arrayTranslate["instructions"];
+            ?>
         </p>
     </div>
     <br>
@@ -37,7 +56,27 @@
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
          <strong> Si us plau, introduiu un nom d'usuari per poder començar a jugar</strong>
     </div>
-
+    <footer>
+        <form method="POST" selected>
+            <select id="selectLenguage" name="selectLenguage" onchange="this.form.submit()">
+                <option <?php if ($_POST["selectLenguage"]== "ES"){
+                    echo "selected";
+                    }
+                    ?>
+                value="ES">ES</option>
+                <option <?php if ($_POST["selectLenguage"]== "CA"){
+                    echo "selected";
+                    }
+                    ?>
+                value="CA">CA</option>
+                <option <?php if ($_POST["selectLenguage"]== "EN"){
+                    echo "selected";
+                    }
+                    ?>
+                value="EN">EN</option>
+            </select>
+        </form>
+    </footer>
     <script>
         function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
@@ -54,9 +93,13 @@
             }
             else{
                 window.location.href = "../playGame/game.php";
-            }
-        }
+            };
+        };
 
+        document.getElementById('selectLenguage').addEventListener('change', (event) => {
+        let lenguage= document.getElementById('selectLenguage').value;
+        document.querySelector('html').setAttribute('lang', lenguage);
+        });
     </script>
 </body>
 </html>
