@@ -2,7 +2,9 @@ body{
     background-color: #A0DBF2;
     font-family: 'Courier New', Courier, monospace;
 }
-
+a{
+    font-family: 'Courier New', Courier, monospace;
+}
 .titleWordle{
     font-size: 5em;
     text-align: center;
@@ -178,6 +180,9 @@ td{
     cursor: pointer;
 
 }
+.linksToPagesGame{
+    cursor: pointer;
+}
 
 #iconNavigationBar{
     font-size: 30px;
@@ -206,6 +211,7 @@ td{
 }
 
 .dropdown-content a:hover {
+    color: white;
 	background-color: rgba(208, 208, 207, 0.2)
 
 }

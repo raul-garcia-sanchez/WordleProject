@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <nav class="navigationBarIndex">
+        <ul>
+            <li class="dropdown">
+                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <div class="dropdown-content">
+                    <a class="linksToPagesGame" href="../playGame/game.php"><strong>Jugar de nou</strong></a>
+                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong>Menu Principal</strong></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
     <main>
         <div id="idTextLose">
             <h1>NO HAS ENCERTAT LA PARAULA OCULTA!</h1>

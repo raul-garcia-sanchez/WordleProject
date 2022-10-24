@@ -9,20 +9,30 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <a href="../landingPage/index.php">ENLACE</a>
 
     <?php
-        $nameUser = (isset($_POST["inputName"]))
-            ? $_POST["inputName"]
-            : "Unwknown Player";
-
-        $_SESSION['userName'] = $_POST["inputName"];
+        $_SESSION['user'] = (isset($_POST['inputName']))
+            ? $_POST['inputName']
+            : $_SESSION['user'];
     ?>
+
+    <nav class="navigationBarIndex">
+        <ul>
+            <li class="dropdown">
+                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <div class="dropdown-content">
+                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong>Menu Principal</strong></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç <?php echo $nameUser?> d'endivinar la paraula?</h3>
+        <h3 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h3>
     </header>
+
+    
 
     <div class ="containerMainContent">
         <table>

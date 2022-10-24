@@ -9,32 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 
-    <?php
-        if (isset($_SESSION["userName"])){
-            echo "<script> document.getElementsByClassName('linksToPages').style.pointer-Events = 'auto' </script>";
-            echo "aaaaaaaaaa";
-        }
-        else{
-            echo "bbbbbb";
-        }
-    ?>
-
+    
 </head>
 <body>
-    <header>
-        <h1 class="titleWordle">WORDLE</h1>
-    </header>
-
     <nav class="navigationBarIndex">
         <ul>
             <li class="dropdown">
                 <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPages" href="../playGame/game.php">Jugar</a>
+                    <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong>Jugar</strong></a>
                 </div>
             </li>
         </ul>
     </nav>
+    <header>
+        <h1 class="titleWordle">WORDLE</h1>
+    </header>
+
+    
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="../resources/imgLandingPage.png" alt="Quadrícula joc">
@@ -83,6 +75,12 @@
         }
 
     </script>
+    <?php
+        if (isset($_SESSION["user"])){
+            echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
+        }
 
+    ?>
 </body>
 </html>
