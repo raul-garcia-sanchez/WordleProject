@@ -29,7 +29,7 @@
     <main>
         <div id="idTextLose">
             <h1><?php echo strtoupper($_SESSION['user']); ?> NO HAS ENCERTAT LA PARAULA OCULTA!</h1>
-            <h1>HAS PERDUT AMB <?php echo $_SESSION['pointsUser']; ?> PUNTS!!</h1>
+            <h1>TENS <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"] ?> PUNTS!!</h1>
             <p id="pSeeOcultWord">La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
         </div>
         <div id="finalMessage">
@@ -44,13 +44,9 @@
             <span style="--i:9">!</span>
         </div>
         <div id="statistics">
-            <div id="statisticsLose">
-                <p>Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
-            </div>
-            <div id="statisticsWin">
-                <p>Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
-                <p><?php getStatisticsWin();?></p>
-            </div>
+            <p id="pLose">Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
+            <p id="pWin">Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
+            <p><?php getStatisticsWin();?></p>
         </div>
     </main>
     <script>
@@ -59,5 +55,7 @@
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
     </script>
+
+    <?php calculateTotalPoints(); ?>
 </body>
 </html>

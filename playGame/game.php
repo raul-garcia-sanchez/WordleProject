@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php
+
         $_SESSION['user'] = (isset($_POST['inputName']))
             ? $_POST['inputName']
             : $_SESSION['user'];
@@ -17,6 +18,10 @@
         $_SESSION[$_SESSION['user']] = (isset($_SESSION[$_SESSION['user']]))
             ? $_SESSION[$_SESSION['user']]
             : array();
+
+        $_SESSION[$_SESSION['user']."totalPointsUser"] = (isset($_SESSION[$_SESSION['user']."totalPointsUser"]))
+            ? $_SESSION[$_SESSION['user']."totalPointsUser"]
+            : 0;
         
     ?>
 
@@ -34,7 +39,7 @@
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
         <h2 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h2>
-        <h3 id="puntuation" class="class-header">Puntuació: 100</h3>
+        <h3 id="puntuation" class="class-header">Puntuació: <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]?></h3>
     </header>
 
     <div class ="containerMainContent">
@@ -140,12 +145,11 @@
             <input hidden type="text" id="winGame" name="winGame">
             <input hidden type="number" id="gamePoints" name="gamePoints">
         </form>
-
-    <script src="./playPage.js"></script>
     
     <?php
         $loseGames = 0;
         $winGames = 0;
+        $totalPoints = 0;
         if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame']) && isset($_POST['gamePoints'])){
             $dict = array();
             array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
@@ -158,7 +162,7 @@
                     $winGames = $winGames + 1;
                 }
             }
-            $_SESSION['pointsUser'] =  $_POST['gamePoints'];
+            //$_SESSION['pointsUser'] =  $_POST['gamePoints'];
             $_SESSION['loseGames'] = $loseGames;
             $_SESSION['winGames'] = $winGames;
         }
@@ -178,14 +182,17 @@
                 </script>";
             }
         }
+
         
         
     ?>
     <script>
         <?php
+            echo "var totalPoints = ".$_SESSION[$_SESSION['user']."totalPointsUser"].";";
             echo "var ocultWord = '$randomWord';"; 
         ?>
     </script>
+    <script src="./playPage.js"></script>
     
 
     

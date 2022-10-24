@@ -28,10 +28,14 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
 
 
 function getPoints(){
-    let pointsUser = 100;
-    return pointsUser;
+    return totalPoints;
 }
+
 let userPoints = getPoints();
+
+if(userPoints < 0){
+    userPoints = 0;
+}
 
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
@@ -134,6 +138,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     //console.log(ocultWord);
 
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
+        soundWin();
         winGame = true;
         finishGame = true;
         
@@ -154,11 +159,6 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         finishGame = true;
     }
 
-    if(userPoints < 0){
-        userPoints = 0;
-    }
-
-    
     if(finishGame == true){
         document.getElementById("numYellows").value = countYellows;
         document.getElementById("numBrowns").value = countBrowns;
@@ -179,10 +179,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
     if(document.getElementById("soundError")){
         setTimeout(() => {
-            deleteSound();
+            deleteSoundError();
         }, 1000);
             
         }
+
+    
     }
    
 
@@ -194,9 +196,19 @@ function soundError(){
     document.body.appendChild(sound);
 }
 
-function deleteSound(){
+function deleteSoundError(){
     document.getElementById("soundError").remove();
 }
+
+function soundWin(){
+    var soundWin = document.createElement("iframe");
+    soundWin.setAttribute("id","soundWin");
+    soundWin.setAttribute("src", "../resources/correct.mp3");
+    soundWin.setAttribute("hidden","hidden");
+    document.body.appendChild(soundWin);
+}
+
+
 
 
 function deleteLetter(){//Funcion para borrar letras de una misma fila

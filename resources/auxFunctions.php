@@ -27,12 +27,55 @@ function getStatisticsWin(){
                 $wins6Attempt = $wins6Attempt + 1;
             }
         }
-        echo "1 -> ".$wins1Attempt."<br>";
-        echo "2 -> ".$wins2Attempt."<br>";
-        echo "3 -> ".$wins3Attempt."<br>";
-        echo "4 -> ".$wins4Attempt."<br>";
-        echo "5 -> ".$wins5Attempt."<br>";
-        echo "6 -> ".$wins6Attempt;
+        echo "<table style='margin-left:40px;margin:auto;'>";
+        echo "<tr>";
+        echo "<td>Nombre d'intents</td>";
+        echo "<td>Nombre de victories</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>1 -> </td>";
+        echo "<td>$wins1Attempt</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>2 -> </td>";
+        echo "<td>$wins2Attempt</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>3 -> </td>";
+        echo "<td>$wins3Attempt</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>4 -> </td>";
+        echo "<td>$wins4Attempt</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>5 -> </td>";
+        echo "<td>$wins5Attempt</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>6 -> </td>";
+        echo "<td>$wins6Attempt</td>";
+        echo "</tr>";
     }
 
-?>
+function calculateTotalPoints(){
+        $points = 0;
+        $pointsYellow = 0;
+        $pointsBrown = 0;
+foreach($_SESSION[$_SESSION['user']] as $array){
+    $pointsYellow = $array[0] * -2;
+    $pointsBrown = $array[1] * -4;
+
+    if ($pointsYellow + $pointsBrown >= -120){
+        $points += ($pointsYellow + $pointsBrown);
+    }
+    else {
+        $points -= 120;
+    }
+    
+}
+$points += (120 * count($_SESSION[$_SESSION['user']]));
+
+$_SESSION[$_SESSION['user']."totalPointsUser"] = $points;
+
+}

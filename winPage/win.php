@@ -30,6 +30,7 @@
     <main>
         <div id="idTextWin">
             <h1> <?php echo strtoupper($_SESSION['user']); ?> HAS ENCERTAT LA PARAULA OCULTA!</h1>
+            <h1>TENS <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]; ?> PUNTS!!</h1>
         </div>
         <div id="finalMessage">
             <span style="--i:1">V</span>
@@ -43,15 +44,11 @@
             <span style="--i:9">!</span>
             <span style="--i:10">!</span>
         </div>
-        <div id="statistics">
-            <div id="statisticsLose">
-                <p>Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
-            </div>
-            <div id="statisticsWin">
-                <p>Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
+            <div id="statistics">
+                <p id="pLose">Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
+                <p id="pWin">Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
                 <p><?php getStatisticsWin();?></p>
             </div>
-        </div>
     </main>
     <script>
         var sound = document.createElement("iframe");
@@ -59,5 +56,7 @@
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
     </script>
+
+    <?php calculateTotalPoints(); ?>
 </body>
 </html>
