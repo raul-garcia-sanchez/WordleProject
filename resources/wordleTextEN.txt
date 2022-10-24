@@ -1,18 +1,20 @@
-head: WORDLE
+headIndex: WORDLE
 header: WORDLE
 instructions: Guess the <strong>WORDLE</strong> in 6 attempts.<br>Each row must be a valid 5-letter word.<br>Press the enter button to submit.<br>After each guess, the color of the chips will change<br>to show how close you are to the word.<br><br><strong>Examples</strong><br>The letter C is in the word and in the right place -> GREEN<br>The letter P is in the word and in the wrong place -> YELLOW<br>The letter E is not in the word and nowhere -> BROWN
+placeholder: Write your name
+botonStart: PLAY
 alert: <strong> Please enter a username to start playing</strong>
 
-head: GAME
+headGame: GAME
 headerh1: THE HIDDEN WORD
 headerh3: Will <?php echo $nameUser?> be able to guess the word?
 firstRowKeyboard: 'Q','W','E','R','T','Y','U','I','O','P'
 secondRowKeyboard: 'A','S','D','F','G','H','J','K','L'
 thirdRowKeyboard: 'SEND','Z','X','C','V','B','N','M','DELETE'
 
-head: DEFEAT
+headLose: DEFEAT
 textLoseH1: YOU DIDN'T GET THE HIDDEN WORD!<br>DEFEAT!!
-textLoseP: The word to guess was <b id="bWordResult"> <?php echo $_SESSION["hiddenWord"]; ?></b>
+textLoseP: The word to guess was
 
-head: VICTORY
+headWin: VICTORY
 textWin: YOU HAVE SPOT THE HIDDEN WORD!<br>VICTORY!!!

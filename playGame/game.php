@@ -1,11 +1,15 @@
-<?php session_start(); ?>
+<?php session_start();
+$arrayTranslate= $_SESSION["translate"];
+$translateWords= $_SESSION["translateWords"];
+echo $translateWords;
+?>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Page</title>
+    <title><?php echo $arrayTranslate["headGame"]?></title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -16,8 +20,8 @@
     ?>
 
     <header>
-        <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h3 class="class-header">Serà capaç <?php echo $nameUser?> d'endivinar la paraula?</h3>
+        <h1 class="class-header"><?php echo $arrayTranslate["headerh1"]?></h1>
+        <h3 class="class-header"><?php echo $arrayTranslate["headerh3"]?></h3>
     </header>
 
     <div class ="containerMainContent">
@@ -34,10 +38,8 @@
             ?>
         </table>
     </div>
-
-    <?php
-        
-        $randomWord = randomWordCatala();
+    <?php    
+        $randomWord = randomWordCatala($translateWords);
         $_SESSION['ocultWord'] = $randomWord;
         $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
         $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
@@ -63,6 +65,9 @@
         function filterAccents($word){
             if(str_contains($word,"à")){
                 return str_replace("à","a",$word);
+            }
+            if(str_contains($word,"á")){
+                return str_replace("á","a",$word);
             }
             else if(str_contains($word,"è")){
                 return str_replace("è","e",$word);
@@ -95,9 +100,9 @@
                 return $word;
             }
         }
-        function randomWordCatala(){
-            $fileWords= file("../resources/wordsCatala.txt");
-            $fileOpen= fopen("../resources/wordsCatala.txt", "r");
+        function randomWordCatala($lenguage){
+            $fileWords= file("../resources/words".$lenguage.".txt");
+            $fileOpen= fopen("../resources/words".$lenguage.".txt", "r");
             $arrayWords= [];
             foreach ($fileWords as $lineWord => $word){
                 array_push($arrayWords, $word);
@@ -120,7 +125,5 @@
         ?>
     </script>
     <script src="./playPage.js"></script>
-    
-    
 </body>
 </html>

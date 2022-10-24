@@ -1,20 +1,20 @@
-head: WORDLE
+headIndex: WORDLE
 header: WORDLE
 instructions: Endevina la <strong>WORDLE</strong> en 6 intents.<br>Cada fila ha de ser una paraula vàlida de 5 lletres.<br>Premi el botó intro per enviar.<br>Després de cada suposició, el color de les fitxes canviarà<br>per mostrar què tan a prop ets de la paraula. <br><br><strong>Exemples</strong> <br>La lletra C està en la paraula i en el lloc correcte -> VERD <br>La lletra P està en la paraula i en el lloc equivocar -> GROC <br>La lletra E no està en la paraula i enlloc -> MARRÓ
+placeholder: Escrigui el seu nom
+botonStart: JUGAR
 alert: <strong> Si us plau, introduiu un nom d'usuari per poder començar a jugar</strong>
 
-head: JOC
+headGame: JOC
 headerh1: LA PARAULA OCULTA
 headerh3: Serà capaç <?php echo $nameUser?> d'endivinar la paraula?
 firstRowKeyboard: 'Q','W','E','R','T','Y','U','I','O','P'
 secondRowKeyboard: 'A','S','D','F','G','H','J','K','L','Ç'
 thirdRowKeyboard: 'ENVIAR','Z','X','C','V','B','N','M','ESBORRAR'
 
-head: DERROTA
-textLoseH1: NO HAS ENCERTAT LA PARAULA OCULTA!
-DERROTA!!
-textLoseP: La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b>
+headLose: DERROTA
+textLoseH1: NO HAS ENCERTAT LA PARAULA OCULTA!<br>DERROTA!!
+textLoseP: La paraula a endevinar era
 
-head: VICTORIA
-textWin: HAS ENCERTAT LA PARAULA OCULTA!
-VICTORIA!!!
+headWin: VICTORIA
+textWin: HAS ENCERTAT LA PARAULA OCULTA!<br>VICTORIA!!!
