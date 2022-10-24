@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -7,6 +8,16 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <nav class="navigationBarIndex">
+            <ul>
+                <li class="dropdown">
+                    <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                    <div class="dropdown-content">
+                        <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong>Jugar</strong></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
     <header>
         <h1 class="titleWordle">WORDLE</h1>
     </header>
@@ -56,7 +67,15 @@
                 window.location.href = "../playGame/game.php";
             }
         }
-
     </script>
+
+    <?php
+        if (isset($_SESSION["user"])){
+            echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
+        }
+
+    ?>
+
 </body>
 </html>

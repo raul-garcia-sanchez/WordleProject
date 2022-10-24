@@ -138,6 +138,11 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         finishGame = true;
         
     }
+    else{
+        soundError();
+    }
+    
+
 
     if(wordArr.length === 5){//Cuando el array es de 5 posiciones, reseteamos array y añadimos 1 al contador de enviado
         positionStartWord = positionStartWord + 5;
@@ -160,14 +165,38 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
         document.getElementById("gamePoints").value = userPoints;
-        document.getElementById("formDataGames").submit();
+        setTimeout(() => {
+            document.getElementById("formDataGames").submit();
+        }, 2000);
+        
     }
 
     document.getElementById("puntuation").innerHTML = "Puntuació: "+userPoints;
 
+    
+
+    console.log(ocultWord);//QUITAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    if(document.getElementById("soundError")){
+        setTimeout(() => {
+            deleteSound();
+        }, 1000);
+            
+        }
     }
    
 
+function soundError(){
+    var sound = document.createElement("iframe");
+    sound.setAttribute("id","soundError");
+    sound.setAttribute("src", "../resources/incorrect.mp3");
+    sound.setAttribute("hidden","hidden");
+    document.body.appendChild(sound);
+}
+
+function deleteSound(){
+    document.getElementById("soundError").remove();
+}
 
 
 function deleteLetter(){//Funcion para borrar letras de una misma fila

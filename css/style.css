@@ -3,6 +3,10 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+a{
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .titleWordle{
     font-size: 5em;
     text-align: center;
@@ -206,3 +210,55 @@ td{
 iframe{
     display: none;
 }
+
+#aPlay{
+    width: 50px;
+    height: auto;
+    text-decoration: none;
+    pointer-events: none;
+    color: black;
+}
+.linksToPages{
+    pointer-events: none;
+    cursor: pointer;
+
+}
+.linksToPagesGame{
+    cursor: pointer;
+}
+
+#iconNavigationBar{
+    font-size: 30px;
+}
+
+.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    background-color: #3F8EBF;
+    display:none;
+    position: fixed;
+    
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: all .4s ease-in-out;
+
+}
+
+.dropdown-content a:hover {
+    color: white;
+	background-color: rgba(208, 208, 207, 0.2)
+
+}
+.dropdown:hover .dropdown-content {
+    display:block;
+}
+

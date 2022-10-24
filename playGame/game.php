@@ -20,6 +20,17 @@
         
     ?>
 
+    <nav class="navigationBarIndex">
+        <ul>
+            <li class="dropdown">
+                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <div class="dropdown-content">
+                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong>Menu Principal</strong></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
     <header>
         <h1 class="class-header">LA PARAULA OCULTA</h1>
         <h2 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h2>
@@ -157,17 +168,13 @@
             if($_POST['winGame'] == "false"){
                 echo "
                 <script> 
-                setTimeout(() => {
                     window.location.replace('../losePage/lose.php');
-                }, 2000);
                 </script>";
             }
             else{
                 echo "
                 <script>
-                setTimeout(() => {
                     window.location.replace('../winPage/win.php');
-                }, 2000);
                 </script>";
             }
         }
