@@ -1,13 +1,14 @@
 headIndex: WORDLE
 header: WORDLE
-instructions: Adivina la <strong>WORDLE</strong> en 6 intentos.<br>Cada fila debe ser una palabra válida de 5 letras.<br>Pulse el botón intro para enviar.<br>Tras cada suposición, el color de las fichas cambiará<br>para mostrar qué tan cerca estas de la palabra.<br><br><strong>Ejemplos</strong> <br>La letra C está en la palabra y en el lugar correcto -> VERDE <br>La letra P está en la palabra y en el sitio equivocar -> AMARILLO <br>La letra E no está en la palabra y en ninguna parte -> MARRÓN
+instructions: Adivina la <strong>WORDLE</strong> en 6 intentos.<br>Cada fila debe ser una palabra válida de 5 letras.<br>Pulse el botón intro para enviar.<br>Tras cada suposición, el color de las fichas cambiará<br>para mostrar qué tan cerca estas de la palabra.<br><br><strong>Ejemplos</strong><br>La letra C está en la palabra y en el lugar correcto -> VERDE<br>La letra P está en la palabra y en el sitio equivocar -> AMARILLO<br>La letra E no está en la palabra y en ninguna parte -> MARRÓN
 placeholder: Escriba su nombre
 botonStart: JUGAR
-alert: <strong> Por favor, introduzca un nombre de usuario para poder empezar a jugar</strong>
+alert: <strong>Por favor, introduzca un nombre de usuario para poder empezar a jugar</strong>
 
 headGame: JUEGO
 headerh1: LA PALABRA OCULTA
-headerh3: Será capaz <?php echo $nameUser?> de adivinar la palabra?
+headerh3Pt1: Será capaz
+headerh3Pt2: de adivinar la palabra?
 firstRowKeyboard: 'Q','W','E','R','T','Y','U','I','O','P'
 secondRowKeyboard: 'A','S','D','F','G','H','J','K','L','Ñ'
 thirdRowKeyboard: 'ENVIAR','Z','X','C','V','B','N','M','BORRAR'

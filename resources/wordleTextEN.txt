@@ -3,7 +3,7 @@ header: WORDLE
 instructions: Guess the <strong>WORDLE</strong> in 6 attempts.<br>Each row must be a valid 5-letter word.<br>Press the enter button to submit.<br>After each guess, the color of the chips will change<br>to show how close you are to the word.<br><br><strong>Examples</strong><br>The letter C is in the word and in the right place -> GREEN<br>The letter P is in the word and in the wrong place -> YELLOW<br>The letter E is not in the word and nowhere -> BROWN
 placeholder: Write your name
 botonStart: PLAY
-alert: <strong> Please enter a username to start playing</strong>
+alert: <strong>Please enter a username to start playing</strong>
 
 headGame: GAME
 headerh1: THE HIDDEN WORD
