@@ -8,7 +8,7 @@
     <title>Play Page</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="body_game">
     <?php
         $_SESSION['user'] = (isset($_POST['inputName']))
             ? $_POST['inputName']

@@ -1,106 +1,11 @@
+/* CSS DE ETIQUETAS GLOBALES */
 body{
     background-color: #A0DBF2;
     font-family: 'Courier New', Courier, monospace;
 }
-
 a{
     font-family: 'Courier New', Courier, monospace;
 }
-
-.titleWordle{
-    font-size: 5em;
-    text-align: center;
-}
-
-.instructions{
-    font-size: 25px;
-}
-
-.containerMainContent{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.formName{
-    display: flex;
-    flex-direction: column;
-}
-
-.inputName{
-    font-family: 'Courier New', Courier, monospace;
-    margin: auto;
-    width: 20%;
-    border-radius: 5px;
-    height: 30px;
-    text-align: center;
-}
-
-.imgLanding{
-    width: 350px;
-    height: auto;
-}
-
-.btnSubmit{
-    font-family: 'Courier New', Courier, monospace;
-    height: 40px;
-    margin: auto;
-    width: 15%;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #04D939;
-    transition: all .2s ease-in-out;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-#btnSubmit:hover{
-    background-color: #027333;
-    transform: scale(1.20);
-}
-
-.alert {
-    margin: auto;
-    width: 30%;
-    visibility: hidden;
-    padding: 20px;
-    background-color: #3F8EBF;
-    color: white;
-  }
-  
-.closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-.closebtn:hover {
-    color: black;
-  }
-
-#idTextLose{
-    padding-top: 10%;
-    text-align: center;
-}
-
-#idLoseGif{
-    text-align: center;
-}
-
-.imgLose{
-    padding: 0;
-    margin: 0;
-}
-
-#pSeeOcultWord{
-    font-size: 2em;
-}
-
 table{
     margin-top: 30px;
     border-spacing: 10px;
@@ -117,18 +22,102 @@ td{
     font-size: 20px;
     font-weight: bold;
 }
+.titleWordle{
+    font-size: 5em;
+    text-align: center;
+}
 
-.containerMainContent{
+/* CSS DE index.php */
+.body_index .containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.body_index .containerMainContent .instructions{
+    font-size: 25px;
+    padding: 0 20px 10px;
+    margin: 0;
+}
+.body_index .containerMainContent  .imgLanding{
+    width:285px;
+    height: 345px;
+}
+
+
+.body_index .formName{
+    display: flex;
+    flex-direction: column;
+}
+
+.body_index .inputName{
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    height: 30px;
+    text-align: center;
+}
+
+
+
+.body_index .btnSubmit{
+    font-family: 'Courier New', Courier, monospace;
+    
+    margin: auto;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #04D939;
+    transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.body_index #btnSubmit:hover{
+    background-color: #027333;
+    transform: scale(1.20);
+}
+
+.body_index .alert {
+    margin: auto;
+    width: 30%;
+    visibility: hidden;
+    padding: 20px;
+    background-color: #3F8EBF;
+    color: white;
+}
+  
+.body_index .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.body_index .closebtn:hover {
+    color: black;
+}
+.body_index .containerMainContent{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.class-header{
+/* CSS de game.php */
+.body_game .containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.body_game .class-header{
     text-align: center;
 }
 
-#divKeyboard{
+.body_game #divKeyboard{
     margin: auto;
     width: 550px;
     display: flex;
@@ -136,7 +125,7 @@ td{
     margin-top: 60px;
 }
 
-.class-keyboard{
+.body_game .class-keyboard{
     width: auto;
     background-color: #D9B504;
     font-weight: bold;
@@ -152,15 +141,30 @@ td{
     font-family: 'Courier New', Courier, monospace;
 }
 
-.rowKeyboard{
+.body_game .rowKeyboard{
     width: auto;
     display: flex;
 }
 
-#idTextWin{
+/* CSS DE lose.php */
+
+.body_lose #idTextLose{
+    padding-top: 10%;
+    text-align: center;
+}
+
+.body_lose #pSeeOcultWord{
+    font-size: 2em;
+}
+
+/* CSS DE win.php */
+
+.body_win #idTextWin{
     padding-top: 10%;
     text-align: center;
     }
+
+/* CSS COMUN DE WIN Y LOSE */
 
 #finalMessage{
     padding: 50px;
@@ -211,6 +215,8 @@ iframe{
     display: none;
 }
 
+
+/* CSS DE NAVEGACION COMUN PARA win.php, lose.php, index.php i game.php */
 #aPlay{
     width: 50px;
     height: auto;
@@ -262,3 +268,34 @@ iframe{
     display:block;
 }
 
+/* Breakpoints para mobile responsive de index.php */
+
+@media only screen and (max-width: 800px) {
+    .body_index {
+        padding: 20px;
+    }
+    .body_index .containerMainContent{
+        display: block;
+    }
+    .body_index .containerMainContent .instructions{
+        width: 100%;
+        padding: 0 0 10px;
+    }
+    .body_index .containerMainContent  .imgLanding{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 20px;;
+        display:block;
+        height: auto;
+    }
+}
+
+/* Breakpoints para mobile responsive de game.php */
+
+@media only screen and (max-width: 700px) {
+    /* .body_game .containerMainContent{
+        display: block;
+        margin: auto;
+    } */
+    
+}

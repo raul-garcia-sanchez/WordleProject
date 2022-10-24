@@ -8,7 +8,7 @@
     <title>Lose Page</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="body_lose">
 
     <?php
     include '../resources/auxFunctions.php';
