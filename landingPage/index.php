@@ -1,14 +1,29 @@
-<?php session_start(); ?>
+<?php session_start();
+if(isset($_GET["lenguageSelected"])){
+    $_SESSION["lenguage"]= $_GET["lenguageSelected"];
+    $lenguageSelected=$_GET["lenguageSelected"];
+    $arrayTranslateText = changeLenguage($lenguageSelected);
+    $_SESSION["translateWordsHidden"]= $_GET["lenguageSelected"];
+}
+elseif(isset($_SESSION["l   enguage"])){
+    $arrayTranslateText = changeLenguage($_SESSION["lenguage"]);
+    $_SESSION["translateWordsHidden"]= $_SESSION["lenguage"];
+}
+else{
+    $arrayTranslateText = changeLenguage("ES");
+    $_SESSION["translateWordsHidden"]= "ES";
+}
+$_SESSION["translateText"]= $arrayTranslateText;?>
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
-    <title>Wordle</title>
+    <title><?php echo $arrayTranslateText["headIndex"]?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <noscript>
-    <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+    <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
 <body class="body_index">
     <nav class="navigationBarIndex">
@@ -16,40 +31,32 @@
                 <li class="dropdown">
                     <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
                     <div class="dropdown-content">
-                        <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong>Jugar</strong></a>
+                        <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
                     </div>
                 </li>
             </ul>
         </nav>
     <header>
-        <h1 class="titleWordle">WORDLE</h1>
+        <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
     </header>
 
     <div class ="containerMainContent">
-        <img class="imgLanding" src="../resources/imgLandingPage.png" alt="Quadrícula joc">
-        <p class="instructions">Endevina la <strong>WORDLE</strong> en 6 intents. <br>
-        Cada fila ha de ser una paraula vàlida de 5 lletres. <br>
-        Premi el botó intro per enviar. <br>
-        Després de cada suposició, el color de les fitxes canviarà <br>
-        per mostrar què tan a prop ets de la paraula. <br>
-        <br>
-        <strong>Exemples:</strong> <br>
-        La lletra C està en la paraula i en el lloc correcte -> VERD <br>
-        La lletra P està en la paraula i en el lloc equivocar -> GROC <br>
-        La lletra E no està en la paraula i enlloc -> MARRÓ
+        <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
+        <p class="instructions">
+            <?php echo $arrayTranslateText["instructions"]?>
         </p>
     </div>
     <br>
 
     <form id="formName" action="../playGame/game.php" class="formName" method="POST">
-        <input class="inputName" type="text" name="inputName" id="inputName" placeholder="Escrigui el seu nom">
+        <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
-        <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="JUGAR"  type="submit">
+        <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
     </form>
     <br>
     <div class="alert" id="alert">
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
-         <strong> Si us plau, introduiu un nom d'usuari per poder començar a jugar</strong>
+         <strong><?php echo $arrayTranslateText["alert"]?></strong>
     </div>
 
     <script>
@@ -71,13 +78,66 @@
             }
         }
     </script>
-
+    <footer>
+        <form method="GET">
+            <select id="lenguageSelected" name="lenguageSelected" onchange="this.form.submit()">
+                <option value="ES" <?php 
+                    if(isset($_SESSION["lenguage"])){
+                        if ($_SESSION["lenguage"]== "ES"){
+                            echo "selected";
+                        }
+                    }
+                    elseif(isset($_GET["lenguageSelected"])){
+                        if ($_GET["lenguageSelected"]== "ES"){
+                            echo "selected";
+                        }
+                    }
+                    ?>>ES</option>
+                <option value="CA" <?php
+                    if(isset($_SESSION["lenguage"])){
+                        if ($_SESSION["lenguage"]== "CA"){
+                            echo "selected";
+                        }
+                    }
+                    elseif(isset($_GET["lenguageSelected"])){
+                        if ($_GET["lenguageSelected"]== "CA"){
+                            echo "selected";
+                        }
+                    }
+                    ?>>CA</option>
+                <option value="EN" <?php 
+                    if(isset($_SESSION["lenguage"])){
+                        if ($_SESSION["lenguage"]== "EN"){
+                            echo "selected";
+                        }
+                    }
+                    elseif (isset($_GET["lenguageSelected"])){
+                        if ($_GET["lenguageSelected"]== "EN"){
+                            echo "selected";
+                        }
+                    }
+                    ?>>EN</option>
+            </select>
+        </form>
+    </footer>
     <?php
         if (isset($_SESSION["user"])){
             echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
             echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
         }
-
+        function changeLenguage($lenguage){
+            $fileWords= file("../resources/wordleText".$lenguage.".txt");
+            $fileOpen= fopen("../resources/wordleText".$lenguage.".txt", "r");
+            $signDictionary= ":";
+            $keysValues= [];
+            foreach ($fileWords as $numberLine => $wordsLine){
+                $signDictionaryPosition= strpos($wordsLine, $signDictionary);
+                $key= substr($wordsLine,0,$signDictionaryPosition);
+                $value= substr($wordsLine, $signDictionaryPosition+1, strlen($wordsLine));
+                $keysValues[$key] = $value;
+            };
+            return $keysValues;
+        };
     ?>
 
 </body>

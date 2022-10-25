@@ -1,15 +1,16 @@
-<?php session_start(); ?>
+<?php session_start();
+$arrayTranslateText= $_SESSION["translateText"];?>
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lose Page</title>
+    <title><?php echo $arrayTranslateText["headLose"]?></title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <noscript>
-    <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+    <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
 <body class="body_lose">
 
@@ -23,8 +24,8 @@
             <li class="dropdown">
                 <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="../playGame/game.php"><strong>Jugar de nou</strong></a>
-                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong>Menu Principal</strong></a>
+                    <a class="linksToPagesGame" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["menuLoseToGame"]?></strong></a>
+                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
@@ -32,9 +33,9 @@
 
     <main>
         <div id="idTextLose">
-            <h1><?php echo strtoupper($_SESSION['user']); ?> NO HAS ENCERTAT LA PARAULA OCULTA!</h1>
-            <h1>TENS <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"] ?> PUNTS!!</h1>
-            <p id="pSeeOcultWord">La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
+            <h1><?php echo strtoupper($_SESSION['user']); ?> <?php echo $arrayTranslateText["textLoseH1"]?></h1>
+            <h1><?php echo $arrayTranslateText["pointsLosePt1"]?> <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"] ?> <?php echo $arrayTranslateText["pointsLosePt2"]?>!!</h1>
+            <p id="pSeeOcultWord"><?php echo $arrayTranslateText["textLoseP"]?> <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
         </div>
         <div id="finalMessage">
             <span style="--i:1">D</span>
@@ -48,8 +49,8 @@
             <span style="--i:9">!</span>
         </div>
         <div id="statistics">
-            <p>Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
-            <p>Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
+            <p><?php echo $arrayTranslateText["gameLoseText"]?>: <?php echo $_SESSION['loseGames'];?></p>
+            <p><?php echo $arrayTranslateText["gameWinText"]?>: <?php echo $_SESSION['winGames'];?></p>
             <p><?php getStatisticsWin();?></p>
         </div>
     </main>

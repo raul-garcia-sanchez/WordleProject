@@ -1,19 +1,21 @@
-<?php session_start(); ?>
+<?php session_start();
+$arrayTranslateText= $_SESSION["translateText"];
+$translateWordsHidden= $_SESSION["translateWordsHidden"];
+?>
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Page</title>
+    <title><?php echo $arrayTranslateText["headGame"]?></title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <noscript>
-  <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+  <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
 <body class="body_game">
     <?php
-
         $_SESSION['user'] = (isset($_POST['inputName']))
             ? $_POST['inputName']
             : $_SESSION['user'];
@@ -25,7 +27,6 @@
         $_SESSION[$_SESSION['user']."totalPointsUser"] = (isset($_SESSION[$_SESSION['user']."totalPointsUser"]))
             ? $_SESSION[$_SESSION['user']."totalPointsUser"]
             : 0;
-        
     ?>
 
     <nav class="navigationBarIndex">
@@ -33,16 +34,16 @@
             <li class="dropdown">
                 <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong>Menu Principal</strong></a>
+                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong><?php echo $arrayTranslateText["menuGameToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
     </nav>
 
     <header>
-        <h1 class="class-header">LA PARAULA OCULTA</h1>
-        <h2 class="class-header">Serà capaç <?php echo $_SESSION['user']?> d'endivinar la paraula?</h2>
-        <h3 id="puntuation" class="class-header">Puntuació: <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]?></h3>
+        <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
+        <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
+        <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]?></h3>
     </header>
 
     <div class ="containerMainContent">
@@ -62,7 +63,7 @@
 
 
     <?php
-        $randomWord = randomWordCatala();
+        $randomWord = randomWord($translateWordsHidden);
         $_SESSION['ocultWord'] = $randomWord;
         $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
         $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
@@ -88,6 +89,9 @@
         function filterAccents($word){
             if(str_contains($word,"à")){
                 return str_replace("à","a",$word);
+            }
+            elseif(str_contains($word,"á")){
+                return str_replace("á","a",$word);
             }
             else if(str_contains($word,"è")){
                 return str_replace("è","e",$word);
@@ -120,9 +124,9 @@
                 return $word;
             }
         }
-        function randomWordCatala(){
-            $fileWords= file("../resources/wordsCatala.txt");
-            $fileOpen= fopen("../resources/wordsCatala.txt", "r");
+        function randomWord($lenguage){
+            $fileWords= file("../resources/words".$lenguage.".txt");
+            $fileOpen= fopen("../resources/words".$lenguage.".txt", "r");
             $arrayWords= [];
             foreach ($fileWords as $lineWord => $word){
                 array_push($arrayWords, $word);
