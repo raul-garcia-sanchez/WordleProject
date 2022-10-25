@@ -8,7 +8,10 @@
     <title>Win page</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<noscript>
+    <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+</noscript>
+<body class="body_win">
 
     <?php
         include '../resources/auxFunctions.php';
@@ -46,8 +49,8 @@
             <span style="--i:10">!</span>
         </div>
             <div id="statistics">
-                <p id="pLose">Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
-                <p id="pWin">Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
+                <p>Partides fallides: <?php echo $_SESSION['loseGames'];?></p>
+                <p>Partides exitoses: <?php echo $_SESSION['winGames'];?></p>
                 <p><?php getStatisticsWin();?></p>
             </div>
     </main>

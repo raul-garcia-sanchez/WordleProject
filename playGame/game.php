@@ -8,7 +8,10 @@
     <title>Play Page</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<noscript>
+  <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+</noscript>
+<body class="body_game">
     <?php
 
         $_SESSION['user'] = (isset($_POST['inputName']))
@@ -142,14 +145,13 @@
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
             <input hidden type="text" id="winGame" name="winGame">
-            <!-- <input hidden type="number" id="gamePoints" name="gamePoints"> -->
         </form>
     
     <?php
         $loseGames = 0;
         $winGames = 0;
         $totalPoints = 0;
-        if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame'])){//&& isset($_POST['gamePoints'])
+        if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame'])){
             $dict = array();
             array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
             array_push($_SESSION[$_SESSION['user']],$dict);
@@ -161,13 +163,12 @@
                     $winGames = $winGames + 1;
                 }
             }
-            //$_SESSION['pointsUser'] =  $_POST['gamePoints'];
             $_SESSION['loseGames'] = $loseGames;
             $_SESSION['winGames'] = $winGames;
         }
 
         
-        if(isset($_POST['winGame'])){//COMENTAR QUITAR TIMEOUT YA QUE AL ENVIAR FORMULARIO SE RECARGA LA PAGINA
+        if(isset($_POST['winGame'])){
             if($_POST['winGame'] == "false"){
                 echo "
                 <script> 
@@ -181,13 +182,9 @@
                 </script>";
             }
         }
-
-        
-        
     ?>
     <script>
         <?php
-            //echo "var totalPoints = ".$_SESSION[$_SESSION['user']."totalPointsUser"].";";
             echo "var ocultWord = '".$_SESSION['ocultWord']."';"; 
         ?>
     </script>

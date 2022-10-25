@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<noscript>
+    <h1 id="messageNoJavascript">HABILITI JAVASCRIPT PER A JUGAR!!!</h1>
+</noscript>
+<body class="body_index">
     <nav class="navigationBarIndex">
             <ul>
                 <li class="dropdown">

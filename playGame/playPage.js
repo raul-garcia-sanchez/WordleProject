@@ -7,7 +7,7 @@ let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
-
+console.log(ocultWord);
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
@@ -25,18 +25,6 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
         updateUserWord(letter);//Escribimos letra en posicion 
     };
 }
-
-
-//function getPoints(){
-   // return totalPoints;
-//}
-
-//let userPoints = getPoints();
-
-//if(userPoints < 0){
-    //userPoints = 0;
-//}
-
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
     let dictOcultWord = new Map();
@@ -126,16 +114,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         const spaceLetter = document.getElementById(String(letterToCompare));
         if(spaceLetter.style.backgroundColor == "rgb(242, 226, 5)"){
             countYellows = countYellows +1;
-            //userPoints = userPoints - 2;
 
         }
         else if(spaceLetter.style.backgroundColor == "rgb(140, 102, 31)"){
             countBrowns = countBrowns + 1;
-            //userPoints = userPoints - 4;
         }
     }
-
-    //console.log(ocultWord);
 
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
         soundWin();
@@ -164,18 +148,11 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
-        //document.getElementById("gamePoints").value = userPoints;
         setTimeout(() => {
             document.getElementById("formDataGames").submit();
         }, 2000);
         
     }
-
-    //document.getElementById("puntuation").innerHTML = "Puntuació: "+userPoints;
-
-    
-
-    console.log(ocultWord);//QUITAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     if(document.getElementById("soundError")){
         setTimeout(() => {
@@ -183,11 +160,9 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         }, 1000);
             
         }
-
     
     }
    
-
 function soundError(){
     var sound = document.createElement("iframe");
     sound.setAttribute("id","soundError");
@@ -208,49 +183,15 @@ function soundWin(){
     document.body.appendChild(soundWin);
 }
 
-
-
-
 function deleteLetter(){//Funcion para borrar letras de una misma fila
     const wordArr = getArrayWord();
-    wordArr.pop()
-    if(positionStartWord>61){
+
+    if(wordArr.length > 0){
+        wordArr.pop()
         positionStartWord = positionStartWord-1;
         const spaceLetter= document.getElementById(String(positionStartWord));
         spaceLetter.textContent = null;
     }
-
-
-    else if(positionStartWord>51 && positionStartWord<=56){
-        positionStartWord = positionStartWord-1;
-        const spaceLetter= document.getElementById(String(positionStartWord));
-        spaceLetter.textContent = null;
-    }
-
-    else if(positionStartWord>41 && positionStartWord<=46){
-        positionStartWord = positionStartWord-1;
-        const spaceLetter= document.getElementById(String(positionStartWord));
-        spaceLetter.textContent = null;
-    }
-
-    else if(positionStartWord>31 && positionStartWord<=36){
-        positionStartWord = positionStartWord-1;
-        const spaceLetter= document.getElementById(String(positionStartWord));
-        spaceLetter.textContent = null;
-    }
-
-    else if(positionStartWord>21 && positionStartWord<=26){
-        positionStartWord = positionStartWord-1;
-        const spaceLetter= document.getElementById(String(positionStartWord));
-        spaceLetter.textContent = null;
-
-    }
-    else if(positionStartWord>11 && positionStartWord<=16){
-        positionStartWord = positionStartWord-1;
-        const spaceLetter= document.getElementById(String(positionStartWord));
-        spaceLetter.textContent = null;
-    }
-
     else{
         return;
     }
