@@ -60,14 +60,15 @@
         $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
         $thirdRowKeyboard = array("ENVIAR","Z","X","C","V","B","N","M","ESBORRAR");
 
-        echo "RandomWOrd:".$randomWord."\n";
-
         if ($_SESSION['ocultWord']){
-            echo "                  ENTRA EN IF, SESSION = ".$_SESSION['ocultWord'];
+            array_push( $_SESSION['ocultWord'], $randomWord);
+
+
         }
         else {
-            $_SESSION['ocultWord'] = $randomWord;
-            echo "ENTRA EN ELSE".$randomWord;
+            $arrayTemporalWords = [];
+            array_push($arrayTemporalWords, $randomWord);
+            $_SESSION['ocultWord'] = $arrayTemporalWords;
 
         }
     

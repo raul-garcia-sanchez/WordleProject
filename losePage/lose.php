@@ -30,7 +30,7 @@
         <div id="idTextLose">
             <h1><?php echo strtoupper($_SESSION['user']); ?> NO HAS ENCERTAT LA PARAULA OCULTA!</h1>
             <h1>HAS PERDUT AMB <?php echo $_SESSION['pointsUser']; ?> PUNTS!!</h1>
-            <p id="pSeeOcultWord">La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
+            <p id="pSeeOcultWord">La paraula a endevinar era <b id="bWordResult"> <?php echo $_SESSION["ocultWord"][count($_SESSION["ocultWord"]) - 2]; ?></b></h2>
         </div>
         <div id="finalMessage">
             <span style="--i:1">D</span>

@@ -288,14 +288,21 @@ iframe{
         display:block;
         height: auto;
     }
+    .body_game #divKeyboard{
+        width: 550px;
+    }
+    .body_game td{
+        width: 40px;
+        height: 40px;
+    }
+
 }
 
 /* Breakpoints para mobile responsive de game.php */
-
-@media only screen and (max-width: 700px) {
-    /* .body_game .containerMainContent{
-        display: block;
-        margin: auto;
-    } */
+    
+@media only screen and (max-width: 575px) {
+    .body_game #divKeyboard{
+        width: fit-content;
+    }
     
 }
