@@ -1,5 +1,4 @@
-# Projecte Wordle
-Fet per estudiants de AWS2:
-- Raúl García
-- Brahian Monsalve
-- Andrés Villcaa
+# Com utilitzar la nostra aplicació
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Windows
+
