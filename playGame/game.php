@@ -59,7 +59,6 @@
 
 
     <?php
-        
         $randomWord = randomWordCatala();
         $_SESSION['ocultWord'] = $randomWord;
         $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
@@ -143,14 +142,14 @@
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
             <input hidden type="text" id="winGame" name="winGame">
-            <input hidden type="number" id="gamePoints" name="gamePoints">
+            <!-- <input hidden type="number" id="gamePoints" name="gamePoints"> -->
         </form>
     
     <?php
         $loseGames = 0;
         $winGames = 0;
         $totalPoints = 0;
-        if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame']) && isset($_POST['gamePoints'])){
+        if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame'])){//&& isset($_POST['gamePoints'])
             $dict = array();
             array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
             array_push($_SESSION[$_SESSION['user']],$dict);
@@ -188,8 +187,8 @@
     ?>
     <script>
         <?php
-            echo "var totalPoints = ".$_SESSION[$_SESSION['user']."totalPointsUser"].";";
-            echo "var ocultWord = '$randomWord';"; 
+            //echo "var totalPoints = ".$_SESSION[$_SESSION['user']."totalPointsUser"].";";
+            echo "var ocultWord = '".$_SESSION['ocultWord']."';"; 
         ?>
     </script>
     <script src="./playPage.js"></script>

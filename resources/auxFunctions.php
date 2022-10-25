@@ -62,7 +62,7 @@ function calculateTotalPoints(){
         $points = 0;
         $pointsYellow = 0;
         $pointsBrown = 0;
-foreach($_SESSION[$_SESSION['user']] as $array){
+    foreach($_SESSION[$_SESSION['user']] as $array){
     $pointsYellow = $array[0] * -2;
     $pointsBrown = $array[1] * -4;
 
@@ -73,9 +73,11 @@ foreach($_SESSION[$_SESSION['user']] as $array){
         $points -= 120;
     }
     
-}
-$points += (120 * count($_SESSION[$_SESSION['user']]));
+    }
+    $points += (120 * count($_SESSION[$_SESSION['user']]));
 
-$_SESSION[$_SESSION['user']."totalPointsUser"] = $points;
+    $_SESSION[$_SESSION['user']."totalPointsUser"] = $points;
 
 }
+
+

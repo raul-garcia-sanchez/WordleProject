@@ -27,15 +27,15 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
 }
 
 
-function getPoints(){
-    return totalPoints;
-}
+//function getPoints(){
+   // return totalPoints;
+//}
 
-let userPoints = getPoints();
+//let userPoints = getPoints();
 
-if(userPoints < 0){
-    userPoints = 0;
-}
+//if(userPoints < 0){
+    //userPoints = 0;
+//}
 
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
@@ -126,12 +126,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         const spaceLetter = document.getElementById(String(letterToCompare));
         if(spaceLetter.style.backgroundColor == "rgb(242, 226, 5)"){
             countYellows = countYellows +1;
-            userPoints = userPoints - 2;
+            //userPoints = userPoints - 2;
 
         }
         else if(spaceLetter.style.backgroundColor == "rgb(140, 102, 31)"){
             countBrowns = countBrowns + 1;
-            userPoints = userPoints - 4;
+            //userPoints = userPoints - 4;
         }
     }
 
@@ -164,14 +164,14 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
-        document.getElementById("gamePoints").value = userPoints;
+        //document.getElementById("gamePoints").value = userPoints;
         setTimeout(() => {
             document.getElementById("formDataGames").submit();
         }, 2000);
         
     }
 
-    document.getElementById("puntuation").innerHTML = "Puntuació: "+userPoints;
+    //document.getElementById("puntuation").innerHTML = "Puntuació: "+userPoints;
 
     
 

@@ -12,6 +12,7 @@
 
     <?php
         include '../resources/auxFunctions.php';
+        calculateTotalPoints();
     ?>
 
     <nav class="navigationBarIndex">
@@ -57,6 +58,5 @@
         document.body.appendChild(sound);
     </script>
 
-    <?php calculateTotalPoints(); ?>
 </body>
 </html>
