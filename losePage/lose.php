@@ -59,5 +59,9 @@
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
     </script>
+
+    <?php
+        $_SESSION['ocultWord'] = "";
+    ?>
 </body>
 </html>

@@ -56,10 +56,21 @@
     <?php
         
         $randomWord = randomWordCatala();
-        $_SESSION['ocultWord'] = $randomWord;
         $firstRowKeyboard = array("Q","W","E","R","T","Y","U","I","O","P");
         $secondRowKeyboard = array("A","S","D","F","G","H","J","K","L","Ç");
         $thirdRowKeyboard = array("ENVIAR","Z","X","C","V","B","N","M","ESBORRAR");
+
+        echo "RandomWOrd:".$randomWord."\n";
+
+        if ($_SESSION['ocultWord']){
+            echo "                  ENTRA EN IF, SESSION = ".$_SESSION['ocultWord'];
+        }
+        else {
+            $_SESSION['ocultWord'] = $randomWord;
+            echo "ENTRA EN ELSE".$randomWord;
+
+        }
+    
     ?>
     <div id="divKeyboard">
         <?php
@@ -140,6 +151,8 @@
             <input hidden type="text" id="winGame" name="winGame">
             <input hidden type="number" id="gamePoints" name="gamePoints">
         </form>
+        
+    
 
     <script src="./playPage.js"></script>
     
@@ -183,9 +196,11 @@
     ?>
     <script>
         <?php
-            echo "var ocultWord = '$randomWord';"; 
+            echo "var ocultWord = '$randomWord';";
         ?>
     </script>
+
+    
     
 
     
