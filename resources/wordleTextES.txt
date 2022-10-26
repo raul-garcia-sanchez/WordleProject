@@ -21,8 +21,8 @@ headLose:DERROTA
 menuLoseToGame:Jugar de nuevo
 menuLoseToIndex:Menu Principal
 textLoseH1:NO HAS ENCERTADO LA PALABRA OCULTA!
-pointsLosePt1:Has perdido con
-pointsLosePt2:puntos
+pointsLosePt1:HAS PERDIDO CON
+pointsLosePt2:PUNTOS
 textLoseP:La palabra para adivinar era
 finalMessageLose:DERROTA!!
 
