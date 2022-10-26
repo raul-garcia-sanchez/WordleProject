@@ -24,6 +24,7 @@ td{
     font-weight: bold;
 }
 .titleWordle{
+    margin-top: -25px;
     font-size: 5em;
     text-align: center;
 }
@@ -35,6 +36,13 @@ td{
 }
 
 /* CSS DE index.php */
+
+.body_index #nameUser{
+    font-size: larger;
+    font-weight: bold   ;
+    text-align: center;
+    margin-top: -50px;
+}
 
 .body_index .header-index{
     display: flex;
@@ -372,7 +380,7 @@ iframe{
     }
 
     .body_lose #finalMessage{
-        font-size: 60px;
+        font-size: 50px;
     }
 
     .body_lose td{ 
@@ -402,7 +410,10 @@ iframe{
     
     }
 
+
+
 }
+
 
 /* Breakpoints para mobile resposive de win.php */
 @media only screen and (max-width: 500px) {

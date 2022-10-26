@@ -81,7 +81,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
             </form>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
-    
+    <p id = "nameUser"><strong></strong></p>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
@@ -123,6 +123,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
     </script>
     <?php
         if (isset($_SESSION["user"])){
+            echo "<script> document.getElementById('nameUser').innerHTML = '".$_SESSION["user"]."'; </script>";
             echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
             echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
         }

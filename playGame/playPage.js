@@ -8,7 +8,6 @@ let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
 var keysSendDelete = keysSendDelete.split(",");
-console.log(ocultWord);
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
