@@ -7,7 +7,7 @@ let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
-keysSendDelete= keysSendDelete.split(",");
+var keysSendDelete = keysSendDelete.split(",");
 console.log(ocultWord);
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar

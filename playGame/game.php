@@ -64,11 +64,24 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 
     <?php
         $randomWord = randomWord($translateWordsHidden);
-        $_SESSION['ocultWord'] = $randomWord;
         $_SESSION['keysSendDelete']= $arrayTranslateText["keysSendDelete"];
         $firstRowKeyboard = explode(",",$arrayTranslateText["firstRowKeyboard"]);
         $secondRowKeyboard = explode(",",$arrayTranslateText["secondRowKeyboard"]);
         $thirdRowKeyboard = explode(",",$arrayTranslateText["thirdRowKeyboard"]);
+
+        if ($_SESSION['ocultWord'] && gettype($_SESSION['ocultWord'])=="string" ) {
+            $_SESSION['ocultWord'] = "";
+        }
+
+        if ($_SESSION['ocultWord']){
+            array_push( $_SESSION['ocultWord'], $randomWord);
+        }
+        else {
+            $arrayTemporalWords = [];
+            array_push($arrayTemporalWords, $randomWord);
+            $_SESSION['ocultWord'] = $arrayTemporalWords;
+
+        }
     ?>
     <div id="divKeyboard">
         <?php
@@ -189,9 +202,9 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         }
     ?>
     <script>
-        var keysSendDelete = "<?php echo $_SESSION["keysSendDelete"]?>"
+        var keysSendDelete = "<?php echo $_SESSION["keysSendDelete"]?>";
         <?php
-            echo "var ocultWord = '".$_SESSION['ocultWord']."';";
+            echo "var ocultWord = '$randomWord';";
         ?>
     </script>
     <script src="./playPage.js"></script>
