@@ -50,7 +50,7 @@ $arrayTranslateText= $_SESSION["translateText"];
             <div id="statistics">
                 <p><?php echo $arrayTranslateText["gameLoseText"]?>: <?php echo $_SESSION['loseGames'];?></p>
                 <p><?php echo $arrayTranslateText["gameWinText"]?>: <?php echo $_SESSION['winGames'];?></p>
-                <p><?php getStatisticsWin();?></p>
+                <p><?php getStatisticsWin($arrayTranslateText['numberWinsText'],$arrayTranslateText['numberAttemptsText']);?></p>
             </div>
     </main>
     <script>

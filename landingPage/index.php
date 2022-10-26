@@ -5,7 +5,7 @@ if(isset($_GET["lenguageSelected"])){
     $arrayTranslateText = changeLenguage($lenguageSelected);
     $_SESSION["translateWordsHidden"]= $_GET["lenguageSelected"];
 }
-elseif(isset($_SESSION["l   enguage"])){
+elseif(isset($_SESSION["lenguage"])){
     $arrayTranslateText = changeLenguage($_SESSION["lenguage"]);
     $_SESSION["translateWordsHidden"]= $_SESSION["lenguage"];
 }

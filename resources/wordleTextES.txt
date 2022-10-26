@@ -12,9 +12,10 @@ headerh1:LA PALABRA OCULTA
 headerh3Pt1:Será capaz
 headerh3Pt2:de adivinar la palabra?
 points:puntuación
-firstRowKeyboard:'Q','W','E','R','T','Y','U','I','O','P'
-secondRowKeyboard:'A','S','D','F','G','H','J','K','L','Ñ'
-thirdRowKeyboard:'ENVIAR','Z','X','C','V','B','N','M','BORRAR'
+firstRowKeyboard:Q,W,E,R,T,Y,U,I,O,P
+secondRowKeyboard:A,S,D,F,G,H,J,K,L,Ñ
+thirdRowKeyboard:ENVIAR,Z,X,C,V,B,N,M,BORRAR
+keysSendDelete:ENVIAR,BORRAR
 
 headLose:DERROTA
 menuLoseToGame:Jugar de nuevo
@@ -35,7 +36,7 @@ finalMessageWin:VICTORIA!!
 
 gameLoseText:Partidas Perdidas
 gameWinText:Partidas Exitosas
-numberAttempts:Numero de intentos
-numberWins:Numbero de victorias
+numberAttemptsText:Numero de intentos
+numberWinsText:Numbero de victorias
 lang:es
 nojavascript:HABILITA JAVASCRIPT PARA JUGAR

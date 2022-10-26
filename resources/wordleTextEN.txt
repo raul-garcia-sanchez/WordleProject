@@ -12,9 +12,10 @@ headerh1:THE HIDDEN WORD
 headerh3Pt1:Will
 headerh3Pt2:to guess the word?
 points:points
-firstRowKeyboard:'Q','W','E','R','T','Y','U','I','O','P'
-secondRowKeyboard:'A','S','D','F','G','H','J','K','L'
-thirdRowKeyboard:'SEND','Z','X','C','V','B','N','M','DELETE'
+firstRowKeyboard:Q,W,E,R,T,Y,U,I,O,P
+secondRowKeyboard:A,S,D,F,G,H,J,K,L
+thirdRowKeyboard:SEND,Z,X,C,V,B,N,M,DELETE
+keysSendDelete:SEND,DELETE
 
 headLose:DEFEAT
 menuLoseToGame:Play again
@@ -35,7 +36,7 @@ finalMessageWin:VICTORY!!
 
 gameLoseText:Losing Games
 gameWinText:Successful Games
-numberAttempts:Number of attempts
-numberWins:Number of win
+numberAttemptsText:Number of attempts
+numberWinsText:Number of victories
 lang:en
 nojavascript:ENABLE JAVASCRIPT TO PLAY

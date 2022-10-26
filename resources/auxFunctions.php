@@ -1,6 +1,6 @@
 <?php
 
-function getStatisticsWin(){
+function getStatisticsWin($textWin, $textAttempts){
         $wins1Attempt = 0;
         $wins2Attempt = 0;
         $wins3Attempt = 0;
@@ -29,8 +29,8 @@ function getStatisticsWin(){
         }
         echo "<table style='margin-left:40px;margin:auto;'>";
         echo "<tr>";
-        echo "<td>Nombre d'intents</td>";
-        echo "<td>Nombre de victories</td>";
+        echo "<td>$textAttempts</td>";
+        echo "<td>$textWin</td>";
         echo "</tr>";
         echo "<tr>";
         echo "<td>1 -> </td>";

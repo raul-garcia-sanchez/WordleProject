@@ -7,17 +7,18 @@ let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
+keysSendDelete= keysSendDelete.split(",");
 console.log(ocultWord);
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
     keys[i].onclick = ({ target }) => {//Cada vez que hacemos click a un boton, cogemos valor id del boton y lo escribimos
         const letter = target.getAttribute("id");
-        if (letter === "ENVIAR"){
+        if (letter === keysSendDelete[0]){
             sendWord();//Llamamos funcion enviar
             return;
         }
-        if (letter === "ESBORRAR"){
+        if (letter === keysSendDelete[1]){
             deleteLetter();//Llamamos funcion borrar
             return;
         }

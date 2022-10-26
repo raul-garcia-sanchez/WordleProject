@@ -12,9 +12,10 @@ headerh1:LA PARAULA OCULTA
 headerh3Pt1:Serà capaç
 headerh3Pt2:d'endevinar la paraula
 points:puntuació
-firstRowKeyboard:'Q','W','E','R','T','Y','U','I','O','P'
-secondRowKeyboard:'A','S','D','F','G','H','J','K','L','Ç'
-thirdRowKeyboard:'ENVIAR','Z','X','C','V','B','N','M','ESBORRAR'
+firstRowKeyboard:Q,W,E,R,T,Y,U,I,O,P
+secondRowKeyboard:A,S,D,F,G,H,J,K,L,Ç
+thirdRowKeyboard:ENVIAR,Z,X,C,V,B,N,M,ESBORRAR
+keysSendDelete:ENVIAR,ESBORRAR
 
 headLose:DERROTA
 menuLoseToGame:Jugar de nou
@@ -35,7 +36,7 @@ finalMessageWin:VICTORIA!!
 
 gameLoseText:Partides Fallides
 gameWinText:Partides Exitoses
-numberAttempts:Nombre d'intents
-numberWins:Nombre de victories
+numberAttemptsText:Nombre d'intents
+numberWinsText:Nombre de victories
 lang:ca
 nojavascript:HABILITI JAVASCRIPT PER A JUGAR
