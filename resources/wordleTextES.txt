@@ -34,9 +34,9 @@ pointsWinPt1:TIENES
 pointsWinPt2:PUNTOS
 finalMessageWin:VICTORIA!!
 
-gameLoseText:Partidas Perdidas
+gameLoseText:Partidas Pérdidas
 gameWinText:Partidas Exitosas
-numberAttemptsText:Numero de intentos
-numberWinsText:Numbero de victorias
+numberAttemptsText:Número de intentos
+numberWinsText:Número de victorias
 lang:es
 nojavascript:HABILITA JAVASCRIPT PARA JUGAR
