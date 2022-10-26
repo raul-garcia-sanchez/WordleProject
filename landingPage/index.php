@@ -1,9 +1,9 @@
 <?php session_start();
-if(isset($_GET["lenguageSelected"])){
-    $_SESSION["lenguage"]= $_GET["lenguageSelected"];
-    $lenguageSelected=$_GET["lenguageSelected"];
+if(isset($_POST["lenguageSelected"])){
+    $_SESSION["lenguage"]= $_POST["lenguageSelected"];
+    $lenguageSelected=$_POST["lenguageSelected"];
     $arrayTranslateText = changeLenguage($lenguageSelected);
-    $_SESSION["translateWordsHidden"]= $_GET["lenguageSelected"];
+    $_SESSION["translateWordsHidden"]= $_POST["lenguageSelected"];
 }
 elseif(isset($_SESSION["lenguage"])){
     $arrayTranslateText = changeLenguage($_SESSION["lenguage"]);
@@ -39,7 +39,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                     </li>
                 </ul>
         </nav>
-        <form id="formLanguage" method="GET">
+        <form id="formLanguage" method="POST">
                 <select id="lenguageSelected" name="lenguageSelected" onchange="this.form.submit()">
                     <option value="ES" <?php 
                         if(isset($_SESSION["lenguage"])){
@@ -47,8 +47,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
                                 echo "selected";
                             }
                         }
-                        elseif(isset($_GET["lenguageSelected"])){
-                            if ($_GET["lenguageSelected"]== "ES"){
+                        elseif(isset($_POST["lenguageSelected"])){
+                            if ($_POST["lenguageSelected"]== "ES"){
                                 echo "selected";
                             }
                         }
@@ -59,8 +59,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
                                 echo "selected";
                             }
                         }
-                        elseif(isset($_GET["lenguageSelected"])){
-                            if ($_GET["lenguageSelected"]== "CA"){
+                        elseif(isset($_POST["lenguageSelected"])){
+                            if ($_POST["lenguageSelected"]== "CA"){
                                 echo "selected";
                             }
                         }
@@ -71,8 +71,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
                                 echo "selected";
                             }
                         }
-                        elseif (isset($_GET["lenguageSelected"])){
-                            if ($_GET["lenguageSelected"]== "EN"){
+                        elseif (isset($_POST["lenguageSelected"])){
+                            if ($_POST["lenguageSelected"]== "EN"){
                                 echo "selected";
                             }
                         }
