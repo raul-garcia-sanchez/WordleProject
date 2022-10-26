@@ -1,5 +1,7 @@
 <?php session_start();
-$arrayTranslateText= $_SESSION["translateText"];?>
+$arrayTranslateText= $_SESSION["translateText"];
+?>
+
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
@@ -38,16 +40,12 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             <h1> <?php echo $arrayTranslateText["pointsWinPt1"]?> <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]; ?> <?php echo $arrayTranslateText["pointsWinPt2"]?>!!</h1>
         </div>
         <div id="finalMessage">
-            <span style="--i:1">V</span>
-            <span style="--i:2">I</span>
-            <span style="--i:3">C</span>
-            <span style="--i:4">T</span>
-            <span style="--i:5">O</span>
-            <span style="--i:6">R</span>
-            <span style="--i:7">I</span>
-            <span style="--i:8">A</span>
-            <span style="--i:9">!</span>
-            <span style="--i:10">!</span>
+            <?php
+            for($i=0;$i<strlen($arrayTranslateText["finalMessageWin"]);$i++){
+                $style=strval($i+1);
+                echo "<span style='--i:{$style}'>{$arrayTranslateText["finalMessageWin"][$i]}</span>";
+            }
+            ?>
         </div>
             <div id="statistics">
                 <p><?php echo $arrayTranslateText["gameLoseText"]?>: <?php echo $_SESSION['loseGames'];?></p>

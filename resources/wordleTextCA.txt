@@ -23,6 +23,7 @@ textLoseH1:NO HAS ENCERTAT LA PARAULA OCULTA!
 pointsLosePt1:HAS PERDUT AMB
 pointsLosePt2:PUNTS
 textLoseP:LA PARAULA A ENDEVINAR ERA
+finalMessageLose:DERROTA!!
 
 headWin:VICTORIA
 menuWinToGame:Jugar de nou
@@ -30,6 +31,7 @@ menuWinToIndex:Menu Principal
 textWin:HAS ENCERTAT LA PARAULA OCULTA!
 pointsWinPt1:TENS
 pointsWinPt2:PUNTS
+finalMessageWin:VICTORIA!!
 
 gameLoseText:Partides Fallides
 gameWinText:Partides Exitoses

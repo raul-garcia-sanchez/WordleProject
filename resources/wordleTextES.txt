@@ -23,6 +23,7 @@ textLoseH1:NO HAS ENCERTADO LA PALABRA OCULTA!
 pointsLosePt1:Has perdido con
 pointsLosePt2:puntos
 textLoseP:La palabra para adivinar era
+finalMessageLose:DERROTA!!
 
 headWin:VICTORIA
 menuWinToGame:Jugar de nuevo
@@ -30,6 +31,7 @@ menuWinToIndex:Menu Principal
 textWin:HAS ENCERTADO LA PALABRA OCULTA!
 pointsWinPt1:TIENES
 pointsWinPt2:PUNTOS
+finalMessageWin:VICTORIA!!
 
 gameLoseText:Partidas Perdidas
 gameWinText:Partidas Exitosas

@@ -37,16 +37,13 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             <h1><?php echo $arrayTranslateText["pointsLosePt1"]?> <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"] ?> <?php echo $arrayTranslateText["pointsLosePt2"]?>!!</h1>
             <p id="pSeeOcultWord"><?php echo $arrayTranslateText["textLoseP"]?> <b id="bWordResult"> <?php echo $_SESSION["ocultWord"]; ?></b></h2>
         </div>
-        <div id="finalMessage">
-            <span style="--i:1">D</span>
-            <span style="--i:2">E</span>
-            <span style="--i:3">R</span>
-            <span style="--i:4">R</span>
-            <span style="--i:5">O</span>
-            <span style="--i:6">T</span>
-            <span style="--i:7">A</span>
-            <span style="--i:8">!</span>
-            <span style="--i:9">!</span>
+        <div id="finalMessage">  
+        <?php
+            for($i=0;$i<strlen($arrayTranslateText["finalMessageLose"]);$i++){
+                $style=strval($i+1);
+                echo "<span style='--i:{$style}'>{$arrayTranslateText["finalMessageLose"][$i]}</span>";
+            }
+            ?>
         </div>
         <div id="statistics">
             <p><?php echo $arrayTranslateText["gameLoseText"]?>: <?php echo $_SESSION['loseGames'];?></p>
