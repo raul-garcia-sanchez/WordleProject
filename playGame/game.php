@@ -16,7 +16,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 </noscript>
 <body class="body_game">
     <?php
-        $_SESSION['user'] = (isset($_POST['inputName']))
+        $_SESSION['user'] = (isset($_POST['inputName']) && strlen($_POST['inputName']) > 0 )
             ? $_POST['inputName']
             : $_SESSION['user'];
 
@@ -69,7 +69,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         $secondRowKeyboard = explode(",",$arrayTranslateText["secondRowKeyboard"]);
         $thirdRowKeyboard = explode(",",$arrayTranslateText["thirdRowKeyboard"]);
 
-        if ($_SESSION['ocultWord'] && gettype($_SESSION['ocultWord'])=="string" ) {
+        if (isset($_SESSION['ocultWord']) && gettype($_SESSION['ocultWord']) == "string" ) {
             $_SESSION['ocultWord'] = "";
         }
 

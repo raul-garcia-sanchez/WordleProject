@@ -81,7 +81,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
             </form>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
-    <p id = "nameUser"><strong></strong></p>
+    <p id = "nameUser"></p>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
@@ -105,7 +105,17 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <script>
         function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
-            if (playerName.length == 0) {
+            
+            var userExist =      <?php
+                            if (isset($_SESSION['user'])){
+                                echo " true;";
+                            }
+                            else{
+                                echo " false;";
+                            }
+                        ?>
+
+            if (playerName.length == 0  && !userExist) {
 
                 if (document.getElementById("alert").style.visibility === 'hidden' || document.getElementById("alert").style.visibility.length==0){
                     event.preventDefault();
@@ -117,6 +127,10 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 }
             }
             else{
+                
+                <?php
+                    $_SESSION['ocultWord'] = "";
+                ?>
                 window.location.href = "../playGame/game.php";
             }
         }
