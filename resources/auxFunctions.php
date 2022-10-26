@@ -27,7 +27,7 @@ function getStatisticsWin($textWin, $textAttempts){
                 $wins6Attempt = $wins6Attempt + 1;
             }
         }
-        echo "<table style='margin-left:40px;margin:auto;'>";
+        echo "<table>";
         echo "<tr>";
         echo "<td>$textAttempts</td>";
         echo "<td>$textWin</td>";

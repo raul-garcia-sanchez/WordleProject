@@ -9,6 +9,7 @@ a{
 table{
     margin-top: 30px;
     border-spacing: 10px;
+    margin: auto;
 }
 
 td{ 
@@ -174,11 +175,11 @@ select#lenguageSelected{
 .body_lose #idTextLose{
     text-align: center;
     margin-top: -20px;
+    margin: auto;
 }
 
 .body_lose #pSeeOcultWord{
     font-size: 2em;
-    margin-top: -20px;
 }
 
 /* CSS DE win.php */
@@ -283,7 +284,7 @@ iframe{
 
 /* Breakpoints para mobile responsive de index.php */
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
     .body_index {
         padding: 20px;
     }
@@ -301,6 +302,38 @@ iframe{
         display:block;
         height: auto;
     }
+
+    .body_index #iconNavigationBar{
+        font-size: 50px;
+    }
+    
+    .body_index .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        font-size: 20px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: all .4s ease-in-out;
+    
+    }
+
+    .body_index #formLanguage{
+        display: flex;
+        width: 100px;
+        margin-left: 60px;
+        margin-top: 30px;
+        height: 45px;
+    }
+
+    select#lenguageSelected{
+        border-radius: 5px;
+        text-align: center;
+        border: 2px solid black;
+        width: 60px;
+        font-size: 20px;
+    }
+
 }
 
 /* Breakpoints para mobile responsive de game.php */
@@ -309,32 +342,35 @@ iframe{
     .body_game #divKeyboard{
         width: fit-content;
     }
+
+    .body_game #iconNavigationBar{
+        font-size: 50px;
+    }
+    
+    .body_game .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        font-size: 20px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: all .4s ease-in-out;
+    
+    }
     
 }
 
 /* Breakpoints para mobile resposive de lose.php */
 @media only screen and (max-width: 800px) {
-    .body_lose {
-        padding: 20px;
-    }
-
     .body_lose #idTextLose{
-        margin-top: 20px;
-    }
-
-    .body_lose #finalMessage{
-        font-size: 60px;
-    }
-
-    .body_lose #pSeeOcultWord{
-        margin-top: 20px;
+        margin: auto;
     }
 
 }
 
-@media only screen and (max-width: 376px) {
+
+/* @media only screen and (max-width: 374px) {
     .body_lose {
-        width: 190%;
         padding: 20px;
     }
 
@@ -369,42 +405,14 @@ iframe{
         font-weight: bold;
     }
 
-    #aPlay{
-        width: 50px;
-        height: auto;
-        text-decoration: none;
-        pointer-events: none;
-        color: black;
-    }
-    .linksToPages{
-        pointer-events: none;
-        cursor: pointer;
-    
-    }
-    .linksToPagesGame{
-        cursor: pointer;
+    .body_lose #iconNavigationBar{
+        font-size: 50px;
     }
     
-    #iconNavigationBar{
-        font-size: 90px;
-    }
-    
-    .dropdown {
-        display: inline-block;
-    
-    }
-    
-    .dropdown-content {
-        background-color: #3F8EBF;
-        display:none;
-        position: fixed;
-        
-    }
-    
-    .dropdown-content a {
+    .body_lose .dropdown-content a {
         color: black;
         padding: 12px 16px;
-        font-size: 40px;
+        font-size: 20px;
         text-decoration: none;
         display: block;
         text-align: left;
@@ -412,10 +420,11 @@ iframe{
     
     }
 
-}
+} */
+
 
 /* Breakpoints para mobile resposive de win.php */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
     .body_win {
         padding: 20px;
     }
