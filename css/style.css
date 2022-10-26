@@ -212,7 +212,6 @@ iframe{
     display: none;
 }
 
-
 /* CSS DE NAVEGACION COMUN PARA win.php, lose.php, index.php i game.php */
 #aPlay{
     width: 50px;
@@ -288,12 +287,11 @@ iframe{
 }
 
 /* Breakpoints para mobile responsive de game.php */
-
-@media only screen and (max-width: 700px) {
-    /* .body_game .containerMainContent{
-        display: block;
-        margin: auto;
-    } */
+    
+@media only screen and (max-width: 575px) {
+    .body_game #divKeyboard{
+        width: fit-content;
+    }
     
 }
 
