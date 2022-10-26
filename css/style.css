@@ -1,0 +1,491 @@
+/* CSS DE ETIQUETAS GLOBALES */
+body{
+    background-color: #A0DBF2;
+    font-family: 'Courier New', Courier, monospace;
+}
+a{
+    font-family: 'Courier New', Courier, monospace;
+}
+table{
+    margin-top: 30px;
+    border-spacing: 10px;
+}
+
+td{ 
+    height: 40px;
+    width: 40px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    background-color: white;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.titleWordle{
+    font-size: 5em;
+    text-align: center;
+}
+
+#messageNoJavascript{
+    color: red;
+    text-align: center;
+    font-size: 50px;
+}
+
+/* CSS DE index.php */
+.body_index .containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.body_index .containerMainContent .instructions{
+    font-size: 25px;
+    padding: 0 20px 10px;
+    margin: 0;
+}
+.body_index .containerMainContent  .imgLanding{
+    width:285px;
+    height: 345px;
+}
+
+
+.body_index .formName{
+    display: flex;
+    flex-direction: column;
+}
+
+.body_index .inputName{
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    height: 30px;
+    text-align: center;
+}
+
+
+
+.body_index .btnSubmit{
+    font-family: 'Courier New', Courier, monospace;
+    
+    margin: auto;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #04D939;
+    transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.body_index #btnSubmit:hover{
+    background-color: #027333;
+    transform: scale(1.20);
+}
+
+.body_index .alert {
+    margin: auto;
+    width: 30%;
+    visibility: hidden;
+    padding: 20px;
+    background-color: #3F8EBF;
+    color: white;
+}
+  
+.body_index .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.body_index .closebtn:hover {
+    color: black;
+}
+.body_index .containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* CSS de game.php */
+.body_game .containerMainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.body_game .class-header{
+    text-align: center;
+}
+
+.body_game #divKeyboard{
+    margin: auto;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.body_game .class-keyboard{
+    width: auto;
+    background-color: #D9B504;
+    font-weight: bold;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline;
+    border: 0px;
+    margin-right: 4px;
+    margin-top: 4px;
+    flex-grow: 1;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.body_game .rowKeyboard{
+    width: auto;
+    display: flex;
+}
+
+/* CSS DE lose.php */
+
+.body_lose #idTextLose{
+    text-align: center;
+    margin-top: -20px;
+}
+
+.body_lose #pSeeOcultWord{
+    font-size: 2em;
+    margin-top: -20px;
+}
+
+/* CSS DE win.php */
+
+.body_win #idTextWin{
+    text-align: center;
+    }
+
+/* CSS COMUN DE WIN Y LOSE */
+
+#finalMessage{
+    margin-top: -30px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    font-size: 90px;
+}
+
+#statistics{
+    width: 800px;
+    margin: auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+#finalMessage span {
+    font-family: 'Alfa Slab One', cursive;
+    position: relative;
+    display: inline-block;
+    animation: waviy 1s infinite;
+    animation-delay: calc(.1s * var(--i));
+    
+  }
+
+@keyframes waviy {
+    0%,40%,100% {
+      transform: translateY(0)
+    }
+    20% {
+      transform: translateY(-20px)
+    }
+  }
+
+iframe{
+    display: none;
+}
+
+/* CSS DE NAVEGACION COMUN PARA win.php, lose.php, index.php i game.php */
+#aPlay{
+    width: 50px;
+    height: auto;
+    text-decoration: none;
+    pointer-events: none;
+    color: black;
+}
+.linksToPages{
+    pointer-events: none;
+    cursor: pointer;
+
+}
+.linksToPagesGame{
+    cursor: pointer;
+}
+
+#iconNavigationBar{
+    font-size: 30px;
+}
+
+.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    background-color: #3F8EBF;
+    display:none;
+    position: fixed;
+    
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: all .4s ease-in-out;
+
+}
+
+.dropdown-content a:hover {
+    color: white;
+	background-color: rgba(208, 208, 207, 0.2)
+
+}
+.dropdown:hover .dropdown-content {
+    display:block;
+}
+
+/* Breakpoints para mobile responsive de index.php */
+
+@media only screen and (max-width: 800px) {
+    .body_index {
+        padding: 20px;
+    }
+    .body_index .containerMainContent{
+        display: block;
+    }
+    .body_index .containerMainContent .instructions{
+        width: 100%;
+        padding: 0 0 10px;
+    }
+    .body_index .containerMainContent  .imgLanding{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 20px;;
+        display:block;
+        height: auto;
+    }
+}
+
+/* Breakpoints para mobile responsive de game.php */
+    
+@media only screen and (max-width: 575px) {
+    .body_game #divKeyboard{
+        width: fit-content;
+    }
+    
+}
+
+/* Breakpoints para mobile resposive de lose.php */
+@media only screen and (max-width: 800px) {
+    .body_lose {
+        padding: 20px;
+    }
+
+    .body_lose #idTextLose{
+        margin-top: 20px;
+    }
+
+    .body_lose #finalMessage{
+        font-size: 60px;
+    }
+
+    .body_lose #pSeeOcultWord{
+        margin-top: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 376px) {
+    .body_lose {
+        width: 190%;
+        padding: 20px;
+    }
+
+    .body_lose #idTextLose{
+        margin-top: 20px;
+        margin: auto;
+        font-size: 30px;
+    }
+
+    .body_lose #finalMessage{
+        font-size: 66px;
+    }
+
+    .body_lose #pSeeOcultWord{
+        margin-top: 20px;
+    }
+
+    .body_lose #statistics{
+        width: 100%;
+        font-size: 40px;
+    }
+
+    td{ 
+        height: 50px;
+        width: 50px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    #aPlay{
+        width: 50px;
+        height: auto;
+        text-decoration: none;
+        pointer-events: none;
+        color: black;
+    }
+    .linksToPages{
+        pointer-events: none;
+        cursor: pointer;
+    
+    }
+    .linksToPagesGame{
+        cursor: pointer;
+    }
+    
+    #iconNavigationBar{
+        font-size: 90px;
+    }
+    
+    .dropdown {
+        display: inline-block;
+    
+    }
+    
+    .dropdown-content {
+        background-color: #3F8EBF;
+        display:none;
+        position: fixed;
+        
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        font-size: 40px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: all .4s ease-in-out;
+    
+    }
+
+}
+
+/* Breakpoints para mobile resposive de win.php */
+@media only screen and (max-width: 800px) {
+    .body_win {
+        padding: 20px;
+    }
+
+    .body_win #idTextWin{
+        margin-top: 20px;
+    }
+
+    .body_win #finalMessage{
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .body_win {
+        width: 190%;
+        padding: 20px;
+    }
+
+    .body_win #idTextWin{
+        margin-top: 20px;
+        margin: auto;
+        font-size: 30px;
+    }
+
+    .body_win #finalMessage{
+        font-size: 66px;
+    }
+
+    .body_win #statistics{
+        width: 100%;
+        font-size: 40px;
+    }
+
+    td{ 
+        height: 50px;
+        width: 50px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: black;
+        background-color: white;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    #aPlay{
+        width: 50px;
+        height: auto;
+        text-decoration: none;
+        pointer-events: none;
+        color: black;
+    }
+    .linksToPages{
+        pointer-events: none;
+        cursor: pointer;
+    
+    }
+    .linksToPagesGame{
+        cursor: pointer;
+    }
+    
+    #iconNavigationBar{
+        font-size: 90px;
+    }
+    
+    .dropdown {
+        display: inline-block;
+    
+    }
+    
+    .dropdown-content {
+        background-color: #3F8EBF;
+        display:none;
+        position: fixed;
+        
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        font-size: 40px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: all .4s ease-in-out;
+    
+    }
+
+}
