@@ -13,7 +13,8 @@ else{
     $arrayTranslateText = changeLenguage("ES");
     $_SESSION["translateWordsHidden"]= "ES";
 }
-$_SESSION["translateText"]= $arrayTranslateText;?>
+$_SESSION["translateText"]= $arrayTranslateText;
+?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
@@ -26,19 +27,61 @@ $_SESSION["translateText"]= $arrayTranslateText;?>
     <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
 <body class="body_index">
-    <nav class="navigationBarIndex">
-            <ul>
-                <li class="dropdown">
-                    <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
-                    <div class="dropdown-content">
-                        <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
-                    </div>
-                </li>
-            </ul>
+    
+    <header class="header-index">
+        <nav class="navigationBarIndex">
+                <ul>
+                    <li class="dropdown">
+                        <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                        <div class="dropdown-content">
+                            <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
+                        </div>
+                    </li>
+                </ul>
         </nav>
-    <header>
-        <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
+        <form id="formLanguage" method="GET">
+                <select id="lenguageSelected" name="lenguageSelected" onchange="this.form.submit()">
+                    <option value="ES" <?php 
+                        if(isset($_SESSION["lenguage"])){
+                            if ($_SESSION["lenguage"]== "ES"){
+                                echo "selected";
+                            }
+                        }
+                        elseif(isset($_GET["lenguageSelected"])){
+                            if ($_GET["lenguageSelected"]== "ES"){
+                                echo "selected";
+                            }
+                        }
+                        ?>>ES</option>
+                    <option value="CA" <?php
+                        if(isset($_SESSION["lenguage"])){
+                            if ($_SESSION["lenguage"]== "CA"){
+                                echo "selected";
+                            }
+                        }
+                        elseif(isset($_GET["lenguageSelected"])){
+                            if ($_GET["lenguageSelected"]== "CA"){
+                                echo "selected";
+                            }
+                        }
+                        ?>>CA</option>
+                    <option value="EN" <?php 
+                        if(isset($_SESSION["lenguage"])){
+                            if ($_SESSION["lenguage"]== "EN"){
+                                echo "selected";
+                            }
+                        }
+                        elseif (isset($_GET["lenguageSelected"])){
+                            if ($_GET["lenguageSelected"]== "EN"){
+                                echo "selected";
+                            }
+                        }
+                        ?>>EN</option>
+                </select>
+            </form>
     </header>
+    <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
+    
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
@@ -78,48 +121,6 @@ $_SESSION["translateText"]= $arrayTranslateText;?>
             }
         }
     </script>
-    <footer>
-        <form method="GET">
-            <select id="lenguageSelected" name="lenguageSelected" onchange="this.form.submit()">
-                <option value="ES" <?php 
-                    if(isset($_SESSION["lenguage"])){
-                        if ($_SESSION["lenguage"]== "ES"){
-                            echo "selected";
-                        }
-                    }
-                    elseif(isset($_GET["lenguageSelected"])){
-                        if ($_GET["lenguageSelected"]== "ES"){
-                            echo "selected";
-                        }
-                    }
-                    ?>>ES</option>
-                <option value="CA" <?php
-                    if(isset($_SESSION["lenguage"])){
-                        if ($_SESSION["lenguage"]== "CA"){
-                            echo "selected";
-                        }
-                    }
-                    elseif(isset($_GET["lenguageSelected"])){
-                        if ($_GET["lenguageSelected"]== "CA"){
-                            echo "selected";
-                        }
-                    }
-                    ?>>CA</option>
-                <option value="EN" <?php 
-                    if(isset($_SESSION["lenguage"])){
-                        if ($_SESSION["lenguage"]== "EN"){
-                            echo "selected";
-                        }
-                    }
-                    elseif (isset($_GET["lenguageSelected"])){
-                        if ($_GET["lenguageSelected"]== "EN"){
-                            echo "selected";
-                        }
-                    }
-                    ?>>EN</option>
-            </select>
-        </form>
-    </footer>
     <?php
         if (isset($_SESSION["user"])){
             echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";

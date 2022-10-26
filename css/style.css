@@ -34,6 +34,24 @@ td{
 }
 
 /* CSS DE index.php */
+
+.body_index .header-index{
+    display: flex;
+}
+
+.body_index #formLanguage{
+    display: flex;
+    width: 40px;
+    margin-left: 60px;
+    margin-top: 20px;
+    height: 40px;
+}
+
+select#lenguageSelected{
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
 .body_index .containerMainContent{
     display: flex;
     flex-direction: row;
@@ -63,7 +81,6 @@ td{
     height: 30px;
     text-align: center;
 }
-
 
 
 .body_index .btnSubmit{
