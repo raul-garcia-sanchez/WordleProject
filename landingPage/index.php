@@ -149,7 +149,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
             foreach ($fileWords as $numberLine => $wordsLine){
                 $signDictionaryPosition= strpos($wordsLine, $signDictionary);
                 $key= substr($wordsLine,0,$signDictionaryPosition);
-                $value= substr($wordsLine, $signDictionaryPosition+1, -2);
+                $value= trim(substr($wordsLine, $signDictionaryPosition+1));
                 $keysValues[$key] = $value;
             };
             return $keysValues;

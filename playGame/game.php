@@ -152,7 +152,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             $randomWord= exceptionLetter($randomWord);
             fclose($fileOpen);
             
-            return strtoupper(substr($randomWord,0,-2));
+            return trim(strtoupper(substr($randomWord,0)));
         }
 
         ?>
