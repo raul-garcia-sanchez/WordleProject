@@ -4,7 +4,7 @@ instructions:Endevina la <strong>WORDLE</strong> en 6 intents.<br>Cada fila ha d
 placeholder:Escrigui el seu nom
 buttonStart:JUGAR
 alert:<strong>Si us plau, introduiu un nom d'usuari per poder començar a jugar</strong>
-imgWordle:../resources/imgLandingPageCA.png
+imgWordle:./resources/imgLandingPageCA.png
 
 headGame:JOC
 menuGameToIndex:Menu Principal

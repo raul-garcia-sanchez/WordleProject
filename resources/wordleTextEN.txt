@@ -4,7 +4,7 @@ instructions:Guess the <strong>WORDLE</strong> in 6 attempts.<br>Each row must b
 placeholder:Write your name
 buttonStart:PLAY
 alert:<strong>Please enter a username to start playing</strong>
-imgWordle:../resources/imgLandingPageEN.png
+imgWordle:./resources/imgLandingPageEN.png
 
 headGame:GAME
 menuGameToIndex:Main Menu

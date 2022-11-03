@@ -4,7 +4,7 @@ instructions:Adivina la <strong>WORDLE</strong> en 6 intentos.<br>Cada fila debe
 placeholder:Escriba su nombre
 buttonStart:JUGAR
 alert:<strong>Por favor, introduzca un nombre de usuario para poder empezar a jugar</strong>
-imgWordle:../resources/imgLandingPageES.png
+imgWordle:./resources/imgLandingPageES.png
 
 headGame:JUEGO
 menuGameToIndex: Menu Principal
