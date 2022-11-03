@@ -19,6 +19,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
     calculateTotalPoints();
     ?>
 
+    <div class="headerFinalPages">
     <nav class="navigationBarIndex">
         <ul>
             <li class="dropdown">
@@ -30,6 +31,23 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             </li>
         </ul>
     </nav>
+    <button class="publish">Publicar estadistiques</button>
+    </div>
+
+    <dialog id="modal">
+        <h2>Vols publicar las estadistiques?</h2>
+        <div class="buttonsModal">
+            <button id="btn-close-modal">Cancel·lar</button>
+            <button id="confirmPublishStatistics">Acceptar</button>
+        </div>
+    </dialog>
+
+    <dialog id="messagePostWriteStatistics">
+        <h2>Estadistiques publicades!!</h2>
+        <div class="buttonModalInformation">
+            <button id="btn-ok-close">Ok</button>
+        </div>
+    </dialog>
 
     <main>
         <div id="idTextLose">
@@ -50,12 +68,60 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             <p><?php echo $arrayTranslateText["gameWinText"]?>: <?php echo $_SESSION['winGames'];?></p>
             <p><?php getStatisticsWin($arrayTranslateText['numberWinsText'],$arrayTranslateText['numberAttemptsText'])?></p>
         </div>
+
+        <form id="formWrite" method="POST">
+            <input hidden type="checkbox" id="accept" name="accept">
+        </form>
+
+
     </main>
     <script>
+        const openModal = document.querySelector(".publish");
+        const closeModal = document.querySelector("#btn-close-modal");
+        const modal = document.querySelector("#modal");
+
+
+        openModal.addEventListener("click",() => {
+            modal.showModal();
+        })
+
+        closeModal.addEventListener("click", () => {
+            document.getElementById("formWrite").submit();
+            modal.close();
+        })
+
+        const closeModalInformation = document.querySelector("#btn-ok-close");
+        const modalInformation = document.querySelector("#messagePostWriteStatistics");
+        const confirmWriteStatistics = document.querySelector("#confirmPublishStatistics");
+        const btnOkInformation = document.querySelector("#btn-ok-close");
+
+        confirmWriteStatistics.addEventListener("click",() => {
+            modal.close();
+            modalInformation.showModal();
+            document.getElementById("accept").checked = true;
+            setTimeout(() => {
+                document.getElementById("formWrite").submit();
+                document.getElementById("iframe").remove();
+            }, 2000);
+            
+        })
+
+        btnOkInformation.addEventListener("click",() => {
+            modalInformation.close();
+        })
+
         var sound = document.createElement("iframe");
         sound.setAttribute("src", "./resources/lose.mp3");
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
+
+        <?php
+            if(isset($_POST["accept"])){
+                writeStatistics();
+            }
+        ?>
+
+        // Intentar quitar sonido cuando se envia formulario y mirar si se tienen que añadir asi los puntos
     </script>
 
 </body>

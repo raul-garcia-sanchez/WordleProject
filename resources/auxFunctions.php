@@ -80,4 +80,10 @@ function calculateTotalPoints(){
 
 }
 
+function writeStatistics(){
+    $file = fopen("./resources/records.txt","a");
+    fwrite($file,$_SESSION['user'].",".$_SESSION["totalPointsUser"]."\n");
+    fclose($file);
+}
+
 
