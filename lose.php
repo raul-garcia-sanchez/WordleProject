@@ -34,7 +34,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
     <main>
         <div id="idTextLose">
             <h1><?php echo strtoupper($_SESSION['user']); ?> <?php echo $arrayTranslateText["textLoseH1"]?></h1>
-            <h1><?php echo $arrayTranslateText["pointsLosePt1"]?> <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"] ?> <?php echo $arrayTranslateText["pointsLosePt2"]?>!!</h1>
+            <h1><?php echo $arrayTranslateText["pointsLosePt1"]?> <?php echo $_SESSION["totalPointsUser"] ?> <?php echo $arrayTranslateText["pointsLosePt2"]?>!!</h1>
             <p id="pSeeOcultWord"><?php echo $arrayTranslateText["textLoseP"]?> <b id="bWordResult"> <?php echo $_SESSION["ocultWord"][count($_SESSION["ocultWord"]) - 2]; ?></b></h2>
         </div>
         <div id="finalMessage">  

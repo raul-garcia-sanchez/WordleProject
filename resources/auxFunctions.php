@@ -7,7 +7,7 @@ function getStatisticsWin($textWin, $textAttempts){
         $wins4Attempt = 0;
         $wins5Attempt = 0;
         $wins6Attempt = 0;
-        foreach($_SESSION[$_SESSION['user']] as $array){
+        foreach($_SESSION['statisticsUser'] as $array){
             if($array[2] == 1 && $array[3] == "true"){
                 $wins1Attempt = $wins1Attempt + 1;
             }
@@ -62,7 +62,7 @@ function calculateTotalPoints(){
         $points = 0;
         $pointsYellow = 0;
         $pointsBrown = 0;
-    foreach($_SESSION[$_SESSION['user']] as $array){
+    foreach($_SESSION['statisticsUser'] as $array){
     $pointsYellow = $array[0] * -2;
     $pointsBrown = $array[1] * -4;
 
@@ -74,9 +74,9 @@ function calculateTotalPoints(){
     }
     
     }
-    $points += (120 * count($_SESSION[$_SESSION['user']]));
+    $points += (120 * count($_SESSION['statisticsUser']));
 
-    $_SESSION[$_SESSION['user']."totalPointsUser"] = $points;
+    $_SESSION["totalPointsUser"] = $points;
 
 }
 

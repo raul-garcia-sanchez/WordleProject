@@ -20,12 +20,12 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             ? $_POST['inputName']
             : $_SESSION['user'];
 
-        $_SESSION[$_SESSION['user']] = (isset($_SESSION[$_SESSION['user']]))
-            ? $_SESSION[$_SESSION['user']]
+        $_SESSION['statisticsUser'] = (isset($_SESSION['statisticsUser']))
+            ? $_SESSION['statisticsUser']
             : array();
 
-        $_SESSION[$_SESSION['user']."totalPointsUser"] = (isset($_SESSION[$_SESSION['user']."totalPointsUser"]))
-            ? $_SESSION[$_SESSION['user']."totalPointsUser"]
+        $_SESSION["totalPointsUser"] = (isset($_SESSION["totalPointsUser"]))
+            ? $_SESSION["totalPointsUser"]
             : 0;
     ?>
 
@@ -43,7 +43,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     <header>
         <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
         <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
-        <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]?></h3>
+        <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION["totalPointsUser"]?></h3>
     </header>
 
     <div class ="containerMainContent">
@@ -172,8 +172,8 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame'])){
             $dict = array();
             array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
-            array_push($_SESSION[$_SESSION['user']],$dict);
-            foreach($_SESSION[$_SESSION['user']] as $array){
+            array_push($_SESSION['statisticsUser'],$dict);
+            foreach($_SESSION['statisticsUser'] as $array){
                 if($array[3] == "false"){
                     $loseGames = $loseGames + 1;
                 }
