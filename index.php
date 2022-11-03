@@ -81,7 +81,6 @@ $_SESSION["translateText"]= $arrayTranslateText;
             </form>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
-    <p id = "nameUser"></p>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
@@ -96,6 +95,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <br>
         <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
     </form>
+    <br>
+    <button class="btnReset" name="btnReset" id="btnReset" onclick="window.location.href='logout.php'">Reset</button>
     <br>
     <div class="alert" id="alert">
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
@@ -137,7 +138,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
     </script>
     <?php
         if (isset($_SESSION["user"])){
-            echo "<script> document.getElementById('nameUser').innerHTML = '".$_SESSION["user"]."'; </script>";
+            echo "<script> document.getElementById('inputName').value = '".$_SESSION["user"]."'; </script>";
             echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
             echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
         }
