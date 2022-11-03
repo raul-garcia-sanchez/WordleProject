@@ -21,7 +21,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <title><?php echo $arrayTranslateText["headIndex"]?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <noscript>
     <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
@@ -32,9 +32,9 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <nav class="navigationBarIndex">
                 <ul>
                     <li class="dropdown">
-                        <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                        <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPages" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
+                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
                         </div>
                     </li>
                 </ul>
@@ -91,7 +91,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
     </div>
     <br>
 
-    <form id="formName" action="../playGame/game.php" class="formName" method="POST">
+    <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
         <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
@@ -142,8 +142,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
             echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
         }
         function changeLenguage($lenguage){
-            $fileWords= file("../resources/wordleText".$lenguage.".txt");
-            $fileOpen= fopen("../resources/wordleText".$lenguage.".txt", "r");
+            $fileWords= file("./resources/wordleText".$lenguage.".txt");
+            $fileOpen= fopen("./resources/wordleText".$lenguage.".txt", "r");
             $signDictionary= ":";
             $keysValues= [];
             foreach ($fileWords as $numberLine => $wordsLine){

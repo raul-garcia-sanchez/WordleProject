@@ -7,7 +7,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $arrayTranslateText["headLose"]?></title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <noscript>
     <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
@@ -15,17 +15,17 @@ $arrayTranslateText= $_SESSION["translateText"];?>
 <body class="body_lose">
 
     <?php
-    include '../resources/auxFunctions.php';
+    include './resources/auxFunctions.php';
     calculateTotalPoints();
     ?>
 
     <nav class="navigationBarIndex">
         <ul>
             <li class="dropdown">
-                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["menuLoseToGame"]?></strong></a>
-                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
+                    <a class="linksToPagesGame" href="./game.php"><strong><?php echo $arrayTranslateText["menuLoseToGame"]?></strong></a>
+                    <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
@@ -53,7 +53,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
     </main>
     <script>
         var sound = document.createElement("iframe");
-        sound.setAttribute("src", "../resources/lose.mp3");
+        sound.setAttribute("src", "./resources/lose.mp3");
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
     </script>

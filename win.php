@@ -9,7 +9,7 @@ $arrayTranslateText= $_SESSION["translateText"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $arrayTranslateText["headWin"]?></title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <noscript>
     <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
@@ -17,17 +17,17 @@ $arrayTranslateText= $_SESSION["translateText"];
 <body class="body_win">
 
     <?php
-        include '../resources/auxFunctions.php';
+        include './resources/auxFunctions.php';
         calculateTotalPoints();
     ?>
 
     <nav class="navigationBarIndex">
         <ul>
             <li class="dropdown">
-                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="../playGame/game.php"><strong><?php echo $arrayTranslateText["menuWinToGame"]?></strong></a>
-                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong><?php echo $arrayTranslateText["menuWinToIndex"]?></strong></a>
+                    <a class="linksToPagesGame" href="./game.php"><strong><?php echo $arrayTranslateText["menuWinToGame"]?></strong></a>
+                    <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuWinToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
@@ -55,7 +55,7 @@ $arrayTranslateText= $_SESSION["translateText"];
     </main>
     <script>
         var sound = document.createElement("iframe");
-        sound.setAttribute("src", "../resources/win.mp3");
+        sound.setAttribute("src", "./resources/win.mp3");
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
     </script>

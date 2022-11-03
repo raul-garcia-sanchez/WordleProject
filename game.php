@@ -9,7 +9,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $arrayTranslateText["headGame"]?></title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <noscript>
   <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
@@ -32,9 +32,9 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     <nav class="navigationBarIndex">
         <ul>
             <li class="dropdown">
-                <a id="aPlay" href="../playGame/game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <a id="aPlay" href=".game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="../landingPage/index.php"><strong><?php echo $arrayTranslateText["menuGameToIndex"]?></strong></a>
+                    <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuGameToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
@@ -139,8 +139,8 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             }
         }
         function randomWord($lenguage){
-            $fileWords= file("../resources/words".$lenguage.".txt");
-            $fileOpen= fopen("../resources/words".$lenguage.".txt", "r");
+            $fileWords= file("./resources/words".$lenguage.".txt");
+            $fileOpen= fopen("./resources/words".$lenguage.".txt", "r");
             $arrayWords= [];
             foreach ($fileWords as $lineWord => $word){
                 array_push($arrayWords, $word);
@@ -190,13 +190,13 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             if($_POST['winGame'] == "false"){
                 echo "
                 <script> 
-                    window.location.replace('../losePage/lose.php');
+                    window.location.replace('./lose.php');
                 </script>";
             }
             else{
                 echo "
                 <script>
-                    window.location.replace('../winPage/win.php');
+                    window.location.replace('./win.php');
                 </script>";
             }
         }
