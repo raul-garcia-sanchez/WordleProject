@@ -25,7 +25,7 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
         updateUserWord(letter);//Escribimos letra en posicion 
     };
 }
-
+console.log(ocultWord);
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
     let dictOcultWord = new Map();
     var sameLetters = 0;
@@ -157,7 +157,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     if(document.getElementById("soundError")){
         setTimeout(() => {
             deleteSoundError();
-        }, 1000);
+        }, 2000);
             
         }
     
@@ -166,7 +166,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 function soundError(){
     var sound = document.createElement("iframe");
     sound.setAttribute("id","soundError");
-    sound.setAttribute("src", "../resources/incorrect.mp3");
+    sound.setAttribute("src", "./resources/incorrect.mp3");
     sound.setAttribute("hidden","hidden");
     document.body.appendChild(sound);
 }
@@ -178,7 +178,7 @@ function deleteSoundError(){
 function soundWin(){
     var soundWin = document.createElement("iframe");
     soundWin.setAttribute("id","soundWin");
-    soundWin.setAttribute("src", "../resources/correct.mp3");
+    soundWin.setAttribute("src", "./resources/correct.mp3");
     soundWin.setAttribute("hidden","hidden");
     document.body.appendChild(soundWin);
 }

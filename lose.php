@@ -57,6 +57,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
         </div>
         <div id="finalMessage">  
         <?php
+           
             for($i=0;$i<strlen($arrayTranslateText["finalMessageLose"]);$i++){
                 $style=strval($i+1);
                 echo "<span style='--i:{$style}'>{$arrayTranslateText["finalMessageLose"][$i]}</span>";
@@ -75,6 +76,19 @@ $arrayTranslateText= $_SESSION["translateText"];?>
 
 
     </main>
+
+    <?php
+        if($_SESSION["sound"]){
+            echo "<script>
+                var sound = document.createElement('iframe');
+                sound.setAttribute('src', './resources/lose.mp3');
+                sound.setAttribute('hidden','hidden')
+                document.body.appendChild(sound);
+                </script>";
+            $_SESSION["sound"] = false;
+        }
+        
+    ?>
     <script>
         const openModal = document.querySelector(".publish");
         const closeModal = document.querySelector("#btn-close-modal");
@@ -110,10 +124,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             modalInformation.close();
         })
 
-        var sound = document.createElement("iframe");
-        sound.setAttribute("src", "./resources/lose.mp3");
-        sound.setAttribute("hidden","hidden")
-        document.body.appendChild(sound);
+        
 
         <?php
             if(isset($_POST["accept"])){
@@ -121,7 +132,6 @@ $arrayTranslateText= $_SESSION["translateText"];?>
             }
         ?>
 
-        // Intentar quitar sonido cuando se envia formulario y mirar si se tienen que añadir asi los puntos
     </script>
 
 </body>

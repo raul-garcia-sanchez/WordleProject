@@ -79,6 +79,9 @@ $_SESSION["translateText"]= $arrayTranslateText;
                         ?>>EN</option>
                 </select>
             </form>
+            <div class="headerLanding">
+                <button onclick="seeHallOfFame()" id="hallOfFame"class="hallOfFame">Hall of fames </button>
+            </div>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
     <p id = "nameUser"></p>
@@ -103,6 +106,10 @@ $_SESSION["translateText"]= $arrayTranslateText;
     </div>
 
     <script>
+
+        function seeHallOfFame(){
+            window.location.href = "./ranking.php"
+        }
         function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
             
@@ -131,7 +138,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 <?php
                     $_SESSION['ocultWord'] = "";
                 ?>
-                window.location.href = "../playGame/game.php";
+                window.location.href = "./game.php";
             }
         }
     </script>

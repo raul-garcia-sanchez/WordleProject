@@ -44,6 +44,31 @@ td{
     margin-top: -50px;
 }
 
+.body_index .headerLanding{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.body_index .hallOfFame{
+    margin-right: 45px;
+    margin-top: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D9B504;
+    transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.body_index .hallOfFame:hover{
+    background-color: #907903;
+    transform: scale(1.20);
+}
+
+
+
 .body_index .header-index{
     display: flex;
 }
@@ -354,6 +379,16 @@ iframe{
 .dropdown:hover .dropdown-content {
     display:block;
 }
+
+/* CSS de ranking.php */
+
+.body_ranking #titleRanking{
+    margin-top: 25px;
+    font-size: 5em;
+    text-align: center;
+}
+
+
 
 /* Breakpoints para mobile responsive de index.php */
 

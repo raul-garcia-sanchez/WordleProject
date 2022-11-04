@@ -27,6 +27,8 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         $_SESSION["totalPointsUser"] = (isset($_SESSION["totalPointsUser"]))
             ? $_SESSION["totalPointsUser"]
             : 0;
+
+        $_SESSION['sound'] = true;
     ?>
 
     <nav class="navigationBarIndex">
