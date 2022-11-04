@@ -1,5 +1,8 @@
 <?php session_start();
 $arrayTranslateText= $_SESSION["translateText"];
+if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
 ?>
 
 <!DOCTYPE html>

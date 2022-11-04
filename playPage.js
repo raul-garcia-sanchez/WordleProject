@@ -73,6 +73,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         let color = "#98ff96"; //Color verde
         if (ocultWord.charAt(i) == userWord.charAt(i)){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
+
+
+            console.log("Entra en Verde");
+            document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+
+
             if (lettersRepeats > 0){
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
@@ -81,6 +87,8 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         else{
             color = "#8C661F";//Color marron
         }
+
+
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
         spaceLetter.style.backgroundColor = color;
@@ -94,15 +102,27 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
         if(ocultWordArr.includes(wordArr[i])){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
-            if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){
+            
+            if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){ //entra si la letra esta en el diccionario y no esta pintada ya de verde
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
-
                 color = "#F2E205"; //Color amarillo
+                if ( document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)"){
+                    console.log("Entra en Amarillo");
+                    document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+                }
+                
+                
             }
             else{
                 continue;
             }        
+        }
+        else{
+            if(document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(242, 226, 5)"){
+                console.log("Entra en Marron");
+                document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+            };
         }
         
         spaceLetter.style.backgroundColor = color;

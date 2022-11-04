@@ -84,6 +84,7 @@ select#lenguageSelected{
 
 .body_index .inputName{
     font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     margin: auto;
     padding: 10px 15px;
     border-radius: 5px;
@@ -94,8 +95,7 @@ select#lenguageSelected{
 
 .body_index .btnSubmit{
     font-family: 'Courier New', Courier, monospace;
-    
-    margin: auto;
+    margin: 10px;
     padding: 15px 30px;
     border-radius: 5px;
     cursor: pointer;
@@ -159,6 +159,52 @@ select#lenguageSelected{
     background-color: #b19402;
     transform: scale(1.20);
 }
+
+.body_index .divSubmits{
+    display: flex;
+    justify-content: center;
+}
+.body_index .hrJugar{
+    color: black;
+    width: 30%;
+}
+.body_index label{
+    display: inline;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+dialog::backdrop  {
+    background: rgba(0,0,0,0.75) !important;
+}
+.body_index .buttonsModalReset{
+    display: flex;
+    justify-content: center;
+}
+.body_index #modalReset .titleDialog{
+    display: flex;
+    justify-content: center;
+}
+.body_index #btnReset-no{
+    font-weight: bold;
+    margin: 2px;
+    background-color: grey;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+
+
+}
+.body_index #btnReset-yes{
+    font-weight: bold;
+    margin: 2px;
+    background-color: red;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+
+
+}
 /* CSS de game.php */
 .body_game .containerMainContent{
     display: flex;
@@ -179,7 +225,7 @@ select#lenguageSelected{
 
 .body_game .class-keyboard{
     width: auto;
-    background-color: #D9B504;
+    background-color: #3F8EBF;
     font-weight: bold;
     height: 58px;
     border-radius: 4px;
@@ -215,6 +261,19 @@ select#lenguageSelected{
 .body_win #idTextWin{
     text-align: center;
     }
+
+/* CSS DE error403.php */
+
+.body_error .titleError{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+}
+.body_error .descriptionError{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+}
 
 /* CSS COMUN DE WIN Y LOSE */
 
@@ -309,6 +368,8 @@ iframe{
 .dropdown:hover .dropdown-content {
     display:block;
 }
+
+
 
 /* Breakpoints para mobile responsive de index.php */
 

@@ -93,11 +93,19 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
-        <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
+        <label><?php echo $arrayTranslateText["buttonStart"]?></label>
+        <hr class="hrJugar">
+        <div class="divSubmits">
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit">
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit">
+        </div>
+        <hr class="hrJugar">
+        
+
     </form>
     <br>
     <div class="divReset">
-        <button class="btnReset" name="btnReset" id="btnReset" onclick="window.location.href='logout.php'">RESET</button>
+        <button class="btnReset" name="btnReset" id="btnReset">RESET</button>
     </div>
     <br>
     <div class="alert" id="alert">
@@ -134,7 +142,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 <?php
                     $_SESSION['ocultWord'] = "";
                 ?>
-                window.location.href = "../playGame/game.php";
+                window.location.href = "./game.php";
             }
         }
     </script>
@@ -159,5 +167,30 @@ $_SESSION["translateText"]= $arrayTranslateText;
         };
     ?>
 
+    <dialog id="modalReset">
+        <div class="titleDialog">
+            <h2>Do you want to reset all your data?</h2>
+        </div>
+        <h3>By clicking 'Reset' you will delete all your information and you'll have to login again.</h3>
+        <div class="buttonsModalReset">
+            <button id="btnReset-no">Cancel</button>
+            <button id="btnReset-yes" onclick="window.location.href='logout.php'">Reset</button>
+        </div>
+    </dialog>
+    <script>
+
+            const openModal = document.getElementById("btnReset");
+            const closeModal = document.querySelector("#btnReset-no");
+            const modal = document.querySelector("#modalReset");
+
+            openModal.addEventListener("click",() => {
+                modal.showModal();
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.close();
+            });
+        
+    </script>
 </body>
 </html>
