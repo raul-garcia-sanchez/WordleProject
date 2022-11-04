@@ -138,7 +138,27 @@ select#lenguageSelected{
     flex-direction: row;
     justify-content: space-evenly;
 }
-
+.body_index .divReset{
+    display: flex;
+    justify-content: center;
+}
+.body_index .btnReset{
+    margin: auto;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(242, 226, 5);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px 30px;
+    border-style: solid;
+    text-align: center;
+    cursor: pointer;
+}
+.body_index .btnReset:hover{
+    background-color: #b19402;
+    transform: scale(1.20);
+}
 /* CSS de game.php */
 .body_game .containerMainContent{
     display: flex;

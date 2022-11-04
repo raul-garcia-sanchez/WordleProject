@@ -96,7 +96,9 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
     </form>
     <br>
-    <button class="btnReset" name="btnReset" id="btnReset" onclick="window.location.href='logout.php'">Reset</button>
+    <div class="divReset">
+        <button class="btnReset" name="btnReset" id="btnReset" onclick="window.location.href='logout.php'">RESET</button>
+    </div>
     <br>
     <div class="alert" id="alert">
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
