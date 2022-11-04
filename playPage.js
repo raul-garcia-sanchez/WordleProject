@@ -166,7 +166,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 function soundError(){
     var sound = document.createElement("iframe");
     sound.setAttribute("id","soundError");
-    sound.setAttribute("src", "../resources/incorrect.mp3");
+    sound.setAttribute("src", "./resources/incorrect.mp3");
     sound.setAttribute("hidden","hidden");
     document.body.appendChild(sound);
 }
@@ -178,7 +178,7 @@ function deleteSoundError(){
 function soundWin(){
     var soundWin = document.createElement("iframe");
     soundWin.setAttribute("id","soundWin");
-    soundWin.setAttribute("src", "../resources/correct.mp3");
+    soundWin.setAttribute("src", "./resources/correct.mp3");
     soundWin.setAttribute("hidden","hidden");
     document.body.appendChild(soundWin);
 }
