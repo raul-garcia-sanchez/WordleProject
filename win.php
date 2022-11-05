@@ -33,6 +33,7 @@ $arrayTranslateText= $_SESSION["translateText"];
                 </li>
             </ul>
         </nav>
+        <button onclick="seeHallOfFame()" id="hallOfFame" class="hallOfFame">Hall of fames </button>
         <button class="publish">Publicar estadistiques</button>
     </div>
 
@@ -90,7 +91,12 @@ $arrayTranslateText= $_SESSION["translateText"];
 
 
     <script>
-         const openModal = document.querySelector(".publish");
+
+        function seeHallOfFame(){
+            window.location.href = "./ranking.php"
+        }
+
+        const openModal = document.querySelector(".publish");
         const closeModal = document.querySelector("#btn-close-modal");
         const modal = document.querySelector("#modal");
 
