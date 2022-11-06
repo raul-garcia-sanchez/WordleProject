@@ -11,7 +11,7 @@
 </head>
 <body class="body_ranking">
 
-    <h1 id="titleRanking">Hall Of Fames</h1>
+    <h1 id="titleRanking">Hall Of Fame</h1>
 
     <table>
         <tr>
