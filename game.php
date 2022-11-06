@@ -16,6 +16,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 </noscript>
 <body class="body_game">
     <?php
+        include './resources/auxFunctions.php';
         $_SESSION['user'] = (isset($_POST['inputName']) && strlen($_POST['inputName']) > 0 )
             ? $_POST['inputName']
             : $_SESSION['user'];
@@ -45,6 +46,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     <header>
         <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
         <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
+        <h3 class="class-header">Jugador amb el record: <?php echo getUserRecord()?></h3>
         <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION["totalPointsUser"]?></h3>
     </header>
 

@@ -125,3 +125,7 @@ function getHallOfFames(){
     return $fileArray;//Me devuelve array ordenado de mayor a menor
 }
 
+function getUserRecord(){
+    $arrayRecords = getHallOfFames();
+    return $arrayRecords[0][0];//Me devuelve nombre del que mas puntos tiene
+}
