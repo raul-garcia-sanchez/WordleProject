@@ -445,7 +445,7 @@ iframe{
     .body_index #formLanguage{
         display: flex;
         width: 100px;
-        margin-left: 60px;
+        margin-left: 40px;
         margin-top: 30px;
         height: 45px;
     }
@@ -456,6 +456,27 @@ iframe{
         border: 2px solid black;
         width: 60px;
         font-size: 20px;
+        margin-right: 20px;
+    }
+
+    .body_index .hallOfFame{
+        margin-right: 45px;
+        margin-top: 30px;
+        height: auto;
+        width: auto;
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #D9B504;
+        transition: all .2s ease-in-out;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .titleWordle{
+        margin-top: -10px;
+        font-size: 5em;
+        text-align: center;
     }
 
 }
@@ -526,15 +547,67 @@ iframe{
     
     }
 
-
-
+    .publish{
+        margin-right: 45px;
+        margin-top: 25px;
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #04D939;
+        transition: all .2s ease-in-out;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 20px;
+        height: 55px;
+    }
 }
 
 
 /* Breakpoints para mobile resposive de win.php */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
+    
     .body_win #finalMessage{
         font-size: 50px;
     }
+
+    .body_win .hallOfFame{
+        margin-left: 20px;
+        margin-top: 25px;
+        font-family: 'Courier New', Courier, monospace;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #D9B504;
+        transition: all .2s ease-in-out;
+        font-weight: bold;
+        font-size: 16px;
+        margin-right: 20px;
+        width: auto;
+    }
+
+}
+
+/* Breakpoints para mobile resposive de ranking.php */
+@media only screen and (max-width: 380px) {
+    
+    .body_ranking{
+        width: 95%;
+    }
+
+    .body_ranking #titleRanking{
+        text-align: center;
+        font-size: 3em;
+    }
+
+    .body_ranking table{
+        border-spacing: 4px;
+    }
+
+    .body_ranking td{
+        height: 20px;
+        width: 20px;
+        font-size: 14px;
+    }
+
+    
 
 }

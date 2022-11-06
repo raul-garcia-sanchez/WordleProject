@@ -1,3 +1,7 @@
+<?php session_start();
+$arrayTranslateText= $_SESSION["translateText"];
+$translateWordsHidden= $_SESSION["translateWordsHidden"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Andres cambia el lenguaje -->
@@ -11,8 +15,20 @@
 </head>
 <body class="body_ranking">
 
-    <h1 id="titleRanking">Hall Of Fame</h1>
+    <nav class="navigationBarIndex">
+        <ul>
+            <li class="dropdown">
+                <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
+                <div class="dropdown-content">
+                    <a class="linksToPagesGame" href="./game.php"><strong><?php echo $arrayTranslateText["menuLoseToGame"]?></strong></a>
+                    <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
+    <h1 id="titleRanking">Hall Of Fame</h1>
+    
     <table>
         <tr>
             <td><i class="fa fa-user" aria-hidden="true"></i> Nombre</td>
@@ -31,9 +47,9 @@
             <td>6 <i class="fa fa-check" aria-hidden="true"></i></td>
             <td style="visibility:hidden"></td>
         </tr>
-    </table>
-    <br>
-    <table>
+        <tr>
+        <td style="visibility:hidden"></td>
+        </tr>
         <?php
         include './resources/auxFunctions.php';
         $arrayRanking = getHallOfFames();
