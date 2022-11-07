@@ -33,15 +33,19 @@ $arrayTranslateText= $_SESSION["translateText"];
                 </li>
             </ul>
         </nav>
-        <button onclick="seeHallOfFame()" id="hallOfFame" class="hallOfFame">Hall of fames </button>
+        <button onclick="seeHallOfFame()" id="hallOfFame" class="hallOfFame">Hall of fame </button>
         <button class="publish">Publicar estadistiques</button>
     </div>
 
-    <dialog id="modal">
-        <h2>Vols publicar las estadistiques?</h2>
-        <div class="buttonsModal">
-            <button id="btn-close-modal">Cancel·lar</button>
-            <button id="confirmPublishStatistics">Acceptar</button>
+    <dialog id="modalPublish">
+        <div id="containerDialog">
+            <div class="titleDialog" id="divTitleDialog">
+                <h2 id="titleDialog">Vols publicar les estadistiques?</h2>
+            </div>
+            <div id="btnsDialog" class="buttonsModal">
+                <button id="btnPublish-no">Cancel·lar</button>
+                <button id="btnPublish-yes">Acceptar</button>
+            </div>
         </div>
     </dialog>
 
@@ -97,8 +101,8 @@ $arrayTranslateText= $_SESSION["translateText"];
         }
 
         const openModal = document.querySelector(".publish");
-        const closeModal = document.querySelector("#btn-close-modal");
-        const modal = document.querySelector("#modal");
+        const closeModal = document.querySelector("#btnPublish-no");
+        const modal = document.querySelector("#modalPublish");
 
 
         openModal.addEventListener("click",() => {
@@ -110,9 +114,15 @@ $arrayTranslateText= $_SESSION["translateText"];
             modal.close();
         })
 
+        modal.addEventListener('click', (event) => {
+                if (event.target.id !== 'containerDialog' && event.target.id !== 'divTitleDialog'  && event.target.id !== 'titleDialog' && event.target.id !== 'btnsDialog'  && event.target.id !== 'btnPublish-no' && event.target.id !== 'btnPublish-yes') {
+                    modal.close();
+                }
+            });
+
         const closeModalInformation = document.querySelector("#btn-ok-close");
         const modalInformation = document.querySelector("#messagePostWriteStatistics");
-        const confirmWriteStatistics = document.querySelector("#confirmPublishStatistics");
+        const confirmWriteStatistics = document.querySelector("#btnPublish-yes");
         const btnOkInformation = document.querySelector("#btn-ok-close");
 
         confirmWriteStatistics.addEventListener("click",() => {

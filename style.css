@@ -35,6 +35,10 @@ td{
     font-size: 50px;
 }
 
+dialog::backdrop  {
+    background: rgba(0,0,0,0.75) !important;
+}
+
 /* CSS DE index.php */
 
 .body_index #nameUser{
@@ -212,7 +216,6 @@ select#lenguageSelected{
     font-size: 2em;
 }
 
-
 /* CSS DE win.php */
 
 .body_win #idTextWin{
@@ -280,7 +283,7 @@ select#lenguageSelected{
     justify-content: space-between;
 }
 
-#btn-close-modal{
+#btnPublish-no{
     font-family: 'Courier New', Courier, monospace;
     border-radius: 5px;
     padding: 5px;
@@ -291,7 +294,7 @@ select#lenguageSelected{
     font-size: 16px;
 }
 
-#confirmPublishStatistics{
+#btnPublish-yes{
     font-family: 'Courier New', Courier, monospace;
     border-radius: 5px;
     padding: 5px;

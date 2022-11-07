@@ -80,7 +80,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 </select>
             </form>
             <div class="headerLanding">
-                <button onclick="seeHallOfFame()" id="hallOfFame"class="hallOfFame">Hall of fames </button>
+                <button onclick="seeHallOfFame()" id="hallOfFame"class="hallOfFame">Hall of fame </button>
             </div>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>

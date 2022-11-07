@@ -121,6 +121,23 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         }
     }
 
+    if(userWord == "XNEOX"){
+        var soundMatrix = document.createElement("iframe");
+        soundMatrix.setAttribute("id","soundMatrix");
+        soundMatrix.setAttribute("src", "./resources/matrixSound.mp3");
+        soundMatrix.setAttribute("hidden","hidden");
+        document.body.appendChild(soundMatrix);
+        document.body.style.background = "url('./resources/gifMatrix.gif') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
+        document.getElementsByTagName("header")[0].style.backgroundColor = "white";
+        document.getElementsByTagName("header")[0].style.width = "max-content";
+        document.getElementsByTagName("header")[0].style.margin = "auto";
+        document.getElementsByTagName("li")[0].style.backgroundColor = "white";
+        document.getElementsByTagName("li")[0].style.width = "max-content";
+        
+
+    }
+
     if (userWord === ocultWord){//Comprobamos si la palabra oculta es igual a la que el usuario inserta
         soundWin();
         winGame = true;
@@ -158,7 +175,6 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         setTimeout(() => {
             deleteSoundError();
         }, 2000);
-            
         }
     
     }
