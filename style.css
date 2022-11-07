@@ -23,6 +23,15 @@ td{
     font-size: 20px;
     font-weight: bold;
 }
+
+  
+.slider{
+    font-size: 16px;
+}
+.switch{
+    display: inherit !important;
+}
+
 .titleWordle{
     margin-top: -25px;
     font-size: 5em;
@@ -105,7 +114,7 @@ select#lenguageSelected{
     font-size: 16px;
 }
 
-.body_index #btnSubmit:hover{
+.body_index .btnSubmit:hover{
     background-color: #027333;
     transform: scale(1.20);
 }
@@ -354,6 +363,7 @@ iframe{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
+    font-weight: bold;
     display: block;
     text-align: left;
     transition: all .4s ease-in-out;
@@ -370,6 +380,94 @@ iframe{
 }
 
 
+
+/* DARK MODE */
+body.dark-mode{
+    background-color: #1d3e53;
+    color: white;
+}
+.body_index.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_index.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
+.body_index.dark-mode .inputName {
+    background-color: black;
+    color: white;
+}
+.body_index.dark-mode .btnSubmit {
+    color: white;
+    background-color: #027333;
+}
+
+.body_index.dark-mode .btnSubmit:hover {
+    background-color: #0e3d23;
+}
+.body_index.dark-mode .btnReset {
+    background-color: #b19402;
+    color: white;
+}
+.body_index.dark-mode .btnReset:hover {
+    background-color: #726215;
+}
+
+@media (prefers-color-scheme: dark) { 
+    .body_index{
+        background-color: #1d3e53;
+        color: white;
+    }
+    .body_index .dropdown-content{
+        background-color: #3f5f72;
+    }
+    .body_index .dropdown-content .linksToPages{
+        color: white;
+    }
+    .body_index .inputName{
+        background-color: black;
+        color: white;
+    }
+    .body_index .btnSubmit{
+        color: white;
+        background-color: #027333;
+    }
+    
+    .body_index .btnSubmit:hover{
+        background-color: #0e3d23;
+    }
+    .body_index .btnReset{
+        background-color: #b19402;
+        color: white;
+    }
+    .body_index .btnReset:hover{
+        background-color: #726215;
+    }
+    
+}
+
+/* COLORES NUEVOS:
+    AZUL FONDO: #1d3e53
+    AZUL NAV: #3f5f72
+    Hover de boton modo crono/normal : #0e3d23
+    boton reset light: rgb(242, 226, 5)
+    boton reset dark/hover light: #b19402
+    boton reset hover dark: #726215
+
+*/
+  
+/* @media (prefers-color-scheme: light) {
+
+    .dark-mode{
+            background-color: #1d3e53;
+            color: white;
+    }
+
+} */
+
+/* END DARK MODE */
+
+
+/* RESPONSIVE */
 
 /* Breakpoints para mobile responsive de index.php */
 

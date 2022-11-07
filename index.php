@@ -34,7 +34,12 @@ $_SESSION["translateText"]= $arrayTranslateText;
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
+                            <a class="linksToPages" id= "linksToPagesNormal" href="./game.php"><strong>Normal Mode</strong></strong></a>
+                            <a class="linksToPages" id= "linksToPagesChrono" href="./game.php"><strong>Chrono Mode</strong></strong></a>
+                            <label class="switch">
+                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
+                                <span class="slider">Dark Mode</span>
+                            </label>
                         </div>
                     </li>
                 </ul>
@@ -96,8 +101,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
-            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit">
-            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit">
+            <input class="btnSubmit" id="btnSubmitNormal" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit">
+            <input class="btnSubmit" id="btnSubmitChrono" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit">
         </div>
         <hr class="hrJugar">
         
@@ -149,8 +154,10 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <?php
         if (isset($_SESSION["user"])){
             echo "<script> document.getElementById('inputName').value = '".$_SESSION["user"]."'; </script>";
-            echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
-            echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
+            echo "<script> document.getElementById('linksToPagesNormal').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPagesNormal').style.pointerEvents = 'auto' </script>";
+            echo "<script> document.getElementById('linksToPagesChrono').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPagesChrono').style.pointerEvents = 'auto' </script>";
         }
         function changeLenguage($lenguage){
             $fileWords= file("./resources/wordleText".$lenguage.".txt");
@@ -166,19 +173,45 @@ $_SESSION["translateText"]= $arrayTranslateText;
             return $keysValues;
         };
     ?>
+    <!-- DARK MODE -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 
+            if (!document.getElementById('checkBoxDarkMode').checked){
+                document.getElementById('checkBoxDarkMode').checked = true;
+            }
+
+        }
+        else{
+            
+            if (document.getElementById('checkBoxDarkMode').checked){
+                document.getElementById('checkBoxDarkMode').checked = false;
+            }
+        }
+
+        
+        function changeTheme(){
+            document.body.classList.toggle("dark-mode");
+
+        }
+    </script>
+    <!-- END DARK MODE -->
+
+    <!-- DIALOG -->
     <dialog id="modalReset">
-        <div class="titleDialog">
-            <h2>Do you want to reset all your data?</h2>
-        </div>
-        <h3>By clicking 'Reset' you will delete all your information and you'll have to login again.</h3>
-        <div class="buttonsModalReset">
-            <button id="btnReset-no">Cancel</button>
-            <button id="btnReset-yes" onclick="window.location.href='logout.php'">Reset</button>
+        <div id="containerDialog">
+            <div class="titleDialog" id="divTitleDialog">
+                <h2 id="titleDialog">Do you want to reset all your data?</h2>
+            </div>
+            <h3 id="descDialog">By clicking 'Reset' you will delete all your information and you'll have to login again.</h3>
+            <div id="btnsDialog" class="buttonsModalReset">
+                <button id="btnReset-no">CANCEL</button>
+                <button id="btnReset-yes" onclick="window.location.href='logout.php'">RESET</button>
+            </div>
         </div>
     </dialog>
-    <script>
 
+    <script>
             const openModal = document.getElementById("btnReset");
             const closeModal = document.querySelector("#btnReset-no");
             const modal = document.querySelector("#modalReset");
@@ -187,10 +220,18 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 modal.showModal();
             });
 
+            modal.addEventListener('click', (event) => {
+                if (event.target.id !== 'containerDialog' && event.target.id !== 'titleDialog'  && event.target.id !== 'btnReset-no' && event.target.id !== 'btnReset-yes'  && event.target.id !== 'descDialog' && event.target.id !== 'btnsDialog' && event.target.id !== 'divTitleDialog') {
+                    modal.close();
+                }
+            });
             closeModal.addEventListener("click", () => {
                 modal.close();
             });
         
     </script>
+
+    <!-- END DIALOG -->
+
 </body>
 </html>
