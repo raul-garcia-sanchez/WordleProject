@@ -1,5 +1,8 @@
+crono();
+console.log(ocultWord);
 const keys = document.querySelectorAll('.class-keyboard');//Array con todos los elementos que contienen la clase class-keyboard
 
+let secPoints=0;
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
@@ -144,6 +147,8 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     }
 
     if(finishGame == true){
+        stopCrono();
+        document.getElementById("secPoints").value = secPoints;
         document.getElementById("numYellows").value = countYellows;
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
@@ -195,4 +200,30 @@ function deleteLetter(){//Funcion para borrar letras de una misma fila
     else{
         return;
     }
+}
+
+function crono(){
+    let sec= 0;
+    let min= 0;
+    let hour= 0;
+    id = setInterval(function(){
+        if(min>=59){
+            min= 0;
+            hour= hour +1;
+        }
+        else if(sec>=59){
+            sec= 0;
+            min= min+1;
+        }
+        else{
+            sec= sec+1;
+        }
+        secPoints= secPoints+1;
+        let pCrono= document.querySelector(".pCrono");
+        pCrono.innerHTML= `${hour.toString().padStart(2,"0")}:${min.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
+    },1000);
+}
+
+function stopCrono(){
+    clearInterval(id);
 }

@@ -178,6 +178,21 @@ select#lenguageSelected{
     display: flex;
 }
 
+.body_game .divCrono{
+    display:flex;
+    justify-content:center;
+}
+
+.body_game .divCrono p{
+    background-color: black;
+    color: white;
+    padding: 15px;
+    width: 100px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+}
+
 /* CSS DE lose.php */
 
 .body_lose #idTextLose{

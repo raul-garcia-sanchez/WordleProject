@@ -39,7 +39,9 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             </li>
         </ul>
     </nav>
-
+    <div class= "divCrono">
+        <p class="pCrono">00:00:00</p>
+    </div>
     <header>
         <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
         <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
@@ -159,6 +161,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     </div>
     
         <form id="formDataGames" method="POST">
+            <input hidden type="number" id="secPoints" name="secPoints">
             <input hidden type="number" id="numYellows" name="numYellows">
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
@@ -183,6 +186,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             }
             $_SESSION['loseGames'] = $loseGames;
             $_SESSION['winGames'] = $winGames;
+            $_SESSION['secPoints']= round(70-($_POST['secPoints']/2));
         }
 
         
@@ -208,8 +212,5 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         ?>
     </script>
     <script src="./playPage.js"></script>
-    
-
-    
 </body>
 </html>
