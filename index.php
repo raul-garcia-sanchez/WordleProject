@@ -14,6 +14,11 @@ else{
     $_SESSION["translateWordsHidden"]= "ES";
 }
 $_SESSION["translateText"]= $arrayTranslateText;
+
+if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
+    echo "<script> document.getElementById('checkBoxDarkMode').checked = true</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
@@ -98,6 +103,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
+        <input hidden name="checkBoxDarkMode" id="checkBoxDarkModeInvisible" type="checkbox">
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
@@ -147,6 +153,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 <?php
                     $_SESSION['ocultWord'] = "";
                 ?>
+                document.getElementById("checkBoxDarkModeInvisible").checked = document.getElementById("checkBoxDarkMode").checked;
                 window.location.href = "./game.php";
             }
         }
