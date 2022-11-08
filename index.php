@@ -96,8 +96,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
-            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit">
-            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit">
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit" name="gameMode"> <!-- Les he añadido un name para saber el modo d juego en el game.php -->
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit" name="gameMode">
         </div>
         <hr class="hrJugar">
         
@@ -112,11 +112,9 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
          <strong><?php echo $arrayTranslateText["alert"]?></strong>
     </div>
-
     <script>
         function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
-            
             var userExist =      <?php
                             if (isset($_SESSION['user'])){
                                 echo " true;";

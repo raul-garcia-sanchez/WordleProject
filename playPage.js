@@ -3,11 +3,14 @@ const keys = document.querySelectorAll('.class-keyboard');//Array con todos los 
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
+let loseGameChrono = 0;
+let secPoints=0;//Modo normal con puntuacion Crono
 let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
 var keysSendDelete = keysSendDelete.split(",");
+const gameMode= gameModeNum;//Game Mode WORDLE
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
@@ -24,6 +27,13 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
         
         updateUserWord(letter);//Escribimos letra en posicion 
     };
+}
+
+if(gameMode == 1){
+    modeChrono();
+}
+else{
+    crono();
 }
 
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
@@ -56,7 +66,6 @@ function updateUserWord(letter){//Funcion para escribir la letra en su espacio
         spaceLetter.textContent = letter;
     }
 }
-
 
 function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si pierde, letras acertadas...
     const wordArr = getArrayWord();
@@ -164,10 +173,12 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     }
 
     if(finishGame == true){
+        //document.getElementById("secPoints").value = secPoints;//MODO NORMAL PUNTUACION CRONO
         document.getElementById("numYellows").value = countYellows;
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
+        //document.getElementById("loseGameChrono").value = loseGameChrono;
         setTimeout(() => {
             document.getElementById("formDataGames").submit();
         }, 2000);
@@ -181,7 +192,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
             
         }
     
-    }
+}
    
 function soundError(){
     var sound = document.createElement("iframe");
@@ -215,4 +226,63 @@ function deleteLetter(){//Funcion para borrar letras de una misma fila
     else{
         return;
     }
+}
+
+function modeChrono(){
+    let secFinal= 0;
+    let secMode= 60;
+    let minMode= 1;
+    let modeChronoId = setInterval(function(){
+        if(secFinal == 119){
+            loseGameChrono = 1;
+            //document.getElementById("secPoints").value = secPoints;//MODO NORMAL PUNTUACION CRONO
+            //document.getElementById("loseGameChrono").value = loseGameChrono;
+            document.getElementById("numYellows").value = countYellows;
+            document.getElementById("numBrowns").value = countBrowns;
+            document.getElementById("numAttempts").value = countSends;
+            document.getElementById("winGame").value = winGame;
+            clearInterval(modeChronoId);
+            setTimeout(() => {
+                document.getElementById("formDataGames").submit();
+            }, 1000);
+
+        }
+        else if (secMode<=0){
+            secMode= 59;
+            minMode-= 1;
+            document.querySelector(".pCrono").style.color="red";
+        }
+        else{
+            secMode -= 1;
+            secFinal += 1;
+        }
+        let classModeChrono= document.querySelector(".pCrono");
+        classModeChrono.innerHTML= `${minMode.toString().padStart(2,"0")}:${secMode.toString().padStart(2,"0")}`;
+    }, 1000)
+}
+
+function crono(){
+    let sec= 0;
+    let min= 0;
+    let hour= 0;
+    id = setInterval(function(){
+        if(min>=59){
+            min= 0;
+            hour= hour +1;
+        }
+        else if(sec>=59){
+            sec= 0;
+            min= min+1;
+        }
+        else{
+            sec= sec+1;
+        }
+        secPoints= secPoints+1;
+        let pCrono= document.querySelector(".pCrono");
+        pCrono.innerHTML= `${hour.toString().padStart(2,"0")}:${min.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
+    },1000);
+}
+
+function stopCrono(function_Crono){
+    clearInterval(function_Crono);
 }

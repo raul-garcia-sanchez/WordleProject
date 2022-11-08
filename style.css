@@ -239,9 +239,29 @@ dialog::backdrop  {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.body_game nav .imgCrono{
+    position: fixed;
+    right: 0;
+}
+
 .body_game .rowKeyboard{
     width: auto;
     display: flex;
+}
+
+.body_game .divCrono{
+    display:flex;
+    justify-content:center;
+}
+
+.body_game .divCrono .pCrono{
+    background-color: black;
+    color: white;
+    padding: 15px;
+    width: 100px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
 }
 
 /* CSS DE lose.php */

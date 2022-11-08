@@ -1,4 +1,16 @@
 <?php session_start();
+if(isset($_POST["gameMode"])){
+    if($_POST["gameMode"]== "CHRONO MODE"){//Verifica el modo de juego que hemos seleccionado
+        $gameModeWordle= 1;//EL 1 es el modo crono
+        $_SESSION["gameModeWordle"]= 1;
+    }
+    
+    else if($_POST["gameMode"] == "NORMAL MODE"){
+        $gameModeWordle= 0;//EL 0 es el modo normal
+        $_SESSION["gameModeWordle"]= 0;
+    }
+}
+
 $arrayTranslateText= $_SESSION["translateText"];
 $translateWordsHidden= $_SESSION["translateWordsHidden"];
 if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
@@ -15,7 +27,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="./style.css">
 </head>
 <noscript>
-  <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
+    <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
 <body class="body_game">
     <?php
@@ -32,8 +44,12 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
             ? $_SESSION[$_SESSION['user']."totalPointsUser"]
             : 0;
     ?>
-
     <nav class="navigationBarIndex">
+    <?php //Añade la imagen del cronometro en el modo Crono
+    
+
+    ?>
+    <img src="./resources/crono.png" width=85 class="imgCrono">
         <ul>
             <li class="dropdown">
                 <a id="aPlay" href=".game.php"><span id="iconNavigationBar">&#9776;</span></a>
@@ -44,6 +60,17 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
         </ul>
     </nav>
 
+    <div class="divCrono"> <!-- Cambia el el tag p segun el modo de juego -->
+        <?php
+        if($gameModeWordle == 1){
+            echo '<p class="pCrono">02:00</p>';
+        }
+        else{
+            echo '<p class="pCrono">00:00:00</p>';
+        }
+
+        ?>
+    </div>
     <header>
         <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
         <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
@@ -133,7 +160,6 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
                 return $word;
             }
         }
-
         function exceptionLetter($word){
             if(str_contains($word, "ç")){
                 return str_replace("ç","Ç",$word);
@@ -163,13 +189,16 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     </div>
     
         <form id="formDataGames" method="POST">
+            <input hidden type="number" id="secPoints" name="secPoints"> <!--Modo normal con puntuacion CRONO -->
             <input hidden type="number" id="numYellows" name="numYellows">
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
             <input hidden type="text" id="winGame" name="winGame">
+            <input hidden type="number" id= "loseGameChrono" name="loseGameChrono">
         </form>
     
     <?php
+        $_SESSION["loseGameChronoByTime"] = false;
         $loseGames = 0;
         $winGames = 0;
         $totalPoints = 0;
@@ -187,11 +216,18 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
             }
             $_SESSION['loseGames'] = $loseGames;
             $_SESSION['winGames'] = $winGames;
+            $_SESSION['secPoints']= round(70-($_POST['secPoints']/2));//MODO NORMAL PUNTUACION CRONO
         }
-
         
-        if(isset($_POST['winGame'])){
-            if($_POST['winGame'] == "false"){
+        if(isset($_POST['winGame']) || isset($_POST['loseGameChrono'])){
+            if($_POST['loseGameChrono'] == 1){
+                $_SESSION["loseGameChronoByTime"] = true;
+                echo "
+                <script> 
+                    window.location.replace('./lose.php');
+                </script>";
+            }
+            else if($_POST['winGame'] == "false"){
                 echo "
                 <script> 
                     window.location.replace('./lose.php');
@@ -208,12 +244,10 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     <script>
         var keysSendDelete = "<?php echo $_SESSION["keysSendDelete"]?>";
         <?php
+            echo "var gameModeNum = '$gameModeWordle';";
             echo "var ocultWord = '$randomWord';";
         ?>
     </script>
     <script src="./playPage.js"></script>
-    
-
-    
 </body>
 </html>
