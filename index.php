@@ -1,4 +1,8 @@
 <?php session_start();
+if(!isset($_SESSION["dark"]) && !isset($_SESSION["light"])){
+    $_SESSION["dark"] = false;
+    $_SESSION["light"] = false;
+}
 if(isset($_POST["lenguageSelected"])){
     $_SESSION["lenguage"]= $_POST["lenguageSelected"];
     $lenguageSelected=$_POST["lenguageSelected"];
@@ -15,9 +19,7 @@ else{
 }
 $_SESSION["translateText"]= $arrayTranslateText;
 
-if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
-    echo "<script> document.getElementById('checkBoxDarkMode').checked = true</script>";
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -103,12 +105,11 @@ if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
     <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
-        <input hidden name="checkBoxDarkMode" id="checkBoxDarkModeInvisible" type="checkbox">
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
-            <input class="btnSubmit" id="btnSubmitNormal" onclick="sendPlayPage(event)" value="NORMAL MODE"  type="submit">
-            <input class="btnSubmit" id="btnSubmitChrono" onclick="sendPlayPage(event)" value="CHRONO MODE"  type="submit">
+            <input class="btnSubmit" id="btnSubmitNormal" onclick="sendPlayPage(event)" value="NORMAL MODE">
+            <input class="btnSubmit" id="btnSubmitChrono" onclick="sendPlayPage(event)" value="CHRONO MODE">
         </div>
         <hr class="hrJugar">
         
@@ -153,8 +154,8 @@ if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
                 <?php
                     $_SESSION['ocultWord'] = "";
                 ?>
-                document.getElementById("checkBoxDarkModeInvisible").checked = document.getElementById("checkBoxDarkMode").checked;
-                window.location.href = "./game.php";
+                
+                document.getElementById("formName").submit();
             }
         }
     </script>
@@ -182,25 +183,43 @@ if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
     ?>
     <!-- DARK MODE -->
     <script>
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 
-            if (!document.getElementById('checkBoxDarkMode').checked){
-                document.getElementById('checkBoxDarkMode').checked = true;
-            }
 
-        }
-        else{
-            
-            if (document.getElementById('checkBoxDarkMode').checked){
-                document.getElementById('checkBoxDarkMode').checked = false;
-            }
-        }
-
-        
         function changeTheme(){
             document.body.classList.toggle("dark-mode");
 
         }
+
+        function changeToDarkOrLightMode(query){
+            if (query.matches) {
+
+                    if (!document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = true;
+                        // $_SESSION["dark"] = true;
+                        // $_SESSION["light"] = false;
+                        changeTheme();
+                    }
+
+                }
+                else{
+
+                    if (document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = false;
+                        // $_SESSION["dark"] = false;
+                        // $_SESSION["light"] = true;
+                    }
+                }
+        }
+
+        
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
+        
+
+        
+        
     </script>
     <!-- END DARK MODE -->
 

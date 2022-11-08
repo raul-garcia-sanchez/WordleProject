@@ -4,10 +4,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     header("Location: error403.php");
 }
-if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
-    echo "<script> document.getElementById('checkBoxDarkMode').checked = true</script>";
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
@@ -21,6 +17,7 @@ if (isset($_SESSION["darkMode"]) && $_SESSION["darkMode"] == true){
 <noscript>
   <h1 id="messageNoJavascript"><?php echo $arrayTranslateText["nojavascript"]?>!!!</h1>
 </noscript>
+
 <body class="body_game">
     <?php
 
