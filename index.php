@@ -84,7 +84,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
             </div>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
-    <p id = "nameUser"></p>
+    <p id="nameUser"></p>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">

@@ -129,9 +129,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.body.appendChild(soundMatrix);
         document.body.style.background = "url('./resources/gifMatrix.gif') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover";
-        document.getElementsByTagName("header")[0].style.backgroundColor = "white";
-        document.getElementsByTagName("header")[0].style.width = "max-content";
-        document.getElementsByTagName("header")[0].style.margin = "auto";
+        document.getElementsByTagName("header")[0].classList.add("easterEgg")
         document.getElementsByTagName("li")[0].style.backgroundColor = "white";
         document.getElementsByTagName("li")[0].style.width = "max-content";
         

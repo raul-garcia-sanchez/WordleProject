@@ -204,6 +204,12 @@ select#lenguageSelected{
     display: flex;
 }
 
+.body_game .easterEgg{
+    background-color: white;
+    width: max-content;
+    margin: auto;
+}
+
 /* CSS DE lose.php */
 
 .body_lose #idTextLose{
@@ -505,6 +511,12 @@ iframe{
         transition: all .4s ease-in-out;
     
     }
+
+    .body_game .easterEgg{
+        background-color: white;
+        width: 100%;
+        margin: auto;
+    }
     
 }
 
@@ -585,6 +597,14 @@ iframe{
         font-size: 16px;
         margin-right: 20px;
         width: auto;
+    }
+
+    .body_win .titleDialog{
+        text-align: center;
+    }
+
+    .body_win #messagePostWriteStatistics{
+        text-align: center;
     }
 
 }
