@@ -382,6 +382,8 @@ iframe{
 
 
 /* DARK MODE */
+
+/* Dark Mode index */
 body.dark-mode{
     background-color: #1d3e53;
     color: white;
@@ -412,6 +414,51 @@ body.dark-mode{
     background-color: #726215;
 }
 
+/* Dark Mode game */
+.body_game.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_game.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}   
+.body_game.dark-mode  td {
+    background-color: #3F8EBF;
+}
+.body_game.dark-mode .class-keyboard{
+    color: white;
+    background-color: black;
+}
+/* Dark Mode win */
+.body_win.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_win.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}   
+.body_win.dark-mode td{
+    background-color: black;
+    color: white;
+}
+
+/* Dark Mode lose */
+.body_lose.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_lose.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
+.body_lose.dark-mode td{
+    background-color: black;
+    color: white;
+}
+
+/* Dark Mode error 403 */
+.body_error.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_error.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
 
 
 /* COLORES NUEVOS:

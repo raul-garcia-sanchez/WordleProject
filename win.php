@@ -31,6 +31,10 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
                 <div class="dropdown-content">
                     <a class="linksToPagesGame" href="./game.php"><strong><?php echo $arrayTranslateText["menuWinToGame"]?></strong></a>
                     <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuWinToIndex"]?></strong></a>
+                    <label class="switch">
+                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
+                                <span class="slider">Dark Mode</span>
+                    </label>
                 </div>
             </li>
         </ul>
@@ -61,6 +65,42 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
         sound.setAttribute("src", "./resources/win.mp3");
         sound.setAttribute("hidden","hidden")
         document.body.appendChild(sound);
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-mode");
+
+        }
+
+        function changeToDarkOrLightMode(query){
+            if (query.matches) {
+
+                    if (!document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = true;
+                        // $_SESSION["dark"] = true;
+                        // $_SESSION["light"] = false;
+                        changeTheme();
+                    }
+
+                }
+                else{
+
+                    if (document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = false;
+                        // $_SESSION["dark"] = false;
+                        // $_SESSION["light"] = true;
+                    }
+                }
+        }
+
+
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
+
+
+
+
     </script>
 
 </body>

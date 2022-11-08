@@ -108,8 +108,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
-            <input class="btnSubmit" id="btnSubmitNormal" onclick="sendPlayPage(event)" value="NORMAL MODE">
-            <input class="btnSubmit" id="btnSubmitChrono" onclick="sendPlayPage(event)" value="CHRONO MODE">
+            <input class="btnSubmit" id="btnSubmitNormal" onclick="sendPlayPage(event)" value="NORMAL MODE" type="submit">
+            <input class="btnSubmit" id="btnSubmitChrono" onclick="sendPlayPage(event)" value="CHRONO MODE" type="submit">
         </div>
         <hr class="hrJugar">
         
