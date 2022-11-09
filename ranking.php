@@ -22,7 +22,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                 <div class="dropdown-content">
                     <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
                     <label class="switch">
-                        <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme(),updateFormAndChangeTheme()">
+                        <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
                         <span class="slider">Dark Mode</span>
                     </label>
                 </div>
@@ -86,14 +86,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 
         }
 
-        function updateFormAndChangeTheme(){
-            if (!document.getElementById('checkBoxDarkMode').checked) {
-                document.getElementById('inputDarkMode').value = "light";
-            }
-            else{
-                document.getElementById('inputDarkMode').value = "dark";
-            }
-        }
 
         function changeTheme(){
             document.body.classList.toggle("dark-mode");
@@ -106,7 +98,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                     if (!document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = true;
 
-                        document.getElementById('inputDarkMode').value = "dark";
                         changeTheme();
                     }
 
@@ -116,7 +107,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                     if (document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = false;
 
-                        document.getElementById('inputDarkMode').value = "light";
                         changeTheme();
 
                     }

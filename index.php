@@ -36,9 +36,9 @@ $_SESSION["accesToWinLose"] = false;
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPagesNormal" onclick="submitByAnchor()"><strong>Play</strong></strong></a>
+                            <a class="linksToPages" id= "linksToPages" onclick="submitByAnchor()"><strong><?php echo $arrayTranslateText['menuQuickPlay']; ?></strong></strong></a>
                             <label class="switch">
-                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme(),updateFormAndChangeTheme()">
+                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
                                 <span class="slider">Dark Mode</span>
                             </label>
                         </div>
@@ -91,7 +91,6 @@ $_SESSION["accesToWinLose"] = false;
             </div>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
-    <p id="nameUser"></p>
 
     <div class ="containerMainContent">
         <img class="imgLanding" src="<?php echo $arrayTranslateText['imgWordle']?>" alt="Quadrícula joc">
@@ -165,10 +164,10 @@ $_SESSION["accesToWinLose"] = false;
     <?php
         if (isset($_SESSION["user"])){
             echo "<script> document.getElementById('inputName').value = '".$_SESSION["user"]."'; </script>";
-            echo "<script> document.getElementById('linksToPagesNormal').style.cursor = 'pointer'; </script>";
-            echo "<script> document.getElementById('linksToPagesNormal').style.pointerEvents = 'auto' </script>";
-            echo "<script> document.getElementById('linksToPagesChrono').style.cursor = 'pointer'; </script>";
-            echo "<script> document.getElementById('linksToPagesChrono').style.pointerEvents = 'auto' </script>";
+            echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
+            // echo "<script> document.getElementById('linksToPagesChrono').style.cursor = 'pointer'; </script>";
+            // echo "<script> document.getElementById('linksToPagesChrono').style.pointerEvents = 'auto' </script>";
         }
         function changeLenguage($lenguage){
             $fileWords= file("./resources/wordleText".$lenguage.".txt");
@@ -208,15 +207,6 @@ $_SESSION["accesToWinLose"] = false;
 
         }
 
-        function updateFormAndChangeTheme(){
-            if (!document.getElementById('checkBoxDarkMode').checked) {
-                document.getElementById('inputDarkMode').value = "light";
-            }
-            else{
-                document.getElementById('inputDarkMode').value = "dark";
-            }
-        }
-
         function changeTheme(){
             document.body.classList.toggle("dark-mode");
 
@@ -228,7 +218,6 @@ $_SESSION["accesToWinLose"] = false;
                     if (!document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = true;
 
-                        document.getElementById('inputDarkMode').value = "dark";
                         changeTheme();
                     }
 
@@ -238,7 +227,6 @@ $_SESSION["accesToWinLose"] = false;
                     if (document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = false;
 
-                        document.getElementById('inputDarkMode').value = "light";
                         changeTheme();
 
                     }
