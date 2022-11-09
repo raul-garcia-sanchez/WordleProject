@@ -582,6 +582,19 @@ iframe{
         text-align: center;
     }
 
+    .body_index .titleDialog{
+        text-align: center;
+    }
+
+    .body_index #modalReset h3{
+        text-align: center;
+    }
+
+    .body_index .alert{
+        width: 90%;
+        text-align: center;
+    }
+
 }
 
 /* Breakpoints para mobile responsive de game.php */
@@ -722,8 +735,10 @@ iframe{
     .body_ranking td{
         height: 20px;
         width: 20px;
-        font-size: 14px;
+        font-size: 10px;
     }
+
+    
 
     
 

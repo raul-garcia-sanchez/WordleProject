@@ -1,6 +1,10 @@
 <?php session_start();
+$_SESSION["see"] = false;
 $arrayTranslateText= $_SESSION["translateText"];
 if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
+else if($_SESSION["accesToWinLose"] == false){
     header("Location: error403.php");
 }
 ?>
@@ -20,7 +24,10 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
     <?php
     include './resources/auxFunctions.php';
-    calculateTotalPoints("lose");//Tiene un parametro para saber que has perdido
+    if(isset($_SESSION["see"])){
+        calculateTotalPoints("lose");//Tiene un parametro para saber que has perdido
+    }
+    
     ?>
 
     <div class="headerFinalPages">
@@ -75,7 +82,11 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
                 </script>";
             $_SESSION["sound"] = false;
         }
-        
+        $_SESSION["accesToWinLose"] = false;
+    ?>
+
+    <?php
+        unset($_SESSION["see"]);
     ?>
 
 </body>

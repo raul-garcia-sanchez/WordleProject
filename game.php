@@ -1,5 +1,9 @@
 <?php session_start();
+$_SESSION["see"] = true;
 $arrayTranslateText= $_SESSION["translateText"];
+if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
 $_SESSION["loseGameChronoByTime"] = false;
 if(isset($_POST["gameMode"])){//ELIGE EL MODO DE JUEGO SEGUN QUE HEMOS ELEGIDO
     if($_POST["gameMode"] == $arrayTranslateText["buttonNormalMode"]){//Verifica el modo de juego que hemos seleccionado
@@ -58,6 +62,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             : 0;
 
         $_SESSION['sound'] = true;
+
     ?>
 
     <nav class="navigationBarIndex">
@@ -240,18 +245,21 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         if(isset($_POST['winGame']) || isset($_POST['loseGameChrono'])){
             if($_POST['loseGameChrono'] == 1){
                 $_SESSION["loseGameChronoByTime"] = true;
+                $_SESSION["accesToWinLose"] = true;
                 echo "
                 <script> 
                     window.location.replace('./lose.php');
                 </script>";
             }
             else if($_POST['winGame'] == "false"){
+                $_SESSION["accesToWinLose"] = true;
                 echo "
                 <script> 
                     window.location.replace('./lose.php');
                 </script>";
             }
             else{
+                $_SESSION["accesToWinLose"] = true;
                 echo "
                 <script>
                     window.location.replace('./win.php');

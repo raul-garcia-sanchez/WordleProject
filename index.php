@@ -14,6 +14,7 @@ else{
     $_SESSION["translateWordsHidden"]= "ES";
 }
 $_SESSION["translateText"]= $arrayTranslateText;
+$_SESSION["accesToWinLose"] = false;
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
