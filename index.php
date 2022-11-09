@@ -30,16 +30,22 @@ $_SESSION["accesToWinLose"] = false;
 <body class="body_index">
     
     <header class="header-index">
+        
         <nav class="navigationBarIndex">
                 <ul>
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText["menuQuickPlay"]?></strong></strong></a>
+                            <a class="linksToPages" id= "linksToPagesNormal" onclick="submitByAnchor()"><strong>Play</strong></strong></a>
+                            <label class="switch">
+                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme(),updateFormAndChangeTheme()">
+                                <span class="slider">Dark Mode</span>
+                            </label>
                         </div>
                     </li>
                 </ul>
         </nav>
+
         <form id="formLanguage" method="POST">
                 <select id="lenguageSelected" name="lenguageSelected" onchange="this.form.submit()">
                     <option value="ES" <?php 
@@ -146,7 +152,8 @@ $_SESSION["accesToWinLose"] = false;
                 <?php
                     $_SESSION['ocultWord'] = "";
                 ?>
-                window.location.href = "./game.php";
+                
+                document.getElementById("formName").submit();
             }
         }
 
@@ -157,9 +164,11 @@ $_SESSION["accesToWinLose"] = false;
     </script>
     <?php
         if (isset($_SESSION["user"])){
-            echo "<script> document.getElementById('nameUser').innerHTML = '".$_SESSION["user"]."'; </script>";
-            echo "<script> document.getElementById('linksToPages').style.cursor = 'pointer'; </script>";
-            echo "<script> document.getElementById('linksToPages').style.pointerEvents = 'auto' </script>";
+            echo "<script> document.getElementById('inputName').value = '".$_SESSION["user"]."'; </script>";
+            echo "<script> document.getElementById('linksToPagesNormal').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPagesNormal').style.pointerEvents = 'auto' </script>";
+            echo "<script> document.getElementById('linksToPagesChrono').style.cursor = 'pointer'; </script>";
+            echo "<script> document.getElementById('linksToPagesChrono').style.pointerEvents = 'auto' </script>";
         }
         function changeLenguage($lenguage){
             $fileWords= file("./resources/wordleText".$lenguage.".txt");
@@ -175,6 +184,77 @@ $_SESSION["accesToWinLose"] = false;
             return $keysValues;
         };
     ?>
+
+    <script>
+
+        function submitByAnchor(){
+            document.getElementById("formName").submit();
+        }
+
+        function changeThemeCheckingCheckBox(){
+            const query = window.matchMedia('(prefers-color-scheme: dark)');
+            if (query.matches) {
+                if (!document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+
+            }
+            else{
+
+                if (document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+            }
+
+        }
+
+        function updateFormAndChangeTheme(){
+            if (!document.getElementById('checkBoxDarkMode').checked) {
+                document.getElementById('inputDarkMode').value = "light";
+            }
+            else{
+                document.getElementById('inputDarkMode').value = "dark";
+            }
+        }
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-mode");
+
+        }
+
+        function changeToDarkOrLightMode(query){
+            if (query.matches) {
+
+                    if (!document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = true;
+
+                        document.getElementById('inputDarkMode').value = "dark";
+                        changeTheme();
+                    }
+
+                }
+                else{
+
+                    if (document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = false;
+
+                        document.getElementById('inputDarkMode').value = "light";
+                        changeTheme();
+
+                    }
+                }
+        }
+
+
+    const query = window.matchMedia('(prefers-color-scheme: dark)');
+    changeToDarkOrLightMode(query);
+    query.addListener(changeToDarkOrLightMode);
+
+
+
+
+
+    </script>
 
     <dialog id="modalReset">
         <div class="titleDialog">
@@ -200,5 +280,21 @@ $_SESSION["accesToWinLose"] = false;
                 modal.close();
             });
     </script>
+
+    <?php
+        if (isset($_POST['inputDarkMode'])) {
+            if ($_POST["inputDarkMode"] == 'dark') {
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = true;
+            changeThemeCheckingCheckBox()
+            </script>";
+            }
+            else{
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = false;
+            changeThemeCheckingCheckBox()
+            </script>";
+            } 
+        }
+    ?>
+
 </body>
 </html>

@@ -21,6 +21,10 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                 <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
                     <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
+                    <label class="switch">
+                        <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme(),updateFormAndChangeTheme()">
+                        <span class="slider">Dark Mode</span>
+                    </label>
                 </div>
             </li>
         </ul>
@@ -62,6 +66,64 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 
         ?>
     </table>
+    
+    <script>
+
+        function changeThemeCheckingCheckBox(){
+            const query = window.matchMedia('(prefers-color-scheme: dark)');
+            if (query.matches) {
+                if (!document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+
+            }
+            else{
+
+                if (document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+            }
+
+        }
+
+        function updateFormAndChangeTheme(){
+            if (!document.getElementById('checkBoxDarkMode').checked) {
+                document.getElementById('inputDarkMode').value = "light";
+            }
+            else{
+                document.getElementById('inputDarkMode').value = "dark";
+            }
+        }
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-mode");
+
+        }
+
+        function changeToDarkOrLightMode(query){
+            if (query.matches) {
+
+                    if (!document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = true;
+
+                        document.getElementById('inputDarkMode').value = "dark";
+                        changeTheme();
+                    }
+
+                }
+                else{
+
+                    if (document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = false;
+
+                        document.getElementById('inputDarkMode').value = "light";
+                        changeTheme();
+
+                    }
+                }
+        }
+
+    </script>
     
 </body>
 </html>

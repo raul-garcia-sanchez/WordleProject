@@ -39,6 +39,15 @@ dialog::backdrop  {
     background: rgba(0,0,0,0.75) !important;
 }
 
+.slider{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.switch{
+    display: inherit !important;
+}
+
 /* CSS DE index.php */
 
 .body_index #nameUser{
@@ -46,29 +55,6 @@ dialog::backdrop  {
     font-weight: bold   ;
     text-align: center;
     margin-top: -50px;
-}
-
-.body_index .headerLanding{
-    width: 100%;
-    display: flex;
-    justify-content: end;
-}
-
-.body_index .hallOfFame{
-    margin-right: 45px;
-    margin-top: 25px;
-    font-family: 'Courier New', Courier, monospace;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #D9B504;
-    transition: all .2s ease-in-out;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.body_index .hallOfFame:hover{
-    background-color: #907903;
-    transform: scale(1.20);
 }
 
 .body_index .header-index{
@@ -93,16 +79,17 @@ select#lenguageSelected{
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .body_index .containerMainContent .instructions{
     font-size: 25px;
     padding: 0 20px 10px;
     margin: 0;
 }
+
 .body_index .containerMainContent  .imgLanding{
     width:285px;
     height: 345px;
 }
-
 
 .body_index .formName{
     display: flex;
@@ -111,6 +98,7 @@ select#lenguageSelected{
 
 .body_index .inputName{
     font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     margin: auto;
     padding: 10px 15px;
     border-radius: 5px;
@@ -118,10 +106,9 @@ select#lenguageSelected{
     text-align: center;
 }
 
-
 .body_index .btnSubmit{
     font-family: 'Courier New', Courier, monospace;
-    margin: auto;
+    margin: 10px;
     padding: 15px 30px;
     border-radius: 5px;
     cursor: pointer;
@@ -144,7 +131,7 @@ select#lenguageSelected{
     background-color: #3F8EBF;
     color: white;
 }
-  
+
 .body_index .closebtn {
     margin-left: 15px;
     color: white;
@@ -155,19 +142,22 @@ select#lenguageSelected{
     cursor: pointer;
     transition: 0.3s;
 }
-  
+
 .body_index .closebtn:hover {
     color: black;
 }
+
 .body_index .containerMainContent{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .body_index .divReset{
     display: flex;
     justify-content: center;
 }
+
 .body_index .btnReset{
     margin: auto;
     border-radius: 5px;
@@ -226,8 +216,29 @@ dialog::backdrop  {
     padding: 10px;
     cursor: pointer;
     border-radius: 4px;
+}
 
+.body_index .headerLanding{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
 
+.body_index .hallOfFame{
+    margin-right: 45px;
+    margin-top: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D9B504;
+    transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.body_index .hallOfFame:hover{
+    background-color: #907903;
+    transform: scale(1.20);
 }
 
 /* CSS de game.php */
@@ -453,6 +464,7 @@ iframe{
     pointer-events: none;
     color: black;
 }
+
 .linksToPages{
     pointer-events: none;
     cursor: pointer;
@@ -482,17 +494,17 @@ iframe{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
+    font-weight: bold;
     display: block;
     text-align: left;
     transition: all .4s ease-in-out;
-
 }
 
 .dropdown-content a:hover {
     color: white;
-	background-color: rgba(208, 208, 207, 0.2)
-
+    background-color: rgba(208, 208, 207, 0.2);
 }
+
 .dropdown:hover .dropdown-content {
     display:block;
 }
@@ -508,6 +520,110 @@ iframe{
 .body_ranking td{
     width: 130px;
 }
+
+/* DARK MODE */
+
+/* Dark Mode index */
+body.dark-mode{
+    background-color: #1d3e53;
+    color: white;
+}
+.body_index.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_index.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
+.body_index.dark-mode .inputName {
+    background-color: black;
+    color: white;
+}
+.body_index.dark-mode .btnSubmit {
+    color: white;
+    background-color: #027333;
+}
+
+.body_index.dark-mode .btnSubmit:hover {
+    background-color: #0e3d23;
+}
+.body_index.dark-mode .btnReset {
+    background-color: #b19402;
+    color: white;
+}
+.body_index.dark-mode .btnReset:hover {
+    background-color: #726215;
+}
+
+/* Dark Mode game */
+.body_game.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_game.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}   
+.body_game.dark-mode  td {
+    background-color: #3F8EBF;
+}
+.body_game.dark-mode .class-keyboard{
+    color: white;
+    background-color: black;
+}
+.body_game.dark-mode .green{
+    background-color: #0e3d23 !important;
+}
+.body_game.dark-mode .yellow{
+    background-color: #b19402 !important;
+}
+.body_game.dark-mode .brown{
+    background-color: #44320f !important;
+}
+
+/* Dark Mode win */
+.body_win.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_win.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}   
+.body_win.dark-mode td{
+    background-color: black;
+    color: white;
+}
+
+/* Dark Mode lose */
+.body_lose.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_lose.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
+.body_lose.dark-mode td{
+    background-color: black;
+    color: white;
+}
+
+/* Dark Mode error 403 */
+.body_error.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_error.dark-mode .dropdown-content .linksToPages {
+    color: white;
+}
+
+body.dark-mode dialog{
+    background-color: black;
+    color: white;
+}
+
+/* COLORES NUEVOS:
+    AZUL FONDO: #1d3e53
+    AZUL NAV: #3f5f72
+    Hover de boton modo crono/normal : #0e3d23
+    boton reset light: rgb(242, 226, 5)
+    boton reset dark/hover light: #b19402
+    boton reset hover dark: #726215
+    amarillo cuando fallas(mismo que reset): #b19402
+    marron cuando fallas: #44320f
 
 /* Breakpoints para mobile responsive de index.php */
 
