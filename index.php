@@ -1,8 +1,4 @@
 <?php session_start();
-if(!isset($_SESSION["dark"]) && !isset($_SESSION["light"])){
-    $_SESSION["dark"] = false;
-    $_SESSION["light"] = false;
-}
 if(isset($_POST["lenguageSelected"])){
     $_SESSION["lenguage"]= $_POST["lenguageSelected"];
     $lenguageSelected=$_POST["lenguageSelected"];
@@ -18,9 +14,6 @@ else{
     $_SESSION["translateWordsHidden"]= "ES";
 }
 $_SESSION["translateText"]= $arrayTranslateText;
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
@@ -41,10 +34,10 @@ $_SESSION["translateText"]= $arrayTranslateText;
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPagesNormal" href="./game.php"><strong>Normal Mode</strong></strong></a>
-                            <a class="linksToPages" id= "linksToPagesChrono" href="./game.php"><strong>Chrono Mode</strong></strong></a>
+                            <a class="linksToPages" id= "linksToPagesNormal" onclick="submitByAnchor()"><strong>Normal Mode</strong></strong></a>
+                            <a class="linksToPages" id= "linksToPagesChrono" onclick="submitByAnchor()"><strong>Chrono Mode</strong></strong></a>
                             <label class="switch">
-                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
+                                <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme(),updateFormAndChangeTheme()">
                                 <span class="slider">Dark Mode</span>
                             </label>
                         </div>
@@ -105,6 +98,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
+        <input hidden id="checkBoxDarkModeInvisible" type="checkbox"> 
+        <input hidden name="inputDarkMode" id="inputDarkMode" type="text">
         <label><?php echo $arrayTranslateText["buttonStart"]?></label>
         <hr class="hrJugar">
         <div class="divSubmits">
@@ -184,6 +179,35 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <!-- DARK MODE -->
     <script>
 
+        function submitByAnchor(){
+            document.getElementById("formName").submit();
+        }
+
+        function changeThemeCheckingCheckBox(){
+            const query = window.matchMedia('(prefers-color-scheme: dark)');
+            if (query.matches) {
+                if (!document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+
+            }
+            else{
+
+                if (document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+            }
+
+        }
+
+        function updateFormAndChangeTheme(){
+            if (!document.getElementById('checkBoxDarkMode').checked) {
+                document.getElementById('inputDarkMode').value = "light";
+            }
+            else{
+                document.getElementById('inputDarkMode').value = "dark";
+            }
+        }
 
         function changeTheme(){
             document.body.classList.toggle("dark-mode");
@@ -195,8 +219,8 @@ $_SESSION["translateText"]= $arrayTranslateText;
 
                     if (!document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = true;
-                        // $_SESSION["dark"] = true;
-                        // $_SESSION["light"] = false;
+
+                        document.getElementById('inputDarkMode').value = "dark";
                         changeTheme();
                     }
 
@@ -205,8 +229,10 @@ $_SESSION["translateText"]= $arrayTranslateText;
 
                     if (document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = false;
-                        // $_SESSION["dark"] = false;
-                        // $_SESSION["light"] = true;
+
+                        document.getElementById('inputDarkMode').value = "light";
+                        changeTheme();
+
                     }
                 }
         }
@@ -259,5 +285,19 @@ $_SESSION["translateText"]= $arrayTranslateText;
 
     <!-- END DIALOG -->
 
+    <?php
+        if (isset($_POST['inputDarkMode'])) {
+            if ($_POST["inputDarkMode"] == 'dark') {
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = true;
+            changeThemeCheckingCheckBox()
+            </script>";
+            }
+            else{
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = false;
+            changeThemeCheckingCheckBox()
+            </script>";
+            } 
+        }
+    ?>
 </body>
 </html>

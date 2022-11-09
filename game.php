@@ -4,6 +4,8 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     header("Location: error403.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
@@ -19,6 +21,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 </noscript>
 
 <body class="body_game">
+    
     <?php
 
         $_SESSION['user'] = (isset($_POST['inputName']) && strlen($_POST['inputName']) > 0 )
@@ -173,6 +176,19 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
             <input hidden type="number" id="numAttempts" name="numAttempts">
             <input hidden type="text" id="winGame" name="winGame">
         </form>
+
+        <form action="./index.php">
+            <input hidden type="text" id="inputDarkMode" name="inputDarkMode">
+        </form>
+
+        <form action="./win.php">
+            <input hidden type="text" id="inputDarkMode" name="inputDarkMode">
+        </form>
+
+        <form action="./lose.php">
+            <input hidden type="text" id="inputDarkMode" name="inputDarkMode">
+        </form>
+    
     
     <?php
         $loseGames = 0;
@@ -219,6 +235,53 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     <script src="./playPage.js"></script>
     <script>
 
+        function submitByAnchor(){
+            document.getElementById("formName").submit();
+        }
+
+        function changeThemeCheckingCheckBox(){
+            const query = window.matchMedia('(prefers-color-scheme: dark)');
+            if (query.matches) {
+                if (!document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+
+            }
+            else{
+
+                if (document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+            }
+
+        }
+
+        function updateFormAndChangeTheme(){
+            if (!document.getElementById('checkBoxDarkMode').checked) {
+                document.getElementById('inputDarkMode').value = "light";
+            }
+            else{
+                document.getElementById('inputDarkMode').value = "dark";
+            }
+        }
+
+        function changeThemeCheckingCheckBox(){
+            const query = window.matchMedia('(prefers-color-scheme: dark)');
+            if (query.matches) {
+                if (!document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+
+            }
+            else{
+
+                if (document.getElementById('checkBoxDarkMode').checked){
+                    changeTheme();
+                }
+            }
+
+        }
+
 
         function changeTheme(){
             document.body.classList.toggle("dark-mode");
@@ -230,8 +293,6 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
                     if (!document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = true;
-                        // $_SESSION["dark"] = true;
-                        // $_SESSION["light"] = false;
                         changeTheme();
                     }
 
@@ -240,8 +301,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
                     if (document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = false;
-                        // $_SESSION["dark"] = false;
-                        // $_SESSION["light"] = true;
+                        changeTheme();
                     }
                 }
         }
@@ -253,6 +313,34 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
     </script>
 
+    <?php 
+        if (isset($_POST['inputDarkMode'])){
+            if ($_POST["inputDarkMode"] == 'dark') {
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = true;
+                changeThemeCheckingCheckBox()
+                </script>";
+
+            }
+            else{
+                echo "<script> document.getElementById('checkBoxDarkMode').checked = false;
+                changeThemeCheckingCheckBox()
+                </script>";
+            }  
+            
+        }
+
+        // if ($_SESSION["dark"]) {
+        //     echo "dark";
+        //     echo "<script> document.getElementById('checkBoxDarkMode').checked = true </script>";
+        // }
+        // else{
+        //     echo "light";
+        //     echo "<script> document.getElementById('checkBoxDarkMode').checked = false ;</script>";
+        // }        
+        // echo $_SESSION["dark"];
+        
+
+    ?>
     
 </body>
 </html>

@@ -27,6 +27,7 @@ td{
   
 .slider{
     font-size: 16px;
+    font-weight: bold;
 }
 .switch{
     display: inherit !important;
@@ -428,6 +429,16 @@ body.dark-mode{
     color: white;
     background-color: black;
 }
+.body_game.dark-mode .green{
+    background-color: #0e3d23 !important;
+}
+.body_game.dark-mode .yellow{
+    background-color: #b19402 !important;
+}
+.body_game.dark-mode .brown{
+    background-color: #44320f !important;
+}
+
 /* Dark Mode win */
 .body_win.dark-mode  .dropdown-content {
     background-color: #3f5f72;
@@ -461,6 +472,13 @@ body.dark-mode{
 }
 
 
+/* Dark Mode Dialog */
+
+body.dark-mode dialog{
+    background-color: black;
+    color: white;
+}
+
 /* COLORES NUEVOS:
     AZUL FONDO: #1d3e53
     AZUL NAV: #3f5f72
@@ -468,17 +486,11 @@ body.dark-mode{
     boton reset light: rgb(242, 226, 5)
     boton reset dark/hover light: #b19402
     boton reset hover dark: #726215
+    amarillo cuando fallas(mismo que reset): #b19402
+    marron cuando fallas: #44320f
+
 
 */
-  
-/* @media (prefers-color-scheme: light) {
-
-    .dark-mode{
-            background-color: #1d3e53;
-            color: white;
-    }
-
-} */
 
 /* END DARK MODE */
 
