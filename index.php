@@ -39,7 +39,7 @@ $_SESSION["accesToWinLose"] = false;
                             <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText['menuQuickPlay']; ?></strong></strong></a>
                             <label class="switch">
                                 <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
-                                <span class="slider">Dark Mode</span>
+                                <span class="slider"><?php echo $arrayTranslateText["darkMode"]?></span>
                             </label>
                         </div>
                     </li>

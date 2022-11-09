@@ -53,6 +53,11 @@ rankingPoints:Punts
 rankingNumberVictory:Nombre de victories per intents
 rankingDefeat:Derrotes
 
+headError:ERROR 403
+titleError:ERROR 403 PROHIBIT
+textError:Ho sentim, no tens permís per accedir a aquesta pàgina
+darkMode:Mode Fosc
+
 gameLoseText:Partides Fallides
 gameWinText:Partides Exitoses
 numberAttemptsText:Nombre d'intents

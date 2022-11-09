@@ -53,6 +53,11 @@ rankingPoints:Puntos
 rankingNumberVictory:Numero de victorias por intentos
 rankingDefeat:Derrotas
 
+headError:ERROR 403
+titleError:ERROR 403 PROHIBIDO
+textError:Lo sentimos, no tienes permiso para acceder a esta página.
+darkMode:Modo Oscuro
+
 gameLoseText:Partidas Perdidas
 gameWinText:Partidas Exitosas
 numberAttemptsText:Número de intentos

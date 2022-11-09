@@ -41,7 +41,7 @@ else if($_SESSION["accesToWinLose"] == false){
                         <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuWinToIndex"]?></strong></a>
                         <label class="switch">
                             <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
-                            <span class="slider">Dark Mode</span>
+                            <span class="slider"><?php echo $arrayTranslateText["darkMode"]?></span>
                         </label>
                     </div>
                 </li>

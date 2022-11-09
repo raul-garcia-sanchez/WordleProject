@@ -53,6 +53,11 @@ rankingPoints:Points
 rankingNumberVictory:Number of wins by attempts
 rankingDefeat:Defeat
 
+headError:ERROR 403
+titleError:ERROR 403 FORBIDDEN
+textError:Sorry, you're not allowed to acces this page
+darkMode:Dark Mode
+
 gameLoseText:Losing Games
 gameWinText:Successful Games
 numberAttemptsText:Number of attempts
