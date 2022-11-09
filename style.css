@@ -664,6 +664,11 @@ body.dark-mode dialog{
     color: white;
 }
 
+
+body.dark-mode .linksToPagesGame{
+    color: white;
+}
+
 /* Breakpoints para mobile responsive de index.php */
 
 @media only screen and (max-width: 799px) {
