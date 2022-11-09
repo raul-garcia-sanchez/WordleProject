@@ -59,7 +59,7 @@ function getStatisticsWin($textWin, $textAttempts){
     }
 
 function calculateTotalPoints($finalGame){//SE HA CAMBIADO LA PUNTUACION PARA EL MODO CRONO
-    $points = 0;
+    $points= 0;
     if($_SESSION["gameModeWordle"]== 0){//SI EL MODO DE JUEGO ES EL NORMAL
         $decreaseYellowPoints= -2;
         $decreaseBrownPoints= -4;
@@ -89,7 +89,6 @@ function calculateTotalPoints($finalGame){//SE HA CAMBIADO LA PUNTUACION PARA EL
 
     if(isset($_SESSION["loseGameChronoByTime"])){//EN CASO DE QUE SE PIERDA POR TIEMPO EN EL MODO CRONO, LA PUNTUACION ES 0
         if ($_SESSION["loseGameChronoByTime"] == true){
-
             $points = 0;
         }
     }
@@ -100,7 +99,8 @@ function calculateTotalPoints($finalGame){//SE HA CAMBIADO LA PUNTUACION PARA EL
         }
         echo "tiempo: ".$_SESSION['secPoints'] . "<br>";
         echo "puntos post tiempo: ".$points . "<br>";
-        $points += $_SESSION['secPoints'];   
+        $points += $_SESSION['secPoints'];
+         
     }
 
     $_SESSION["totalPointsUser"] += $points;

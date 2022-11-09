@@ -1,4 +1,5 @@
 <?php session_start();
+$_SESSION["ver"] = true;
 $arrayTranslateText= $_SESSION["translateText"];
 $_SESSION["loseGameChronoByTime"] = false;
 if(isset($_POST["gameMode"])){//ELIGE EL MODO DE JUEGO SEGUN QUE HEMOS ELEGIDO
@@ -267,8 +268,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         ?>
     </script>
     <script src="./playPage.js"></script>
-    
-
     
 </body>
 </html>

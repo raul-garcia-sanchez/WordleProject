@@ -292,7 +292,7 @@ function crono(){
         secPoints= secPoints+1;
         let pCrono= document.querySelector(".pCrono");
         pCrono.innerHTML= `${hour.toString().padStart(2,"0")}:${min.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
-    },100);
+    },1000);
 }
 
 function stopCrono(function_Crono){

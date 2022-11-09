@@ -1,4 +1,5 @@
 <?php session_start();
+$_SESSION["ver"] = false;
 $arrayTranslateText= $_SESSION["translateText"];
 if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
     header("Location: error403.php");

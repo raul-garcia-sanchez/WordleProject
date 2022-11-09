@@ -22,7 +22,9 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
     <?php
         include './resources/auxFunctions.php';
-        calculateTotalPoints("win");//Tiene un parametro para saber que has perdido
+        if(isset($_SESSION["ver"])){
+            calculateTotalPoints("win");//Tiene un parametro para saber que has perdido
+        }
     ?>
 
     <div class="headerFinalPages">
@@ -151,8 +153,9 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
                 writeStatistics();
             }
         ?>
-
     </script>
-
+    <?php
+        unset($_SESSION["ver"]);
+    ?>
 </body>
 </html>
