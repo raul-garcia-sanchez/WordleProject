@@ -4,7 +4,14 @@ instructions:Guess the <strong>WORDLE</strong> in 6 attempts.<br>Each row must b
 placeholder:Write your name
 buttonStart:PLAY
 alert:<strong>Please enter a username to start playing</strong>
-imgWordle:../resources/imgLandingPageEN.png
+imgWordle:./resources/imgLandingPageEN.png
+buttonReset:Reset
+buttonHallFame:Hall of Fame
+buttonNormalMode:Normal Mode
+buttonChronoMode:Chrono Mode
+buttonCancel:Cancel
+titleCautionReset:Do you want to reset all your data?
+textCautionReset:By clicking 'Reset' you will delete all your information and you'll have to login again.
 
 headGame:GAME
 menuGameToIndex:Main Menu
@@ -16,6 +23,7 @@ firstRowKeyboard:Q,W,E,R,T,Y,U,I,O,P
 secondRowKeyboard:A,S,D,F,G,H,J,K,L
 thirdRowKeyboard:SEND,Z,X,C,V,B,N,M,DELETE
 keysSendDelete:SEND,DELETE
+textPlayerRecord:Player with the record
 
 headLose:DEFEAT
 menuLoseToGame:Play again
@@ -33,6 +41,22 @@ textWin:YOU HAVE SPOT THE HIDDEN WORD!
 pointsWinPt1:YOU HAVE
 pointsWinPt2:POINTS
 finalMessageWin:VICTORY!!
+publishPoints:Publish Statistics
+titleStatistics:Do you want to publish the statistics?
+buttonAccept:Accept
+textAcceptStatistics:Published statistics
+menuQuickPlay:Quickplay
+
+headRanking:RANKING
+rankingName:Name
+rankingPoints:Points
+rankingNumberVictory:Number of wins by attempts
+rankingDefeat:Defeat
+
+headError:ERROR 403
+titleError:ERROR 403 FORBIDDEN
+textError:Sorry, you're not allowed to acces this page
+darkMode:Dark Mode
 
 gameLoseText:Losing Games
 gameWinText:Successful Games

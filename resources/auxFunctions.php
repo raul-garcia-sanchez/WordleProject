@@ -7,7 +7,7 @@ function getStatisticsWin($textWin, $textAttempts){
         $wins4Attempt = 0;
         $wins5Attempt = 0;
         $wins6Attempt = 0;
-        foreach($_SESSION[$_SESSION['user']] as $array){
+        foreach($_SESSION['statisticsUser'] as $array){
             if($array[2] == 1 && $array[3] == "true"){
                 $wins1Attempt = $wins1Attempt + 1;
             }
@@ -58,26 +58,99 @@ function getStatisticsWin($textWin, $textAttempts){
         echo "</tr>";
     }
 
-function calculateTotalPoints(){
-        $points = 0;
-        $pointsYellow = 0;
-        $pointsBrown = 0;
-    foreach($_SESSION[$_SESSION['user']] as $array){
-    $pointsYellow = $array[0] * -2;
-    $pointsBrown = $array[1] * -4;
-
-    if ($pointsYellow + $pointsBrown >= -120){
-        $points += ($pointsYellow + $pointsBrown);
-    }
-    else {
-        $points -= 120;
-    }
+    function calculateTotalPoints($finalGame){//SE HA CAMBIADO LA PUNTUACION PARA EL MODO CRONO
+        $points= 0;
+        if($_SESSION["gameModeWordle"]== 0){//SI EL MODO DE JUEGO ES EL NORMAL
+            $decreaseYellowPoints= -2;
+            $decreaseBrownPoints= -4;
+            $startingPoints= 120;
+        }
+    
+        else{//SI EL MODO DE JUEGO ES EL CRONO
+            $decreaseYellowPoints= -1;
+            $decreaseBrownPoints= -2;
+            $startingPoints= 150;
+        }
+    
+        foreach($_SESSION['statisticsUser'] as $array){//EL FOREACH SE HA CAMBIADO SOLO UN SIGNO
+            $points = 0;
+            $pointsYellow = 0;
+            $pointsBrown = 0;
+            $pointsYellow = $array[0] * $decreaseYellowPoints;
+            $pointsBrown = $array[1] * $decreaseBrownPoints;
+            if ($pointsYellow + $pointsBrown <= $points){
+                $points += (($pointsYellow) + ($pointsBrown));//SE HA CAMBIADO EL SIGNO
+            }
+            else {
+                $points -= $startingPoints;
+            }
+        }
+        $points += $startingPoints;
+    
+        if(isset($_SESSION["loseGameChronoByTime"])){//EN CASO DE QUE SE PIERDA POR TIEMPO EN EL MODO CRONO, LA PUNTUACION ES 0
+            if ($_SESSION["loseGameChronoByTime"] == true){
+                $points = 0;
+            }
+        }
+    
+        if($_SESSION["gameModeWordle"]== 0 && $finalGame == "win"){//EN CASO QUE LOS PUNTOS POR SEGUNDO DEL MODO NORMAL SEAN NEGATIVOS
+            if($_SESSION['secPoints']<=0){
+                $_SESSION['secPoints']= 0;
+            }
+            $points += $_SESSION['secPoints'];
+             
+        }
+    
+        $_SESSION["totalPointsUser"] += $points;
     
     }
-    $points += (120 * count($_SESSION[$_SESSION['user']]));
-
-    $_SESSION[$_SESSION['user']."totalPointsUser"] = $points;
-
+    
+function writeStatistics(){
+        $wins1Attempt = 0;
+        $wins2Attempt = 0;
+        $wins3Attempt = 0;
+        $wins4Attempt = 0;
+        $wins5Attempt = 0;
+        $wins6Attempt = 0;
+        foreach($_SESSION["statisticsUser"] as $array){
+            if($array[2] == 1 && $array[3] == "true"){
+                $wins1Attempt = $wins1Attempt + 1;
+            }
+            else if($array[2] == 2 && $array[3] == "true"){
+                $wins2Attempt = $wins2Attempt + 1;
+            }
+            else if($array[2] == 3 && $array[3] == "true"){
+                $wins3Attempt = $wins3Attempt + 1;
+            }
+            else if($array[2] == 4 && $array[3] == "true"){
+                $wins4Attempt = $wins4Attempt + 1;
+            }
+            else if($array[2] == 5 && $array[3] == "true"){
+                $wins5Attempt = $wins5Attempt + 1;
+            }
+            else if($array[2] == 6 && $array[3] == "true"){
+                $wins6Attempt = $wins6Attempt + 1;
+            }
+        }
+    $file = fopen("./resources/records.txt","a");
+    fwrite($file,$_SESSION['user'].",".$_SESSION["totalPointsUser"].",".$wins1Attempt.",".$wins2Attempt.",".$wins3Attempt.",".$wins4Attempt.",".$wins5Attempt.",".$wins6Attempt.",".$_SESSION['loseGames']."\n");
+    fclose($file);
 }
 
+function getHallOfFames(){
+    $fileArray = array();
+    $file = file("./resources/records.txt");
+    foreach($file as $array){
+        $arrayFile = explode(",",$array);
+        array_push($fileArray,$arrayFile);
+    }
+    usort($fileArray, function(array $elem1,$elem2){
+        return (int)$elem2[1] <=> (int)$elem1[1];
+    });
+    return $fileArray;//Me devuelve array ordenado de mayor a menor
+}
 
+function getUserRecord(){
+    $arrayRecords = getHallOfFames();
+    return $arrayRecords[0][0];//Me devuelve nombre del que mas puntos tiene
+}
