@@ -521,8 +521,26 @@ iframe{
     width: 130px;
 }
 
+/* MODO NEO */
+
+.body_game.neo header{
+    color: greenyellow;
+    background-color: black;
+}
+.body_game.neo .dropdown{
+    background-color: black !important;
+}
+.body_game.neo #aPlay{
+    color: greenyellow !important;
+}
+.body_game.neo .class-keyboard{
+    color: greenyellow;
+    background-color: rgb(77, 77, 77);
+}
+
 /* DARK MODE */
 
+@media not print {
 /* Dark Mode index */
 body.dark-mode{
     background-color: #1d3e53;
@@ -578,22 +596,6 @@ body.dark-mode{
     background-color: #44320f !important;
 }
 
-/* MODO NEO */
-
-.body_game.neo header{
-    color: greenyellow;
-    background-color: black;
-}
-.body_game.neo .dropdown{
-    background-color: black !important;
-}
-.body_game.neo #aPlay{
-    color: greenyellow !important;
-}
-.body_game.neo .class-keyboard{
-    color: greenyellow;
-    background-color: rgb(77, 77, 77);
-}
 
 /* MODO DARK NEO */
 
@@ -672,6 +674,11 @@ body.dark-mode dialog{
     boton reset hover dark: #726215
     amarillo cuando fallas(mismo que reset): #b19402
     marron cuando fallas: #44320f
+    */    
+
+}
+
+
 
 /* Breakpoints para mobile responsive de index.php */
 

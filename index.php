@@ -234,10 +234,6 @@ $_SESSION["accesToWinLose"] = false;
     changeToDarkOrLightMode(query);
     query.addListener(changeToDarkOrLightMode);
 
-
-
-
-
     </script>
 
     <dialog id="modalReset">
