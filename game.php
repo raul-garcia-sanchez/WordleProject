@@ -1,5 +1,37 @@
 <?php session_start();
+$_SESSION["see"] = true;
 $arrayTranslateText= $_SESSION["translateText"];
+if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
+$_SESSION["loseGameChronoByTime"] = false;
+if(isset($_POST["gameMode"])){//ELIGE EL MODO DE JUEGO SEGUN QUE HEMOS ELEGIDO
+    if($_POST["gameMode"] == $arrayTranslateText["buttonNormalMode"]){//Verifica el modo de juego que hemos seleccionado
+        $gameModeWordle= 0;//EL 0 es el modo normal
+        $_SESSION["gameModeWordle"]= 0;
+    }
+    
+    if($_POST["gameMode"] == $arrayTranslateText["buttonChronoMode"]){//Verifica el modo de juego que hemos seleccionado
+        $gameModeWordle= 1;//EL 1 es el modo crono
+        $_SESSION["gameModeWordle"]= 1;
+    }
+}
+
+elseif(isset($_SESSION["gameModeWordle"])){
+    if($_SESSION["gameModeWordle"] == 0){//Verifica el modo de juego que hemos seleccionado
+        $gameModeWordle= 0;//EL 0 es el modo normal
+    }
+    
+    if($_SESSION["gameModeWordle"] == 1){//Verifica el modo de juego que hemos seleccionado
+        $gameModeWordle= 1;//EL 1 es el modo crono
+    }
+}
+
+else{
+    echo "NO HA ENTRADO";
+    $gameModeWordle= 0;//EL 0 es el modo normal QuickPLAY
+    $_SESSION["gameModeWordle"]= 0;
+}
 $translateWordsHidden= $_SESSION["translateWordsHidden"];
 ?>
 <!DOCTYPE html>
@@ -16,34 +48,59 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
 </noscript>
 <body class="body_game">
     <?php
+        include './resources/auxFunctions.php';
         $_SESSION['user'] = (isset($_POST['inputName']) && strlen($_POST['inputName']) > 0 )
             ? $_POST['inputName']
             : $_SESSION['user'];
 
-        $_SESSION[$_SESSION['user']] = (isset($_SESSION[$_SESSION['user']]))
-            ? $_SESSION[$_SESSION['user']]
+        $_SESSION['statisticsUser'] = (isset($_SESSION['statisticsUser']))
+            ? $_SESSION['statisticsUser']
             : array();
 
-        $_SESSION[$_SESSION['user']."totalPointsUser"] = (isset($_SESSION[$_SESSION['user']."totalPointsUser"]))
-            ? $_SESSION[$_SESSION['user']."totalPointsUser"]
+        $_SESSION["totalPointsUser"] = (isset($_SESSION["totalPointsUser"]))
+            ? $_SESSION["totalPointsUser"]
             : 0;
+
+        $_SESSION['sound'] = true;
+
     ?>
 
     <nav class="navigationBarIndex">
+    <?php //Añade la imagen del cronometro en el modo Crono
+    
+    ?>
         <ul>
             <li class="dropdown">
                 <a id="aPlay" href=".game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
                     <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuGameToIndex"]?></strong></a>
+                    <label class="switch">
+                            <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
+                            <span class="slider"><?php echo $arrayTranslateText["darkMode"]?></span>
+                    </label>
                 </div>
+                
             </li>
         </ul>
     </nav>
 
+    <div class="divCrono"> <!-- Cambia el el tag p segun el modo de juego -->
+        <?php
+        if($gameModeWordle == 1){
+            echo '<p class="pCrono">02:00</p>';
+        }
+        else{
+            echo '<p class="pCrono">00:00:00</p>';
+        }
+
+        ?>
+    </div>
+
     <header>
         <h1 class="class-header"><?php echo $arrayTranslateText["headerh1"]?></h1>
         <h2 class="class-header"><?php echo $arrayTranslateText["headerh3Pt1"]?> <?php echo $_SESSION['user']?> <?php echo $arrayTranslateText["headerh3Pt2"]?></h2>
-        <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION[$_SESSION['user']."totalPointsUser"]?></h3>
+        <h3 class="class-header"><?php echo $arrayTranslateText["textPlayerRecord"]?>: <?php echo getUserRecord()?></h3>
+        <h3 id="puntuation" class="class-header"><?php echo $arrayTranslateText["points"]?>: <?php echo $_SESSION["totalPointsUser"]?></h3>
     </header>
 
     <div class ="containerMainContent">
@@ -68,7 +125,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         $firstRowKeyboard = explode(",",$arrayTranslateText["firstRowKeyboard"]);
         $secondRowKeyboard = explode(",",$arrayTranslateText["secondRowKeyboard"]);
         $thirdRowKeyboard = explode(",",$arrayTranslateText["thirdRowKeyboard"]);
-
         if (isset($_SESSION['ocultWord']) && gettype($_SESSION['ocultWord']) == "string" ) {
             $_SESSION['ocultWord'] = "";
         }
@@ -159,6 +215,8 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     </div>
     
         <form id="formDataGames" method="POST">
+            <input hidden type="number" id="secPoints" name="secPoints"> <!--Modo normal con puntuacion CRONO -->
+            <input hidden type="number" id= "loseGameChrono" name="loseGameChrono">
             <input hidden type="number" id="numYellows" name="numYellows">
             <input hidden type="number" id="numBrowns" name="numBrowns">
             <input hidden type="number" id="numAttempts" name="numAttempts">
@@ -166,14 +224,15 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         </form>
     
     <?php
+        $secPoints= 0;
         $loseGames = 0;
         $winGames = 0;
         $totalPoints = 0;
         if(isset($_POST['numYellows']) && isset($_POST['numBrowns']) && isset($_POST['numAttempts']) && isset($_POST['winGame'])){
             $dict = array();
             array_push($dict,$_POST['numYellows'],$_POST['numBrowns'],$_POST['numAttempts'],$_POST['winGame']);
-            array_push($_SESSION[$_SESSION['user']],$dict);
-            foreach($_SESSION[$_SESSION['user']] as $array){
+            array_push($_SESSION['statisticsUser'],$dict);
+            foreach($_SESSION['statisticsUser'] as $array){
                 if($array[3] == "false"){
                     $loseGames = $loseGames + 1;
                 }
@@ -181,19 +240,31 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                     $winGames = $winGames + 1;
                 }
             }
+            $secPoints= round(70-($_POST['secPoints']/2));
             $_SESSION['loseGames'] = $loseGames;
             $_SESSION['winGames'] = $winGames;
+            $_SESSION['secPoints']= $secPoints;//MODO NORMAL PUNTUACION CRONO
         }
 
         
-        if(isset($_POST['winGame'])){
-            if($_POST['winGame'] == "false"){
+        if(isset($_POST['winGame']) || isset($_POST['loseGameChrono'])){
+            if($_POST['loseGameChrono'] == 1){
+                $_SESSION["loseGameChronoByTime"] = true;
+                $_SESSION["accesToWinLose"] = true;
+                echo "
+                <script> 
+                    window.location.replace('./lose.php');
+                </script>";
+            }
+            else if($_POST['winGame'] == "false"){
+                $_SESSION["accesToWinLose"] = true;
                 echo "
                 <script> 
                     window.location.replace('./lose.php');
                 </script>";
             }
             else{
+                $_SESSION["accesToWinLose"] = true;
                 echo "
                 <script>
                     window.location.replace('./win.php');
@@ -202,8 +273,41 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
         }
     ?>
     <script>
+
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-mode");
+
+        }
+
+        function changeToDarkOrLightMode(query){
+            if (query.matches) {
+
+                    if (!document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = true;
+
+                        changeTheme();
+                    }
+
+                }
+                else{
+
+                    if (document.getElementById('checkBoxDarkMode').checked){
+                        document.getElementById('checkBoxDarkMode').checked = false;
+
+                        changeTheme();
+
+                    }
+                }
+        }
+
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
         var keysSendDelete = "<?php echo $_SESSION["keysSendDelete"]?>";
         <?php
+            echo "var gameModeNum = '$gameModeWordle';";
             echo "var ocultWord = '$randomWord';";
         ?>
     </script>
