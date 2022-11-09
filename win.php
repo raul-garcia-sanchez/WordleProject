@@ -1,5 +1,9 @@
 <?php session_start();
 $arrayTranslateText= $_SESSION["translateText"];
+if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +22,7 @@ $arrayTranslateText= $_SESSION["translateText"];
 
     <?php
         include './resources/auxFunctions.php';
-        calculateTotalPoints();
+        calculateTotalPoints("win");//Tiene un parametro para saber que has perdido
     ?>
 
     <div class="headerFinalPages">
@@ -33,24 +37,24 @@ $arrayTranslateText= $_SESSION["translateText"];
                 </li>
             </ul>
         </nav>
-        <button onclick="seeHallOfFame()" id="hallOfFame" class="hallOfFame">Hall of fame </button>
-        <button class="publish">Publicar estadistiques</button>
+        <button onclick="seeHallOfFame()" id="hallOfFame" class="hallOfFame"><?php echo $arrayTranslateText["buttonHallFame"]?> </button>
+        <button class="publish"><?php echo $arrayTranslateText["publishPoints"]?></button>
     </div>
 
     <dialog id="modalPublish">
         <div id="containerDialog">
             <div class="titleDialog" id="divTitleDialog">
-                <h2 id="titleDialog">Vols publicar les estadistiques?</h2>
+                <h2 id="titleDialog"><?php echo $arrayTranslateText["titleStatistics"]?></h2>
             </div>
             <div id="btnsDialog" class="buttonsModal">
-                <button id="btnPublish-no">Cancel·lar</button>
-                <button id="btnPublish-yes">Acceptar</button>
+                <button id="btnPublish-no"><?php echo $arrayTranslateText["buttonCancel"]?></button>
+                <button id="btnPublish-yes"><?php echo $arrayTranslateText["buttonAccept"]?></button>
             </div>
         </div>
     </dialog>
 
     <dialog id="messagePostWriteStatistics">
-        <h2>Estadistiques publicades!!</h2>
+        <h2><?php echo $arrayTranslateText["textAcceptStatistics"]?>!!</h2>
         <div class="buttonModalInformation">
             <button id="btn-ok-close">Ok</button>
         </div>

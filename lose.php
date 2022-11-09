@@ -1,5 +1,9 @@
 <?php session_start();
-$arrayTranslateText= $_SESSION["translateText"];?>
+$arrayTranslateText= $_SESSION["translateText"];
+if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
+    header("Location: error403.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="<?php echo $arrayTranslateText["lang"]?>">
 <head>
@@ -16,7 +20,7 @@ $arrayTranslateText= $_SESSION["translateText"];?>
 
     <?php
     include './resources/auxFunctions.php';
-    calculateTotalPoints();
+    calculateTotalPoints("lose");//Tiene un parametro para saber que has perdido
     ?>
 
     <div class="headerFinalPages">

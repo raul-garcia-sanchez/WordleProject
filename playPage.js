@@ -1,13 +1,18 @@
 const keys = document.querySelectorAll('.class-keyboard');//Array con todos los elementos que contienen la clase class-keyboard
 
+let id;
+let modeChronoId;
 let userWordArr = [[]];//Array que vamos añadiendo las letras que vamos pulsando en el teclado
 let positionStartWord = 11;//Posicion en la que empezamos a escribir
 
+let loseGameChrono = 0;//Sirve para saber si has perdido por tiempo en el modo Crono 
+let secPoints=0;//puntuacion crono que se añade en el modo normal
 let countYellows = 0;
 let countBrowns = 0;
 let winGame = false;
 let finishGame = false;
 var keysSendDelete = keysSendDelete.split(",");
+let gameMode= gameModeNum;//Game Mode WORDLE
 
 let countSends = 0;//Iniciamos contador de veces que le damos a enviar
 for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a la tecla del teclado nos escriba la letra en su espacio correspondiente
@@ -26,6 +31,14 @@ for (let i = 0; i < keys.length; i++){//Bucle para que cada vez que le demos a l
     };
 }
 console.log(ocultWord);
+
+if(gameMode == 1){
+    modeChrono();
+}
+else{
+    crono();
+}
+
 function generateDictionary(){ //Creamos diccionario con letras y cantidad de veces que se repiten
     let dictOcultWord = new Map();
     var sameLetters = 0;
@@ -73,6 +86,8 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         let color = "#98ff96"; //Color verde
         if (ocultWord.charAt(i) == userWord.charAt(i)){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
+            console.log("Entra en Verde");
+            document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
             if (lettersRepeats > 0){
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
@@ -99,14 +114,24 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
 
                 color = "#F2E205"; //Color amarillo
+                if ( document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)"){
+                    console.log("Entra en Amarillo");
+                    document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+                }
             }
             else{
                 continue;
             }        
         }
         
-        spaceLetter.style.backgroundColor = color;
+        else{
+            if(document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(242, 226, 5)"){
+                console.log("Entra en Marron");
+                document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+            };
+        }
 
+        spaceLetter.style.backgroundColor = color;
     }
 
     for(let i = 0; i<wordArr.length; i++){
@@ -159,10 +184,14 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
     }
 
     if(finishGame == true){
+        clearTimeout(id);
+        clearInterval(modeChronoId);
+        document.getElementById("secPoints").value = secPoints;//MODO NORMAL PUNTUACION CRONO
         document.getElementById("numYellows").value = countYellows;
         document.getElementById("numBrowns").value = countBrowns;
         document.getElementById("numAttempts").value = countSends;
         document.getElementById("winGame").value = winGame;
+        document.getElementById("loseGameChrono").value = loseGameChrono;
         setTimeout(() => {
             document.getElementById("formDataGames").submit();
         }, 2000);
@@ -176,7 +205,7 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         }
     
     }
-   
+
 function soundError(){
     var sound = document.createElement("iframe");
     sound.setAttribute("id","soundError");
@@ -209,4 +238,63 @@ function deleteLetter(){//Funcion para borrar letras de una misma fila
     else{
         return;
     }
+}
+
+function modeChrono(){
+    let secFinal= 0;
+    let secMode= 60;
+    let minMode= 1;
+    modeChronoId = setInterval(function(){
+        if(secFinal == 119){
+            loseGameChrono = 1;
+            document.getElementById("secPoints").value = secPoints;//MODO NORMAL PUNTUACION CRONO
+            document.getElementById("loseGameChrono").value = loseGameChrono;
+            document.getElementById("numYellows").value = countYellows;
+            document.getElementById("numBrowns").value = countBrowns;
+            document.getElementById("numAttempts").value = countSends;
+            document.getElementById("winGame").value = winGame;
+            clearInterval(modeChronoId);
+            setTimeout(() => {
+                document.getElementById("formDataGames").submit();
+            }, 1000);
+
+        }
+        else if (secMode<=0){
+            secMode= 59;
+            minMode-= 1;
+            document.querySelector(".pCrono").style.color="red";
+        }
+        else{
+            secMode -= 1;
+            secFinal += 1;
+        }
+        let classModeChrono= document.querySelector(".pCrono");
+        classModeChrono.innerHTML= `${minMode.toString().padStart(2,"0")}:${secMode.toString().padStart(2,"0")}`;
+    }, 100)
+}
+
+function crono(){
+    let sec= 0;
+    let min= 0;
+    let hour= 0;
+    id = setInterval(function(){
+        if(min>=59){
+            min= 0;
+            hour= hour +1;
+        }
+        else if(sec>=59){
+            sec= 0;
+            min= min+1;
+        }
+        else{
+            sec= sec+1;
+        }
+        secPoints= secPoints+1;
+        let pCrono= document.querySelector(".pCrono");
+        pCrono.innerHTML= `${hour.toString().padStart(2,"0")}:${min.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
+    },100);
+}
+
+function stopCrono(function_Crono){
+    clearInterval(function_Crono);
 }

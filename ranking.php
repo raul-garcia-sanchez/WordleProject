@@ -9,7 +9,7 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RANKING</title>
+    <title><?php echo $arrayTranslateText["headRanking"]?></title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -20,21 +20,20 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
             <li class="dropdown">
                 <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                 <div class="dropdown-content">
-                    <a class="linksToPagesGame" href="./game.php"><strong><?php echo $arrayTranslateText["menuLoseToGame"]?></strong></a>
                     <a class="linksToPagesGame" href="./index.php"><strong><?php echo $arrayTranslateText["menuLoseToIndex"]?></strong></a>
                 </div>
             </li>
         </ul>
     </nav>
 
-    <h1 id="titleRanking">Hall Of Fame</h1>
+    <h1 id="titleRanking"><?php echo $arrayTranslateText["buttonHallFame"]?></h1>
     
     <table>
         <tr>
-            <td><i class="fa fa-user" aria-hidden="true"></i> Nombre</td>
-            <td><i class="fa fa-shopping-basket" aria-hidden="true"></i> Puntos</td>
-            <td colspan="6"><i class="fa fa-trophy" aria-hidden="true"></i> Numero de victorias por intentos</td>
-            <td><i class="fa fa-times" aria-hidden="true"></i> Derrotas</td>
+            <td><i class="fa fa-user" aria-hidden="true"></i> <?php echo $arrayTranslateText["rankingName"]?></td>
+            <td><i class="fa fa-shopping-basket" aria-hidden="true"></i> <?php echo $arrayTranslateText["rankingPoints"]?></td>
+            <td colspan="6"><i class="fa fa-trophy" aria-hidden="true"></i> <?php echo $arrayTranslateText["rankingNumberVictory"]?></td>
+            <td><i class="fa fa-times" aria-hidden="true"></i> <?php echo $arrayTranslateText["rankingDefeat"]?></td>
         </tr>
         <tr>
             <td style="visibility:hidden"></td>

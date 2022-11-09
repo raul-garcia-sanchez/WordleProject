@@ -164,6 +164,71 @@ select#lenguageSelected{
     flex-direction: row;
     justify-content: space-evenly;
 }
+.body_index .divReset{
+    display: flex;
+    justify-content: center;
+}
+.body_index .btnReset{
+    margin: auto;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(242, 226, 5);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 15px 30px;
+    border-style: solid;
+    text-align: center;
+    cursor: pointer;
+}
+.body_index .btnReset:hover{
+    background-color: #b19402;
+    transform: scale(1.20);
+}
+
+.body_index .divSubmits{
+    display: flex;
+    justify-content: center;
+}
+.body_index .hrJugar{
+    color: black;
+    width: 30%;
+}
+.body_index label{
+    display: inline;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+dialog::backdrop  {
+    background: rgba(0,0,0,0.75) !important;
+}
+.body_index .buttonsModalReset{
+    display: flex;
+    justify-content: center;
+}
+.body_index #modalReset .titleDialog{
+    display: flex;
+    justify-content: center;
+}
+.body_index #btnReset-no{
+    font-weight: bold;
+    margin: 2px;
+    background-color: grey;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.body_index #btnReset-yes{
+    font-weight: bold;
+    margin: 2px;
+    background-color: red;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+
+
+}
 
 /* CSS de game.php */
 .body_game .containerMainContent{
@@ -210,6 +275,21 @@ select#lenguageSelected{
     margin: auto;
 }
 
+.body_game .divCrono{
+    display:flex;
+    justify-content:center;
+}
+
+.body_game .divCrono .pCrono{
+    background-color: black;
+    color: white;
+    padding: 15px;
+    width: 100px;
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+}
+
 /* CSS DE lose.php */
 
 .body_lose #idTextLose{
@@ -244,6 +324,20 @@ select#lenguageSelected{
     background-color: #907903;
     transform: scale(1.20);
 }
+
+/* CSS DE error403.php */
+
+.body_error .titleError{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+}
+.body_error .descriptionError{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+}
+
 /* CSS COMUN DE WIN Y LOSE */
 
 #finalMessage{

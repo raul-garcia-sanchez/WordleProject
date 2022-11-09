@@ -34,7 +34,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText["buttonStart"]?></strong></strong></a>
+                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText["menuQuickPlay"]?></strong></strong></a>
                         </div>
                     </li>
                 </ul>
@@ -80,7 +80,7 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 </select>
             </form>
             <div class="headerLanding">
-                <button onclick="seeHallOfFame()" id="hallOfFame"class="hallOfFame">Hall of fame </button>
+                <button onclick="seeHallOfFame()" id="hallOfFame"class="hallOfFame"><?php echo $arrayTranslateText['buttonHallFame']?> </button>
             </div>
     </header>
     <h1 class="titleWordle"><?php echo $arrayTranslateText["header"]?></h1>
@@ -97,8 +97,18 @@ $_SESSION["translateText"]= $arrayTranslateText;
     <form id="formName" action="./game.php" class="formName" method="POST">
         <input class="inputName" type="text" name="inputName" id="inputName" placeholder="<?php echo $arrayTranslateText["placeholder"]?>">
         <br>
-        <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText["buttonStart"]?>"  type="submit">
+        <label><?php echo $arrayTranslateText["buttonStart"]?></label>
+        <hr class="hrJugar">
+        <div class="divSubmits">
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText['buttonNormalMode']?>"  type="submit" name="gameMode"> <!-- Les he añadido un name para saber el modo d juego en el game.php -->
+            <input class="btnSubmit" id="btnSubmit" onclick="sendPlayPage(event)" value="<?php echo $arrayTranslateText['buttonChronoMode']?>"  type="submit" name="gameMode">
+        </div>
+        <hr class="hrJugar">
     </form>
+    <br>
+    <div class="divReset">
+        <button class="btnReset" name="btnReset" id="btnReset"><?php echo $arrayTranslateText['buttonReset']?></button>
+    </div>
     <br>
     <div class="alert" id="alert">
         <span class="closebtn" onclick="this.parentElement.style.visibility='hidden';">&times;</span> 
@@ -107,9 +117,6 @@ $_SESSION["translateText"]= $arrayTranslateText;
 
     <script>
 
-        function seeHallOfFame(){
-            window.location.href = "./ranking.php"
-        }
         function sendPlayPage(event) {
             const playerName = document.getElementById("inputName").value;
             
@@ -141,6 +148,11 @@ $_SESSION["translateText"]= $arrayTranslateText;
                 window.location.href = "./game.php";
             }
         }
+
+        function seeHallOfFame(){
+            window.location.href = "./ranking.php"
+        }
+
     </script>
     <?php
         if (isset($_SESSION["user"])){
@@ -163,5 +175,29 @@ $_SESSION["translateText"]= $arrayTranslateText;
         };
     ?>
 
+    <dialog id="modalReset">
+        <div class="titleDialog">
+            <h2><?php echo $arrayTranslateText['titleCautionReset']?></h2>
+        </div>
+        <h3><?php echo $arrayTranslateText['textCautionReset']?></h3>
+        <div class="buttonsModalReset">
+            <button id="btnReset-no"><?php echo $arrayTranslateText['buttonCancel']?></button>
+            <button id="btnReset-yes" onclick="window.location.href='logout.php'"><?php echo $arrayTranslateText['buttonReset']?></button>
+        </div>
+    </dialog>
+    <script>
+
+            const openModal = document.getElementById("btnReset");
+            const closeModal = document.querySelector("#btnReset-no");
+            const modal = document.querySelector("#modalReset");
+
+            openModal.addEventListener("click",() => {
+                modal.showModal();
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.close();
+            });
+    </script>
 </body>
 </html>

@@ -58,25 +58,52 @@ function getStatisticsWin($textWin, $textAttempts){
         echo "</tr>";
     }
 
-function calculateTotalPoints(){
+function calculateTotalPoints($finalGame){//SE HA CAMBIADO LA PUNTUACION PARA EL MODO CRONO
+    $points = 0;
+    if($_SESSION["gameModeWordle"]== 0){//SI EL MODO DE JUEGO ES EL NORMAL
+        $decreaseYellowPoints= -2;
+        $decreaseBrownPoints= -4;
+        $startingPoints= 120;
+    }
+
+    else{//SI EL MODO DE JUEGO ES EL CRONO
+        $decreaseYellowPoints= -1;
+        $decreaseBrownPoints= -2;
+        $startingPoints= 150;
+    }
+
+    foreach($_SESSION['statisticsUser'] as $array){//EL FOREACH SE HA CAMBIADO SOLO UN SIGNO
         $points = 0;
         $pointsYellow = 0;
         $pointsBrown = 0;
-    foreach($_SESSION['statisticsUser'] as $array){
-    $pointsYellow = $array[0] * -2;
-    $pointsBrown = $array[1] * -4;
+        $pointsYellow = $array[0] * $decreaseYellowPoints;
+        $pointsBrown = $array[1] * $decreaseBrownPoints;
+        if ($pointsYellow + $pointsBrown <= $points){
+            $points += (($pointsYellow) + ($pointsBrown));//SE HA CAMBIADO EL SIGNO
+        }
+        else {
+            $points -= $startingPoints;
+        }
+    }
+    $points += $startingPoints;
 
-    if ($pointsYellow + $pointsBrown >= -120){
-        $points += ($pointsYellow + $pointsBrown);
-    }
-    else {
-        $points -= 120;
-    }
-    
-    }
-    $points += (120 * count($_SESSION['statisticsUser']));
+    if(isset($_SESSION["loseGameChronoByTime"])){//EN CASO DE QUE SE PIERDA POR TIEMPO EN EL MODO CRONO, LA PUNTUACION ES 0
+        if ($_SESSION["loseGameChronoByTime"] == true){
 
-    $_SESSION["totalPointsUser"] = $points;
+            $points = 0;
+        }
+    }
+
+    if($_SESSION["gameModeWordle"]== 0 && $finalGame == "win"){//EN CASO QUE LOS PUNTOS POR SEGUNDO DEL MODO NORMAL SEAN NEGATIVOS
+        if($_SESSION['secPoints']<=0){
+            $_SESSION['secPoints']= 0;
+        }
+        echo "tiempo: ".$_SESSION['secPoints'] . "<br>";
+        echo "puntos post tiempo: ".$points . "<br>";
+        $points += $_SESSION['secPoints'];   
+    }
+
+    $_SESSION["totalPointsUser"] += $points;
 
 }
 
