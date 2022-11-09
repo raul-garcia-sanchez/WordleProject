@@ -328,6 +328,10 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
                 }
         }
 
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
         var keysSendDelete = "<?php echo $_SESSION["keysSendDelete"]?>";
         <?php
             echo "var gameModeNum = '$gameModeWordle';";

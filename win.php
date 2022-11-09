@@ -168,6 +168,10 @@ else if($_SESSION["accesToWinLose"] == false){
                 }
         }
 
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
         function seeHallOfFame(){
             window.location.href = "./ranking.php"
         }

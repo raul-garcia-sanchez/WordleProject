@@ -86,6 +86,10 @@
                 }
         }
 
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        changeToDarkOrLightMode(query);
+        query.addListener(changeToDarkOrLightMode);
+
     </script>
     
 </body>
