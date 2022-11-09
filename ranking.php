@@ -69,23 +69,6 @@ $translateWordsHidden= $_SESSION["translateWordsHidden"];
     
     <script>
 
-        function changeThemeCheckingCheckBox(){
-            const query = window.matchMedia('(prefers-color-scheme: dark)');
-            if (query.matches) {
-                if (!document.getElementById('checkBoxDarkMode').checked){
-                    changeTheme();
-                }
-
-            }
-            else{
-
-                if (document.getElementById('checkBoxDarkMode').checked){
-                    changeTheme();
-                }
-            }
-
-        }
-
 
         function changeTheme(){
             document.body.classList.toggle("dark-mode");

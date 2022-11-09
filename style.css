@@ -540,7 +540,6 @@ iframe{
 
 /* DARK MODE */
 
-@media not print {
 /* Dark Mode index */
 body.dark-mode{
     background-color: #1d3e53;
@@ -664,21 +663,6 @@ body.dark-mode dialog{
 .body_ranking.dark-mode .dropdown-content .linksToPages {
     color: white;
 }
-
-/* COLORES NUEVOS:
-    AZUL FONDO: #1d3e53
-    AZUL NAV: #3f5f72
-    Hover de boton modo crono/normal : #0e3d23
-    boton reset light: rgb(242, 226, 5)
-    boton reset dark/hover light: #b19402
-    boton reset hover dark: #726215
-    amarillo cuando fallas(mismo que reset): #b19402
-    marron cuando fallas: #44320f
-    */    
-
-}
-
-
 
 /* Breakpoints para mobile responsive de index.php */
 
