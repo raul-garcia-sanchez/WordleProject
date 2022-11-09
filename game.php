@@ -1,5 +1,6 @@
 <?php session_start();
-$_SESSION["ver"] = true;
+$_SESSION["verWin"] = true;
+$_SESSION["verLose"] = true;
 $arrayTranslateText= $_SESSION["translateText"];
 $_SESSION["loseGameChronoByTime"] = false;
 if(isset($_POST["gameMode"])){//ELIGE EL MODO DE JUEGO SEGUN QUE HEMOS ELEGIDO

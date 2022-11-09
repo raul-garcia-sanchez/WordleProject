@@ -20,8 +20,10 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 <body class="body_lose">
 
     <?php
-    include './resources/auxFunctions.php';
-    calculateTotalPoints("lose");//Tiene un parametro para saber que has perdido
+        include './resources/auxFunctions.php';
+        if(isset($_SESSION["verLose"])){
+            calculateTotalPoints("lose");//Tiene un parametro para saber que has perdido
+        }
     ?>
 
     <div class="headerFinalPages">
@@ -76,8 +78,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
                 </script>";
             $_SESSION["sound"] = false;
         }
-        
+        unset($_SESSION["verLose"]);  
     ?>
-
 </body>
 </html>

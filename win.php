@@ -22,7 +22,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
 
     <?php
         include './resources/auxFunctions.php';
-        if(isset($_SESSION["ver"])){
+        if(isset($_SESSION["verWin"])){
             calculateTotalPoints("win");//Tiene un parametro para saber que has perdido
         }
     ?>
@@ -155,7 +155,7 @@ if (!isset($_POST['inputName']) && !isset($_SESSION['user'])) {
         ?>
     </script>
     <?php
-        unset($_SESSION["ver"]);
+        unset($_SESSION["verWin"]);
     ?>
 </body>
 </html>

@@ -270,7 +270,7 @@ function modeChrono(){
         }
         let classModeChrono= document.querySelector(".pCrono");
         classModeChrono.innerHTML= `${minMode.toString().padStart(2,"0")}:${secMode.toString().padStart(2,"0")}`;
-    }, 100)
+    }, 500)
 }
 
 function crono(){
