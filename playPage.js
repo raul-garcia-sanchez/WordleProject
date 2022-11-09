@@ -185,6 +185,8 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         document.getElementsByTagName("header")[0].classList.add("easterEgg")
         document.getElementsByTagName("li")[0].style.backgroundColor = "white";
         document.getElementsByTagName("li")[0].style.width = "max-content";
+        document.body.classList.add("neo");
+
         
 
     }

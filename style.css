@@ -578,6 +578,40 @@ body.dark-mode{
     background-color: #44320f !important;
 }
 
+/* MODO NEO */
+
+.body_game.neo header{
+    color: greenyellow;
+    background-color: black;
+}
+.body_game.neo .dropdown{
+    background-color: black !important;
+}
+.body_game.neo #aPlay{
+    color: greenyellow !important;
+}
+.body_game.neo .class-keyboard{
+    color: greenyellow;
+    background-color: rgb(77, 77, 77);
+}
+
+/* MODO DARK NEO */
+
+.body_game.dark-mode.neo header{
+    color: greenyellow;
+    background-color: black;
+}
+.body_game.dark-mode.neo .dropdown{
+    background-color: black !important;
+}
+.body_game.dark-mode.neo #aPlay{
+    color: greenyellow !important;
+}
+.body_game.dark-mode.neo .class-keyboard{
+    color: greenyellow;
+    background-color: rgb(77, 77, 77);
+}
+
 /* Dark Mode win */
 .body_win.dark-mode  .dropdown-content {
     background-color: #3f5f72;
@@ -612,6 +646,20 @@ body.dark-mode{
 
 body.dark-mode dialog{
     background-color: black;
+    color: white;
+}
+
+/* Dark Mode 'Hall of Fame' */
+
+.body_ranking.dark-mode td{
+    background-color: black;
+    color: white;
+}
+
+.body_ranking.dark-mode  .dropdown-content {
+    background-color: #3f5f72;
+}
+.body_ranking.dark-mode .dropdown-content .linksToPages {
     color: white;
 }
 

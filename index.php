@@ -36,7 +36,7 @@ $_SESSION["accesToWinLose"] = false;
                     <li class="dropdown">
                         <a id="aPlay" href="./game.php"><span id="iconNavigationBar">&#9776;</span></a>
                         <div class="dropdown-content">
-                            <a class="linksToPages" id= "linksToPages" onclick="submitByAnchor()"><strong><?php echo $arrayTranslateText['menuQuickPlay']; ?></strong></strong></a>
+                            <a class="linksToPages" id= "linksToPages" href="./game.php"><strong><?php echo $arrayTranslateText['menuQuickPlay']; ?></strong></strong></a>
                             <label class="switch">
                                 <input id="checkBoxDarkMode" type="checkbox" onchange="changeTheme()">
                                 <span class="slider">Dark Mode</span>
@@ -214,19 +214,15 @@ $_SESSION["accesToWinLose"] = false;
 
         function changeToDarkOrLightMode(query){
             if (query.matches) {
-
                     if (!document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = true;
-
                         changeTheme();
                     }
 
                 }
                 else{
-
                     if (document.getElementById('checkBoxDarkMode').checked){
                         document.getElementById('checkBoxDarkMode').checked = false;
-
                         changeTheme();
 
                     }
