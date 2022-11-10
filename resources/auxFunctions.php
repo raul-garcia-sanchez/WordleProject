@@ -78,11 +78,12 @@ function getStatisticsWin($textWin, $textAttempts){
             $pointsBrown = 0;
             $pointsYellow = $array[0] * $decreaseYellowPoints;
             $pointsBrown = $array[1] * $decreaseBrownPoints;
-            if ($pointsYellow + $pointsBrown <= $points){
-                $points += (($pointsYellow) + ($pointsBrown));//SE HA CAMBIADO EL SIGNO
-            }
-            else {
+            if($array[1] == 30){//Si perdemos con todas las letras de color marron, obtendremos 0 puntos
                 $points -= $startingPoints;
+            }
+    
+            else{
+                $points += (($pointsYellow) + ($pointsBrown));//SE HA CAMBIADO EL SIGNO
             }
         }
         $points += $startingPoints;
