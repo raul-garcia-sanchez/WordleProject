@@ -106,9 +106,9 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
 
         let letterToCompare = positionStartWord - 5 + i;
         const spaceLetter = document.getElementById(String(letterToCompare));
-        spaceLetter.style.backgroundColor = color;
 
         if (color === "#98ff96"){
+            spaceLetter.style.backgroundColor = color;
             spaceLetter.classList.add('green');
         }
 
@@ -123,12 +123,13 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
         if(ocultWordArr.includes(wordArr[i])){
             var lettersRepeats = dictOcultWord.get(userWord.charAt(i));
             
-            if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)"){ //entra si la letra esta en el diccionario y no esta pintada ya de verde
+            if(lettersRepeats > 0 && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(letterToCompare).style.backgroundColor != "rgb(14, 61, 35)"){ //entra si la letra esta en el diccionario y no esta pintada ya de verde
                 dictOcultWord.delete(userWord.charAt(i));
                 dictOcultWord.set(userWord.charAt(i),lettersRepeats-1);
                 color = "#F2E205"; //Color amarillo
-                if ( document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)"){
-                    document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+                if ( document.getElementById(letterToCompare).style.backgroundColor != "rgb(152, 255, 150)"){
+
+                    document.getElementById(letterToCompare).style.backgroundColor = color; //Cambio de color del teclado
                     document.getElementById(userWord.charAt(i)).classList.add('yellow');
 
                 }
@@ -136,22 +137,34 @@ function sendWord(){//Funcion de boton enviar, comprobamos longitud, si gana, si
                 
             }
             else{
-                continue;
+
+                if ( document.getElementById(letterToCompare).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(letterToCompare).style.backgroundColor != "rgb(14, 61, 35)"){
+                    if ( document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(14, 61, 35)") {
+                        document.getElementById(letterToCompare).style.backgroundColor = color; //Cambio de color del teclado
+                        document.getElementById(userWord.charAt(i)).classList.add('brown');
+                    }
+                    
+
+                }
+                else{
+                    continue;
+                }
+                
             }        
         }
         else{
-            if(document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(userWord.charAt(i)).style.backgroundColor != "rgb(242, 226, 5)"){
-                document.getElementById(userWord.charAt(i)).style.backgroundColor = color; //Cambio de color del teclado
+            if(document.getElementById(letterToCompare).style.backgroundColor != "rgb(152, 255, 150)" && document.getElementById(letterToCompare).style.backgroundColor != "rgb(242, 226, 5)"){
+                document.getElementById(letterToCompare).style.backgroundColor = color; //Cambio de color del teclado
                 document.getElementById(userWord.charAt(i)).classList.add('brown');
 
             };
         }
         
         spaceLetter.style.backgroundColor = color;
-        if (color === "#F2E205"){
+        if (color === "#F2E205" && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)" && spaceLetter.style.backgroundColor != "rgb(14, 61, 35)"){
             spaceLetter.classList.add('yellow');
         }
-        if (color === "#8C661F"){
+        if (color === "#8C661F" && spaceLetter.style.backgroundColor != "rgb(152, 255, 150)" && spaceLetter.style.backgroundColor != "rgb(14, 61, 35)"){
             spaceLetter.classList.add('brown');
 
         }
